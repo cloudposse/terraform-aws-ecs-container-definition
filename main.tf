@@ -4,17 +4,19 @@ locals {
     image     = "${var.container_image}"
     memory    = "${var.container_memory}"
     cpu       = "${var.container_cpu}"
-    essential = true
-    networkMode = "${var.network_mode}"
+    essential = "${var.essential}"
 
     portMappings = [
       {
         containerPort = "${var.container_port}"
-        hostPort = "${var.host_port}"
+        hostPort      = "${var.host_port}"
         protocol      = "${var.protocol}"
       },
     ]
 
-    logConfiguration = {}
+    logConfiguration = {
+      logDriver = "${var.log_driver}"
+      options   = "${var.log_options}"
+    }
   }]
 }
