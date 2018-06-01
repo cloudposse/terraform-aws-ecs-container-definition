@@ -1,11 +1,9 @@
 variable "container_name" {
   description = "The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed)."
-  default     = "apache"
 }
 
 variable "container_image" {
   description = "The image used to start the container. Images in the Docker Hub registry available by default."
-  default     = "apache:latest"
 }
 
 variable "container_cpu" {
