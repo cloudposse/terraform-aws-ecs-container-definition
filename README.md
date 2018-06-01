@@ -1,6 +1,6 @@
-![Cloud Posse](https://cloudposse.com/logo-300x69.png)
+[Cloud Posse](https://cloudposse.com/logo-300x69.png)
 
-# terraform-aws-ecs-container-definitions [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definitions.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definitions)
+# terraform-aws-ecs-container-definition [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definition.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definition)
 
 A Terraform module to generate well-formed JSON documents (container definitions) that are passed to the `aws_ecs_task_definition` Terraform resource.
 
@@ -12,17 +12,17 @@ This module is meant to be used as output only, meaning it will be used to creat
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/cloudposse/terraform-aws-ecs-container-definitions/issues), send us an [email](mailto:hello@cloudposse.com) or reach out to us on [Gitter](https://gitter.im/cloudposse/).
+File a GitHub [issue](https://github.com/cloudposse/terraform-aws-ecs-container-definition/issues), send us an [email](mailto:hello@cloudposse.com) or reach out to us on [Gitter](https://gitter.im/cloudposse/).
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-ecs-container-definitions/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-ecs-container-definition/issues) to report any bugs or file feature requests.
 
 ### Developing
 
-If you are interested in being a contributor and want to get involved in developing `terraform-aws-ecs-container-definitions`, we would love to hear from you! Shoot us an [email](mailto:hello@cloudposse.com).
+If you are interested in being a contributor and want to get involved in developing `terraform-aws-ecs-container-definition`, we would love to hear from you! Shoot us an [email](mailto:hello@cloudposse.com).
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
@@ -59,7 +59,7 @@ See [LICENSE](LICENSE) for full details.
 
 ## About
 
-`terraform-aws-ecs-container-definitions` is maintained and funded by [Cloud Posse, LLC][website].
+`terraform-aws-ecs-container-definition` is maintained and funded by [Cloud Posse, LLC][website].
 
 ![Cloud Posse](https://cloudposse.com/logo-300x69.png)
 
