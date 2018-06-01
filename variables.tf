@@ -30,3 +30,6 @@ variable "host_port" {
   default = "80"
 }
 
+variable "protocol" {
+  default = "tcp"
+}
