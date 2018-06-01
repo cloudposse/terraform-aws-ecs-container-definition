@@ -1,10 +1,8 @@
 ![Cloud Posse](https://cloudposse.com/logo-300x69.png)
 
-# terraform-aws-ecs-container-definitions ![Build Status](https://g.codefresh.io/api/badges/build?repoOwner=cloudposse&repoName=terraform-aws-ecs-container-definitions&branch=master&pipelineName=terraform-aws-ecs-container-definitions&accountName=cloudposse)
-
+# terraform-aws-ecs-container-definitions [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definitions.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definitions)
 
 A Terraform module to generate well-formed JSON documents (container definitions) that are passed to the `aws_ecs_task_definition` Terraform resource.
-
 
 ## Usage
 
@@ -15,7 +13,6 @@ This module is meant to be used as output only, meaning it will be used to creat
 **Got a question?**
 
 File a GitHub [issue](https://github.com/cloudposse/terraform-aws-ecs-container-definitions/issues), send us an [email](mailto:hello@cloudposse.com) or reach out to us on [Gitter](https://gitter.im/cloudposse/).
-
 
 ## Contributing
 
@@ -36,7 +33,6 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  5. Submit a **Pull request** so that we can review your changes
 
 **NOTE:** Be sure to merge the latest from "upstream" before making a pull request!
-
 
 ## License
 
@@ -60,7 +56,6 @@ See [LICENSE](LICENSE) for full details.
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
-
 
 ## About
 
