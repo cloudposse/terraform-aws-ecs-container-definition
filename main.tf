@@ -1,14 +1,14 @@
 locals {
   container_definitions = [{
-    name      = "${var.container_name}"
-    image     = "${var.container_image}"
-    memory    = "${var.container_memory}"
-    memoryReservation = "${var.container_memory_reservation}"
-    cpu       = "${var.container_cpu}"
-    essential = "${var.essential}"
-    entryPoint = "${var.entrypoint}"
-    command = "${var.command}"
-    workingDirectory = "${var.working_directory}"
+    name                   = "${var.container_name}"
+    image                  = "${var.container_image}"
+    memory                 = "${var.container_memory}"
+    memoryReservation      = "${var.container_memory_reservation}"
+    cpu                    = "${var.container_cpu}"
+    essential              = "${var.essential}"
+    entryPoint             = "${var.entrypoint}"
+    command                = "${var.command}"
+    workingDirectory       = "${var.working_directory}"
     readonlyRootFilesystem = "${var.readonly_root_filesystem}"
 
     environment = "${var.environment}"
@@ -22,9 +22,9 @@ locals {
     ]
 
     healthCheck = {
-      command = "${var.healthcheck_command}"
-      interval = "${var.healthcheck_interval}"
-      retries = "${var.healthcheck_retries}"
+      command     = "${var.healthcheck_command}"
+      interval    = "${var.healthcheck_interval}"
+      retries     = "${var.healthcheck_retries}"
       startPeriod = "${var.healthcheck_start_period}"
     }
 
@@ -32,6 +32,5 @@ locals {
       logDriver = "${var.log_driver}"
       options   = "${var.log_options}"
     }
-  },
-]
+  }]
 }

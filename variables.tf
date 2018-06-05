@@ -33,22 +33,22 @@ variable "protocol" {
 
 variable "healthcheck_command" {
   description = "The helathcheck command that container runs to determine if it is healthy."
-  default = [""]
+  default     = [""]
 }
 
 variable "healthcheck_interval" {
   description = "Duration (in seconds) between executing health checks."
-  default = 30
+  default     = 30
 }
 
 variable "healthcheck_retries" {
   description = "Number of time to retry a health check before marking container unhealthy (1-10)."
-  default = 3
+  default     = 3
 }
 
 variable "healthcheck_start_period" {
   description = "Optional grace period to provide containers time to bootstrap before failed health checks count toward healthcheck_retries (0-300)."
-  default = 0
+  default     = 0
 }
 
 variable "container_cpu" {
@@ -63,27 +63,27 @@ variable "essential" {
 
 variable "entrypoint" {
   description = "The entry point that is passed to the container."
-  default = [""]
+  default     = [""]
 }
 
 variable "command" {
   description = "The command that is passed to the container."
-  default = [""]
+  default     = [""]
 }
 
 variable "working_directory" {
   description = "The working directory to run commands inside the container."
-  default = ""
+  default     = ""
 }
 
 variable "environment" {
   description = "The environment variables to pas to the container. This is a list of maps."
-  default = [{}]
+  default     = [{}]
 }
 
 variable "readonly_root_filesystem" {
   description = "Boolean that determines whether a container is given read-only access to its root filesystem."
-  default = false
+  default     = false
 }
 
 variable "log_driver" {
