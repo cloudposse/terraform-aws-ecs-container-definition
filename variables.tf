@@ -63,12 +63,7 @@ variable "working_directory" {
 
 variable "environment" {
   description = "The environment variables to pas to the container. This is a list of maps."
-
-  default = [{
-    "name" = "UNSET"
-
-    "value" = "placeholder"
-  }]
+  default     = []
 }
 
 variable "readonly_root_filesystem" {
