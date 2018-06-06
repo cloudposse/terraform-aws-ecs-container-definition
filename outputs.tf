@@ -1,4 +1,4 @@
-output "container_definitions" {
+output "json" {
   description = "JSON encoded container definitions for use with other terraform resources such as aws_ecs_task_definition."
 
   # The following hack is required to overcome TF automatic type conversions which lead to issues with the resulting json types.
