@@ -5,12 +5,12 @@ addons:
       - make
       - curl
 
-    install:
-      - make init
+install:
+  - make init
 
-    script:
-      - make terraform/install
-      - make terraform/get-plugins
-      - make terraform/get-modules
-      - make terraform/lint
-      - make terraform/validate
+script:
+  - make terraform/install
+  - make terraform/get-plugins
+  - make terraform/get-modules
+  - make terraform/lint
+  - make terraform/validate
