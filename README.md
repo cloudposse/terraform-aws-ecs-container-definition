@@ -1,8 +1,6 @@
-[Cloud Posse](https://cloudposse.com/logo-300x69.png)
+## terraform-aws-ecs-container-definition [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definition.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definition)
 
-# terraform-aws-ecs-container-definition [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definition.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definition)
-
-A Terraform module to generate well-formed JSON documents that are passed to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
+Terraform module to generate well-formed JSON documents that are passed to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
 
 ## Usage
 
