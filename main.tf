@@ -21,12 +21,7 @@ locals {
       },
     ]
 
-    healthCheck = {
-      command     = "${var.healthcheck_command}"
-      interval    = "${var.healthcheck_interval}"
-      retries     = "${var.healthcheck_retries}"
-      startPeriod = "${var.healthcheck_start_period}"
-    }
+    healthCheck = "${var.healthcheck}"
 
     logConfiguration = {
       logDriver = "${var.log_driver}"

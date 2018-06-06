@@ -31,24 +31,9 @@ variable "protocol" {
   default     = "tcp"
 }
 
-variable "healthcheck_command" {
-  description = "The helathcheck command that container runs to determine if it is healthy."
-  default     = [""]
-}
-
-variable "healthcheck_interval" {
-  description = "Duration (in seconds) between executing health checks."
-  default     = 30
-}
-
-variable "healthcheck_retries" {
-  description = "Number of time to retry a health check before marking container unhealthy (1-10)."
-  default     = 3
-}
-
-variable "healthcheck_start_period" {
-  description = "Optional grace period to provide containers time to bootstrap before failed health checks count toward healthcheck_retries (0-300)."
-  default     = 0
+variable "healthcheck" {
+  description = "A map containing command (string), interval (duration in seconds), retries (1-10, number of times to retry before marking container unhealthy, and startPeriod (0-300, optional grace period to wait, in seconds, before failed healthchecks count toward retries)"
+  default     = {}
 }
 
 variable "container_cpu" {
@@ -78,7 +63,12 @@ variable "working_directory" {
 
 variable "environment" {
   description = "The environment variables to pas to the container. This is a list of maps."
-  default     = [{}]
+
+  default = [{
+    "name" = "UNSET"
+
+    "value" = "placeholder"
+  }]
 }
 
 variable "readonly_root_filesystem" {
@@ -92,6 +82,13 @@ variable "log_driver" {
 }
 
 variable "log_options" {
-  description = "The configuration options to send to the log_driver"
-  default     = {}
+  description = "The configuration options to send to the log_driver."
+
+  default = {
+    "awslogs-region" = "us-west-2"
+
+    "awslogs-group" = "default"
+
+    "awslogs-stream-prefix" = "default"
+  }
 }
