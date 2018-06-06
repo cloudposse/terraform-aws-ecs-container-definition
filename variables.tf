@@ -57,8 +57,8 @@ variable "container_cpu" {
 }
 
 variable "essential" {
-  description = "Boolean to determine whether all other containers in a tasks are stopped if this container fails or stops for any reason."
-  default     = true
+  description = "Determines whether all other containers in a task are stopped, if this container fails or stops for any reason. Due to how Terraform type casts booleans in json it is required to double quote this value."
+  default     = "true"
 }
 
 variable "entrypoint" {
@@ -82,8 +82,8 @@ variable "environment" {
 }
 
 variable "readonly_root_filesystem" {
-  description = "Boolean that determines whether a container is given read-only access to its root filesystem."
-  default     = false
+  description = "Determines whether a container is given read-only access to its root filesystem. Due to how Terraform type casts booleans in json it is required to double quote this value."
+  default     = "false"
 }
 
 variable "log_driver" {
