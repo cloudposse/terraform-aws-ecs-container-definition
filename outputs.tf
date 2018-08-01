@@ -6,5 +6,6 @@ output "json" {
   #  - Convert `""`, `{}`, `[]`, and `[""]` to `null`
   #  - Convert `"true"` and `"false"` to `true` and `false`
   #  - Convert quoted numbers (e.g. `"123"`) to `123`.
-  value = "${replace(replace(replace(jsonencode(local.container_definitions), "/(\\[\\]|\\[\"\"\\]|\"\"|{})/", "null"), "/\"(true|false)\"/", "$1"), "/\"([0-9]+\\.?[0-9]*)\"/", "$1")}"
+  # Environment variables are kept as strings.
+  value = "${replace(replace(jsonencode(local.container_definitions), "/(\\[\\]|\\[\"\"\\]|\"\"|{})/", "null"), "/(\"[^v][[:alpha:]]+\":)\"([0-9]+\\.?[0-9]*|true|false)\"/", "$1$2")}"
 }
