@@ -16,19 +16,13 @@ variable "container_memory_reservation" {
   default     = 128
 }
 
-variable "container_port" {
-  description = "The port number on the container bound to assigned host_port."
-  default     = 80
-}
-
-variable "host_port" {
-  description = "The port number on the container instance (host) to reserve for the container_port. If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort."
-  default     = 80
-}
-
-variable "protocol" {
-  description = "The protocol used for the port mapping. Options: tcp or udp."
-  default     = "tcp"
+variable "port_mappings" {
+  description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"container_port\", \"host_port\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the host_port can either be left blank or set to the same value as the container_port."
+  default     = [{
+    "container_port" = 80
+    "host_port" = 80
+    "protocol" = "tcp"
+  }]
 }
 
 variable "healthcheck" {
