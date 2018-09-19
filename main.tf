@@ -1,3 +1,4 @@
+# Environment variables are composed into the container definition at output generation time. See outputs.tf for more information.
 locals {
   container_definitions = [{
     name                   = "${var.container_name}"
@@ -11,15 +12,7 @@ locals {
     workingDirectory       = "${var.working_directory}"
     readonlyRootFilesystem = "${var.readonly_root_filesystem}"
 
-    environment = "${var.environment}"
-
-    portMappings = [
-      {
-        containerPort = "${var.container_port}"
-        hostPort      = "${var.host_port}"
-        protocol      = "${var.protocol}"
-      },
-    ]
+    portMappings = "${var.port_mappings}"
 
     healthCheck = "${var.healthcheck}"
 
@@ -27,5 +20,9 @@ locals {
       logDriver = "${var.log_driver}"
       options   = "${var.log_options}"
     }
+
+    environment = "environment_sentinel_value"
   }]
+
+  environment = "${var.environment}"
 }
