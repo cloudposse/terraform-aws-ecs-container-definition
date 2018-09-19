@@ -24,13 +24,13 @@ module "container" {
 
   port_mappings = [
     {
-      container_port = 8080
-      host_port = 80
+      containerPort = 8080
+      hostPort = 80
       protocol = "tcp"
     },
     {
-      container_port = 8081
-      host_port = 443
+      containerPort = 8081
+      hostPort = 443
       protocol = "udp"
     },
   ]
