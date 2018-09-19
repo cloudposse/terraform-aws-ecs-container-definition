@@ -17,10 +17,10 @@ variable "container_memory_reservation" {
 }
 
 variable "port_mappings" {
-  description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"container_port\", \"host_port\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the host_port can either be left blank or set to the same value as the container_port."
+  description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"containerPort\", \"hostPort\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort."
   default     = [{
-    "container_port" = 80
-    "host_port" = 80
+    "containerPort" = 80
+    "hostPort" = 80
     "protocol" = "tcp"
   }]
 }
