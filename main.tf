@@ -1,6 +1,6 @@
 # Environment variables are composed into the container definition at output generation time. See outputs.tf for more information.
 locals {
-  container_definitions = [{
+  container_definition = {
     name                   = "${var.container_name}"
     image                  = "${var.container_image}"
     memory                 = "${var.container_memory}"
@@ -22,7 +22,7 @@ locals {
     }
 
     environment = "environment_sentinel_value"
-  }]
+  }
 
   environment = "${var.environment}"
 }
