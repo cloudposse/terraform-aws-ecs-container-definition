@@ -30,39 +30,48 @@ badges:
 
 related:
   - name: "terraform-aws-ecs-codepipeline"
-    description: "Terraform Module for CI/CD with AWS Code Pipeline and Code Build for ECS https://cloudposse.com/"
+    description: "Terraform module for CI/CD with AWS Code Pipeline and Code Build for ECS"
     url: "https://github.com/cloudposse/terraform-aws-ecs-codepipeline"
   - name: "terraform-aws-ecs-events"
-    description: "Provide a standard set of ECS events that notify an SNS topic"
+    description: "Provides a standard set of ECS events that notify an SNS topic"
     url: "https://github.com/cloudposse/terraform-aws-ecs-events"
   - name: "terraform-aws-ecs-cloudwatch-autoscaling"
     description: "Terraform module to autoscale ECS Service based on CloudWatch metrics"
     url: "https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-autoscaling"
   - name: "terraform-aws-ecs-container-definition"
-    description: "A Terraform module to generate well-formed JSON documents (container definitions) that are passed to the aws_ecs_task_definition Terraform resource"
+    description: "Terraform module to generate well-formed JSON documents (container definitions) that are passed to the aws_ecs_task_definition Terraform resource"
     url: "https://github.com/cloudposse/terraform-aws-ecs-container-definition"
   - name: "terraform-aws-ecs-launch-template"
     description: "Terraform module for generating an AWS Launch Template for ECS that handles draining on Spot Termination Requests"
     url: "https://github.com/cloudposse/terraform-aws-ecs-launch-template"
   - name: "terraform-aws-ecs-web-app"
-    description: "Terraform module that implements a web app on ECS and supporting AWS resources."
+    description: "Terraform module that implements a web app on ECS and supporting AWS resources"
     url: "https://github.com/cloudposse/terraform-aws-ecs-web-app"
   - name: "terraform-aws-ecs-spot-fleet"
-    description: "[wip] Terraform module to create a diversified spot fleet for ECS clusters"
+    description: "Terraform module to create a diversified spot fleet for ECS clusters"
     url: "https://github.com/cloudposse/terraform-aws-ecs-spot-fleet"
   - name: "terraform-aws-ecs-cloudwatch-sns-alarms"
-    description: "Terraform module to create CloudWatch Alarms on ECS Service level metrics."
+    description: "Terraform module to create CloudWatch Alarms on ECS Service level metrics"
     url: "https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms"
   - name: "terraform-aws-ecs-alb-service-task"
-    description: "A Terraform module which implements an ECS service which exposes a web service via ALB."
+    description: "Terraform module which implements an ECS service which exposes a web service via ALB"
     url: "https://github.com/cloudposse/terraform-aws-ecs-alb-service-task"
 
 # Short description of this project
 description: |-
   Terraform module to generate well-formed JSON documents that are passed to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
+
 # How to use this project
 usage: |-
   This module is meant to be used as output only, meaning it will be used to create outputs which are consumed as a parameter by Terraform resources or other modules.
+
+  For complete examples, see
+
+  - [multi-port mappings](examples/multi_port_mappings)
+  - [multi-type env vars](examples/multi_type_env_vars)
+  - [multiple definitions](examples/multiple_definitions)
+  - [string env vars](examples/string_env_vars)
+
 
 include:
   - "docs/targets.md"
@@ -70,5 +79,11 @@ include:
 
 # Contributors to this project
 contributors:
+  - name: "Erik Osterman"
+    github: "osterman"
   - name: "Sarkis Varozian"
     github: "sarkis"
+  - name: "Andriy Knysh"
+    github: "aknysh"
+  - name: "Igor Rodionov"
+    github: "goruha"
