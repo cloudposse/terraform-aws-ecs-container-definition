@@ -36,9 +36,14 @@ module "second_container" {
   ]
 }
 
-output "json" {
+output "first_container_json" {
   description = "Container definition in JSON format"
-  value       = "${module.container.json}"
+  value       = "${module.first_container.json}"
+}
+
+output "second_container_json" {
+  description = "Container definition in JSON format"
+  value       = "${module.first_container.json}"
 }
 
 resource "aws_ecs_task_definition" "task" {
