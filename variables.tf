@@ -106,5 +106,4 @@ variable "mount_points" {
   #    sourceVolume = "test-volume"
   #  }
   #]
-
 }
