@@ -97,7 +97,7 @@ variable "log_options" {
 
 variable "mount_points" {
   type        = "list"
-  description = "Container mount points. This is a list of map, each map should contain containerPath and sourceVolume"
+  description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`"
   default     = []
 
   #default     = [
