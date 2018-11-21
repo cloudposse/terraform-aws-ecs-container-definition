@@ -94,3 +94,16 @@ variable "log_options" {
     "awslogs-stream-prefix" = "default"
   }
 }
+
+variable "mount_points" {
+  type        = "list"
+  description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`"
+  default     = []
+
+  #default     = [
+  #  {
+  #    containerPath  = "/tmp"
+  #    sourceVolume = "test-volume"
+  #  }
+  #]
+}
