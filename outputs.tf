@@ -6,8 +6,9 @@
 # Environment variables are kept as strings.
 locals {
   encoded_environment_variables = "${jsonencode(local.environment)}"
+  encoded_secrets               = "${jsonencode(local.secrets)}"
   encoded_container_definition  = "${replace(replace(replace(jsonencode(local.container_definition), "/(\\[\\]|\\[\"\"\\]|\"\"|{})/", "null"), "/\"(true|false)\"/", "$1"), "/\"([0-9]+\\.?[0-9]*)\"/", "$1")}"
-  json_map                      = "${replace(local.encoded_container_definition, "/\"environment_sentinel_value\"/", local.encoded_environment_variables)}"
+  json_map                      = "${replace(replace(local.encoded_container_definition, "/\"environment_sentinel_value\"/", local.encoded_environment_variables), "/\"secrets_sentinel_value\"/", local.encoded_secrets)}"
 }
 
 output "json" {
