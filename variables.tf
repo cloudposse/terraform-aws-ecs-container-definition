@@ -66,7 +66,7 @@ variable "working_directory" {
 
 variable "environment" {
   type        = "list"
-  description = "The environment variables to pas to the container. This is a list of maps"
+  description = "The environment variables to pass to the container. This is a list of maps"
   default     = []
 }
 

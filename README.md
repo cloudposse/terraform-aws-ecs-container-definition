@@ -80,7 +80,7 @@ Available targets:
 | container_memory_reservation | The amount of memory (in MiB) to reserve for the container. If container needs to exceed this threshold, it can do so up to the set container_memory hard limit | string | `128` | no |
 | container_name | The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed) | string | - | yes |
 | entrypoint | The entry point that is passed to the container | list | `<list>` | no |
-| environment | The environment variables to pas to the container. This is a list of maps | list | `<list>` | no |
+| environment | The environment variables to pass to the container. This is a list of maps | list | `<list>` | no |
 | essential | Determines whether all other containers in a task are stopped, if this container fails or stops for any reason. Due to how Terraform type casts booleans in json it is required to double quote this value | string | `true` | no |
 | healthcheck | A map containing command (string), interval (duration in seconds), retries (1-10, number of times to retry before marking container unhealthy, and startPeriod (0-300, optional grace period to wait, in seconds, before failed healthchecks count toward retries) | map | `<map>` | no |
 | log_driver | The log driver to use for the container. If using Fargate launch type, only supported value is awslogs | string | `awslogs` | no |
