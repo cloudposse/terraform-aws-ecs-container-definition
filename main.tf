@@ -23,7 +23,9 @@ locals {
     }
 
     environment = "environment_sentinel_value"
+    secrets     = "secrets_sentinel_value"
   }
 
   environment = "${var.environment}"
+  secrets     = "${var.secrets}"
 }
