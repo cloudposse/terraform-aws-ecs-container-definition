@@ -10,7 +10,7 @@ locals {
   # append the secrets key if any are defined
   # empty lists in the container definition cause 
   # ClientException: When you are specifying container secrets, you must also specify a value for 'executionRoleArn'.
-  container_definition_output = "${length(var.secrets) == 0 ? local.container_definition : merge(local.encoded_container_definition, map("secrets", "secrets_sentinel_value"))}"
+  container_definition_output = "${length(var.secrets) == 0 ? local.container_definition : merge(local.container_definition, map("secrets", "secrets_sentinel_value"))}"
 
   encoded_secrets              = "${jsonencode(local.secrets)}"
   encoded_container_definition = "${replace(replace(replace(jsonencode(local.container_definition), "/(\\[\\]|\\[\"\"\\]|\"\"|{})/", "null"), "/\"(true|false)\"/", "$1"), "/\"([0-9]+\\.?[0-9]*)\"/", "$1")}"
