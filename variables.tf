@@ -113,3 +113,9 @@ variable "mount_points" {
   #  }
   #]
 }
+
+variable "dns_servers" {
+  type        = "list"
+  description = "Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers."
+  default     = []
+}

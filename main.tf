@@ -12,6 +12,7 @@ locals {
     workingDirectory       = "${var.working_directory}"
     readonlyRootFilesystem = "${var.readonly_root_filesystem}"
     mountPoints            = "${var.mount_points}"
+    dnsServers             = "${var.dns_servers}"
 
     portMappings = "${var.port_mappings}"
 
