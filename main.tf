@@ -23,6 +23,10 @@ locals {
       options   = "${var.log_options}"
     }
 
+    repositoryCredentials = {
+      credentialsParameter = "${var.repository_secret_arn}"
+    }
+
     environment = "environment_sentinel_value"
     secrets     = "secrets_sentinel_value"
   }

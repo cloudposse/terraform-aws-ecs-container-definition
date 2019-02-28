@@ -76,6 +76,12 @@ variable "secrets" {
   default     = []
 }
 
+variable "repository_secret_arn" {
+  type        = "string"
+  description = "The ARN for an AWS SecretsManager secret containing credentials for a private docker repository"
+  default     = ""
+}
+
 variable "readonly_root_filesystem" {
   type        = "string"
   description = "Determines whether a container is given read-only access to its root filesystem. Due to how Terraform type casts booleans in json it is required to double quote this value"
