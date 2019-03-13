@@ -13,6 +13,7 @@ locals {
     readonlyRootFilesystem = "${var.readonly_root_filesystem}"
     mountPoints            = "${var.mount_points}"
     dnsServers             = "${var.dns_servers}"
+    ulimits                = "${var.ulimits}"
 
     portMappings = "${var.port_mappings}"
 
@@ -22,6 +23,7 @@ locals {
       logDriver = "${var.log_driver}"
       options   = "${var.log_options}"
     }
+
 
     environment = "environment_sentinel_value"
     secrets     = "secrets_sentinel_value"
