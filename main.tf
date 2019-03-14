@@ -13,6 +13,7 @@ locals {
     readonlyRootFilesystem = "${var.readonly_root_filesystem}"
     mountPoints            = "${var.mount_points}"
     dnsServers             = "${var.dns_servers}"
+    ulimits                = "${var.ulimits}"
 
     portMappings = "${var.port_mappings}"
 

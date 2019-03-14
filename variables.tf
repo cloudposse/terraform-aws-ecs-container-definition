@@ -119,3 +119,9 @@ variable "dns_servers" {
   description = "Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers."
   default     = []
 }
+
+variable "ulimits" {
+  type        = "list"
+  description = "Container ulimit settings. This is a list of maps, where each map should contain \"name\", \"hardLimit\" and \"softLimit\""
+  default     = []
+}
