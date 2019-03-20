@@ -125,3 +125,9 @@ variable "ulimits" {
   description = "Container ulimit settings. This is a list of maps, where each map should contain \"name\", \"hardLimit\" and \"softLimit\""
   default     = []
 }
+
+variable "repository_credentials" {
+  type        = "map"
+  description = "Container repository credentials; required when using a private repo.  This map currently supports a single key; \"credentialsParameter\", which should be the ARN of a secretsmanager secret holding the credentials."
+  default     = {}
+}
