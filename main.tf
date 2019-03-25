@@ -15,6 +15,8 @@ locals {
     dnsServers             = "${var.dns_servers}"
     ulimits                = "${var.ulimits}"
     repositoryCredentials  = "${var.repository_credentials}"
+    links                  = "${var.links}"
+    volumesFrom            = "${var.volumes_from}"
 
     portMappings = "${var.port_mappings}"
 
