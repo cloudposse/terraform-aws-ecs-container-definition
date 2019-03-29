@@ -13,7 +13,7 @@ Terraform module to generate well-formed JSON documents that are passed to the `
 
 ---
 
-This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
+This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps. 
 [<img align="right" title="Share via Email" src="https://docs.cloudposse.com/images/ionicons/ios-email-outline-2.0.1-16x16-999999.svg"/>][share_email]
 [<img align="right" title="Share on Google+" src="https://docs.cloudposse.com/images/ionicons/social-googleplus-outline-2.0.1-16x16-999999.svg" />][share_googleplus]
 [<img align="right" title="Share on Facebook" src="https://docs.cloudposse.com/images/ionicons/social-facebook-outline-2.0.1-16x16-999999.svg" />][share_facebook]
@@ -34,7 +34,7 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
-We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
+We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out! 
 
 
 
@@ -83,6 +83,7 @@ Available targets:
 | environment | The environment variables to pass to the container. This is a list of maps | list | `<list>` | no |
 | essential | Determines whether all other containers in a task are stopped, if this container fails or stops for any reason. Due to how Terraform type casts booleans in json it is required to double quote this value | string | `true` | no |
 | healthcheck | A map containing command (string), interval (duration in seconds), retries (1-10, number of times to retry before marking container unhealthy, and startPeriod (0-300, optional grace period to wait, in seconds, before failed healthchecks count toward retries) | map | `<map>` | no |
+| links | List of container names this container can communicate with without port mappings. | list | `<list>` | no |
 | log_driver | The log driver to use for the container. If using Fargate launch type, only supported value is awslogs | string | `awslogs` | no |
 | log_options | The configuration options to send to the `log_driver` | map | `<map>` | no |
 | mount_points | Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume` | list | `<list>` | no |
@@ -91,9 +92,8 @@ Available targets:
 | repository_credentials | Container repository credentials; required when using a private repo.  This map currently supports a single key; "credentialsParameter", which should be the ARN of a Secrets Manager's secret holding the credentials | map | `<map>` | no |
 | secrets | The secrets to pass to the container. This is a list of maps | list | `<list>` | no |
 | ulimits | Container ulimit settings. This is a list of maps, where each map should contain "name", "hardLimit" and "softLimit" | list | `<list>` | no |
+| volumes_from | A list of VolumesFrom maps which contain "sourceContainer" (name of the container that has the volumes to mount) and "readOnly" (whether the container can write to the volume). | list | `<list>` | no |
 | working_directory | The working directory to run commands inside the container | string | `` | no |
-| volumes_from | `VolumesFrom` is a [list of maps](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions-volumesfrom.html) that mounts data volumes from other containers. | list | `<list>` | no |
-| links | List of container names this container can communicate with without port mappings. | list | `<list>` | no |
 
 ## Outputs
 
@@ -105,9 +105,9 @@ Available targets:
 
 
 
-## Share the Love
+## Share the Love 
 
-Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/terraform-aws-ecs-container-definition)! (it helps us **a lot**)
+Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/terraform-aws-ecs-container-definition)! (it helps us **a lot**) 
 
 Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
 
@@ -138,9 +138,9 @@ File a GitHub [issue](https://github.com/cloudposse/terraform-aws-ecs-container-
 
 ## Commercial Support
 
-Work directly with our team of DevOps experts via email, slack, and video conferencing.
+Work directly with our team of DevOps experts via email, slack, and video conferencing. 
 
-We provide [*commercial support*][commercial_support] for all of our [Open Source][github] projects. As a *Dedicated Support* customer, you have access to our team of subject matter experts at a fraction of the cost of a full-time engineer.
+We provide [*commercial support*][commercial_support] for all of our [Open Source][github] projects. As a *Dedicated Support* customer, you have access to our team of subject matter experts at a fraction of the cost of a full-time engineer. 
 
 [![E-Mail](https://img.shields.io/badge/email-hello@cloudposse.com-blue.svg)][email]
 
@@ -150,7 +150,7 @@ We provide [*commercial support*][commercial_support] for all of our [Open Sourc
 - **Bug Fixes.** We'll rapidly work to fix any bugs in our projects.
 - **Build New Terraform Modules.** We'll [develop original modules][module_development] to provision infrastructure.
 - **Cloud Architecture.** We'll assist with your cloud strategy and design.
-- **Implementation.** We'll provide hands-on support to implement our reference architectures.
+- **Implementation.** We'll provide hands-on support to implement our reference architectures. 
 
 
 
@@ -165,7 +165,7 @@ Join our [Open Source Community][slack] on Slack. It's **FREE** for everyone! Ou
 
 ## Newsletter
 
-Signup for [our newsletter][newsletter] that covers everything on our technology radar.  Receive updates on what we're up to on GitHub as well as awesome new projects we discover.
+Signup for [our newsletter][newsletter] that covers everything on our technology radar.  Receive updates on what we're up to on GitHub as well as awesome new projects we discover. 
 
 ## Contributing
 
@@ -194,9 +194,9 @@ Copyright © 2017-2019 [Cloud Posse, LLC](https://cpco.io/copyright)
 
 
 
-## License
+## License 
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
 
 See [LICENSE](LICENSE) for full details.
 
