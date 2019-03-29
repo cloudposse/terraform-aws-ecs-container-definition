@@ -131,3 +131,15 @@ variable "repository_credentials" {
   description = "Container repository credentials; required when using a private repo.  This map currently supports a single key; \"credentialsParameter\", which should be the ARN of a Secrets Manager's secret holding the credentials"
   default     = {}
 }
+
+variable "volumes_from" {
+  type        = "list"
+  description = "A list of VolumesFrom maps which contain \"sourceContainer\" (name of the container that has the volumes to mount) and \"readOnly\" (whether the container can write to the volume)."
+  default     = []
+}
+
+variable "links" {
+  type        = "list"
+  description = "List of container names this container can communicate with without port mappings."
+  default     = []
+}
