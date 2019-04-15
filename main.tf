@@ -18,6 +18,7 @@ locals {
     links                  = "${var.links}"
     volumesFrom            = "${var.volumes_from}"
     user                   = "${var.user}"
+    dependsOn              = "${var.depends_on}"
 
     portMappings = "${var.port_mappings}"
 
