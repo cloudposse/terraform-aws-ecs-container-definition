@@ -147,10 +147,10 @@ variable "links" {
 variable "user" {
   description = "The user to run as inside the container. Can be any of these formats: user, user:group, uid, uid:gid, user:gid, uid:group"
   default     = ""
-
-variable "depends_on" {
-  type = "list"
-  description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
-  default = []
 }
 
+variable "depends_on" {
+  type        = "list"
+  description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
+  default     = []
+}
