@@ -10,7 +10,7 @@ locals {
   encoded_cpu                   = "${var.container_cpu > 0 ? var.container_cpu : "null"}"
   encoded_memory                = "${var.container_memory > 0 ? var.container_memory : "null"}"
   encoded_memory_reservation    = "${var.container_memory_reservation > 0 ? var.container_memory_reservation : "null"}"
-  encoded_container_definition  = "${replace(replace(replace(jsonencode(local.container_definition), "/(\\[\\]|\\[\"\"\\]|\"\"|{})/", "null"), "/\"(true|false)\"/", "$1"), "/\"([0-9]+\\.?[0-9]*)\"/", "$1")}"
+  encoded_container_definition  = "${replace(replace(replace(jsonencode(local.container_definition), "/(\\[\\]|\\[\"\"\\]|\"\"|{})/", "null"), "/\"(true|false)\"/", "$1"), "/\"(-?[0-9]+\\.?[0-9]*)\"/", "$1")}"
 
   json_with_environment        = "${replace(local.encoded_container_definition, "/\"environment_sentinel_value\"/", local.encoded_environment_variables)}"
   json_with_secrets            = "${replace(local.json_with_environment, "/\"secrets_sentinel_value\"/", local.encoded_secrets)}"

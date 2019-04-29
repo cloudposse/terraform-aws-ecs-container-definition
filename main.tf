@@ -17,6 +17,7 @@ locals {
     repositoryCredentials  = "${var.repository_credentials}"
     links                  = "${var.links}"
     volumesFrom            = "${var.volumes_from}"
+    user                   = "${var.user}"
 
     portMappings = "${var.port_mappings}"
 
