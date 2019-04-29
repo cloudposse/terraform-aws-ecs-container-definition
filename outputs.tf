@@ -7,8 +7,18 @@
 locals {
   encoded_environment_variables = "${jsonencode(local.environment)}"
   encoded_secrets               = "${length(local.secrets) > 0 ? jsonencode(local.secrets) : "null"}"
+  encoded_cpu                   = "${var.container_cpu > 0 ? var.container_cpu : "null"}"
+  encoded_memory                = "${var.container_memory > 0 ? var.container_memory : "null"}"
+  encoded_memory_reservation    = "${var.container_memory_reservation > 0 ? var.container_memory_reservation : "null"}"
   encoded_container_definition  = "${replace(replace(replace(jsonencode(local.container_definition), "/(\\[\\]|\\[\"\"\\]|\"\"|{})/", "null"), "/\"(true|false)\"/", "$1"), "/\"([0-9]+\\.?[0-9]*)\"/", "$1")}"
-  json_map                      = "${replace(replace(local.encoded_container_definition, "/\"environment_sentinel_value\"/", local.encoded_environment_variables), "/\"secrets_sentinel_value\"/", local.encoded_secrets)}"
+
+  json_with_environment        = "${replace(local.encoded_container_definition, "/\"environment_sentinel_value\"/", local.encoded_environment_variables)}"
+  json_with_secrets            = "${replace(local.json_with_environment, "/\"secrets_sentinel_value\"/", local.encoded_secrets)}"
+  json_with_cpu                = "${replace(local.json_with_secrets, "/\"cpu_sentinel_value\"/", local.encoded_cpu)}"
+  json_with_memory             = "${replace(local.json_with_cpu, "/\"memory_sentinel_value\"/", local.encoded_memory)}"
+  json_with_memory_reservation = "${replace(local.json_with_memory, "/\"memory_reservation_sentinel_value\"/", local.encoded_memory_reservation)}"
+
+  json_map = "${local.json_with_memory_reservation}"
 }
 
 output "json" {

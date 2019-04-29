@@ -3,9 +3,9 @@ locals {
   container_definition = {
     name                   = "${var.container_name}"
     image                  = "${var.container_image}"
-    memory                 = "${var.container_memory}"
-    memoryReservation      = "${var.container_memory_reservation}"
-    cpu                    = "${var.container_cpu}"
+    memory                 = "memory_sentinel_value"
+    memoryReservation      = "memory_reservation_sentinel_value"
+    cpu                    = "cpu_sentinel_value"
     essential              = "${var.essential}"
     entryPoint             = "${var.entrypoint}"
     command                = "${var.command}"
