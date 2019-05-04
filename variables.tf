@@ -154,3 +154,9 @@ variable "depends_on" {
   description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
   default     = []
 }
+
+variable "requires_compatibilities" {
+  type	      = "list"
+  description = "The launch type the task requires. If no value is specified, it will default to EC2. Valid values include EC2 and FARGATE."
+  default     = ["EC2"]
+}
