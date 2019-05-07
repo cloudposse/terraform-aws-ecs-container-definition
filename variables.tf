@@ -154,3 +154,8 @@ variable "depends_on" {
   description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
   default     = []
 }
+
+variable "stop_timeout" {
+  description = "Timeout in seconds between sending container SIGTERM and SIGKILL"
+  default     = 3600
+}
