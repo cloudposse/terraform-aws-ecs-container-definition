@@ -19,7 +19,7 @@ locals {
     volumesFrom            = "${var.volumes_from}"
     user                   = "${var.user}"
     dependsOn              = "${var.depends_on}"
-    stopTimeout            = "${var.stop_timeout}"
+    stopTimeout            = "stopTimeout"
 
     portMappings = "${var.port_mappings}"
 
