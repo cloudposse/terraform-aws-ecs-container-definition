@@ -157,5 +157,5 @@ variable "depends_on" {
 
 variable "stop_timeout" {
   description = "Timeout in seconds between sending container SIGTERM and SIGKILL"
-  default     = 3600
+  default     = 30
 }
