@@ -18,7 +18,7 @@ locals {
   json_with_cpu                = "${replace(local.json_with_secrets, "/\"cpu_sentinel_value\"/", local.encoded_cpu)}"
   json_with_memory             = "${replace(local.json_with_cpu, "/\"memory_sentinel_value\"/", local.encoded_memory)}"
   json_with_memory_reservation = "${replace(local.json_with_memory, "/\"memory_reservation_sentinel_value\"/", local.encoded_memory_reservation)}"
-  json_with_stop_timeout      =  "${replace(local.json_with_memory_reservation, "/\"stop_timeout\"/", local.encoded_stop_timeout)}"
+  json_with_stop_timeout       = "${replace(local.json_with_memory_reservation, "/\"stop_timeout\"/", local.encoded_stop_timeout)}"
 
   json_map = "${local.json_with_stop_timeout}"
 }
