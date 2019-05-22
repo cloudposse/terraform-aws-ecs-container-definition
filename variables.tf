@@ -154,3 +154,10 @@ variable "depends_on" {
   description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
   default     = []
 }
+
+variable "docker_labels" {
+  type        = "map"
+  description = "The configuration options to send to the `docker_labels`"
+
+  default = {}
+}
