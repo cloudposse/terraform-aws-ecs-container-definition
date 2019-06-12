@@ -166,4 +166,3 @@ variable "stop_timeout" {
   description = "Timeout in seconds between sending SIGTERM and SIGKILL to container"
   default     = 30
 }
-
