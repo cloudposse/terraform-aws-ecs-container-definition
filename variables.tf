@@ -149,7 +149,7 @@ variable "user" {
   default     = ""
 }
 
-variable "depends_on" {
+variable "container_depends_on" {
   type        = "list"
   description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
   default     = []
@@ -161,3 +161,9 @@ variable "docker_labels" {
 
   default = {}
 }
+
+variable "stop_timeout" {
+  description = "Timeout in seconds between sending SIGTERM and SIGKILL to container"
+  default     = 30
+}
+
