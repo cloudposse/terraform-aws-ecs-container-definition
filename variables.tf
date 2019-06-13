@@ -158,7 +158,6 @@ variable "container_depends_on" {
 variable "docker_labels" {
   type        = "map"
   description = "The configuration options to send to the `docker_labels`"
-
   default = {}
 }
 
