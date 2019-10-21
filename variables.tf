@@ -101,6 +101,24 @@ variable "log_options" {
   }
 }
 
+variable "firelens_type" {
+  type        = "string"
+  description = "The firelens type to use for the container."
+  default     = "fluentbit"
+}
+
+variable "firelens_options" {
+  type        = "map"
+  description = "The configuration options to send to the `firelens_type`"
+
+  default = {
+    "config-file-type" : "file"
+
+    "config-file-value" : "/fluent-bit/etc/fluent-bit.conf"
+  }
+}
+
+
 variable "mount_points" {
   type        = "list"
   description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`"
