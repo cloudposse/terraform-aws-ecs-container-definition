@@ -112,9 +112,9 @@ variable "firelens_options" {
   description = "The configuration options to send to the `firelens_type`"
 
   default = {
-    "config-file-type" : "file"
+    "config-file-type" = "file"
 
-    "config-file-value" : "/fluent-bit/etc/fluent-bit.conf"
+    "config-file-value" = "/fluent-bit/etc/fluent-bit.conf"
   }
 }
 
