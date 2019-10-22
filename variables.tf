@@ -110,9 +110,7 @@ variable "firelens_type" {
 variable "firelens_options" {
   type        = "map"
   description = "The configuration options to send to the `firelens_type`"
-
-  default = {
-  }
+  default     = {}
 }
 
 variable "mount_points" {
