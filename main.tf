@@ -20,6 +20,7 @@ locals {
     user                   = "${var.user}"
     dependsOn              = "${var.container_depends_on}"
     stopTimeout            = "stop_timeout_sentinel_value"
+    privileged             = "${var.privileged}"
 
     portMappings = "${var.port_mappings}"
 
