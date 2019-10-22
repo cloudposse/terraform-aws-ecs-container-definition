@@ -26,6 +26,11 @@ locals {
 
     healthCheck = "${var.healthcheck}"
 
+    firelensConfiguration = {
+      type    = "${var.firelens_type}"
+      options = "${var.firelens_options}"
+    }
+
     logConfiguration = {
       logDriver = "${var.log_driver}"
       options   = "${var.log_options}"
