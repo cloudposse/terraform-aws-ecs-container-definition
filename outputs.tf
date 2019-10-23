@@ -13,6 +13,7 @@ locals {
   encoded_stop_timeout          = "${var.stop_timeout > 0 ? var.stop_timeout : "null"}"
   encoded_container_definition  = "${replace(replace(replace(jsonencode(local.container_definition), "/(\\[\\]|\\[\"\"\\]|\"\"|{})/", "null"), "/\"(true|false)\"/", "$1"), "/\"(-?[0-9]+\\.?[0-9]*)\"/", "$1")}"
   encoded_docker_labels         = "${jsonencode(var.docker_labels)}"
+  encoded_system_controls       = "${length(var.system_controls) > 0 ? jsonencode(var.system_controls) : "null"}"
 
   json_with_environment        = "${replace(local.encoded_container_definition, "/\"environment_sentinel_value\"/", local.encoded_environment_variables)}"
   json_with_secrets            = "${replace(local.json_with_environment, "/\"secrets_sentinel_value\"/", local.encoded_secrets)}"
@@ -21,8 +22,9 @@ locals {
   json_with_memory_reservation = "${replace(local.json_with_memory, "/\"memory_reservation_sentinel_value\"/", local.encoded_memory_reservation)}"
   json_with_stop_timeout       = "${replace(local.json_with_memory_reservation, "/\"stop_timeout_sentinel_value\"/", local.encoded_stop_timeout)}"
   json_with_docker_labels      = "${replace(local.json_with_stop_timeout, "/\"docker_labels_sentinel_value\"/", local.encoded_docker_labels)}"
+  json_with_system_controls    = "${replace(local.json_with_docker_labels, "/\"system_controls_sentinel_value\"/", local.encoded_system_controls)}"
 
-  json_map = "${local.json_with_docker_labels}"
+  json_map = "${local.json_with_system_controls}"
 }
 
 output "json" {
