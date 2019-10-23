@@ -27,6 +27,7 @@
 | repository_credentials | Container repository credentials; required when using a private repo.  This map currently supports a single key; "credentialsParameter", which should be the ARN of a Secrets Manager's secret holding the credentials | map | `<map>` | no |
 | secrets | The secrets to pass to the container. This is a list of maps | list | `<list>` | no |
 | stop_timeout | Timeout in seconds between sending SIGTERM and SIGKILL to container | string | `30` | no |
+| system_controls | A list of namespaced kernel parameters to set in the container, mapping to the --sysctl option to docker run. This is a list of maps: { namespace = "", value = ""} | list | `<list>` | no |
 | ulimits | Container ulimit settings. This is a list of maps, where each map should contain "name", "hardLimit" and "softLimit" | list | `<list>` | no |
 | user | The user to run as inside the container. Can be any of these formats: user, user:group, uid, uid:gid, user:gid, uid:group | string | `` | no |
 | volumes_from | A list of VolumesFrom maps which contain "sourceContainer" (name of the container that has the volumes to mount) and "readOnly" (whether the container can write to the volume). | list | `<list>` | no |
