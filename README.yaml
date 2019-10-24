@@ -18,9 +18,9 @@ github_repo: cloudposse/terraform-aws-ecs-container-definition
 
 # Badges to display
 badges:
-  - name: "Build Status"
-    image: "https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definition.svg?branch=master"
-    url: "https://travis-ci.org/cloudposse/terraform-aws-ecs-container-definition"
+  - name: "Codefresh Status"
+    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ecs-container-definition?type=cf-1"
+    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5db1c6ed0c7c5ae1ce1de56b"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-container-definition.svg"
     url: "https://github.com/cloudposse/terraform-aws-ecs-container-definition/releases/latest"
@@ -72,6 +72,7 @@ usage: |-
   - [multiple definitions](examples/multiple_definitions)
   - [string env vars](examples/string_env_vars)
 
+  For a complete example with automated tests, see [examples/complete](examples/complete) with `bats` and `Terratest` for the example [test](test).
 
 include:
   - "docs/targets.md"

@@ -19,7 +19,7 @@ module "container" {
     {
       name  = "integer_var"
       value = 42
-    },
+    }
   ]
 
   port_mappings = [
@@ -32,11 +32,11 @@ module "container" {
       containerPort = 8081
       hostPort      = 443
       protocol      = "udp"
-    },
+    }
   ]
 }
 
 output "json" {
   description = "Container definition in JSON format"
-  value       = "${module.container.json}"
+  value       = module.container.json
 }
