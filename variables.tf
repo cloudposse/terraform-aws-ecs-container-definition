@@ -77,13 +77,13 @@ variable "working_directory" {
 variable "environment" {
   type        = list(map(string))
   description = "The environment variables to pass to the container. This is a list of maps"
-  default     = null
+  default     = []
 }
 
 variable "secrets" {
   type        = list(map(string))
   description = "The secrets to pass to the container. This is a list of maps"
-  default     = null
+  default     = []
 }
 
 variable "readonly_root_filesystem" {
@@ -123,13 +123,13 @@ variable "mount_points" {
   }))
 
   description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`"
-  default     = null
+  default     = []
 }
 
 variable "dns_servers" {
   type        = list(string)
   description = "Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers"
-  default     = null
+  default     = []
 }
 
 variable "ulimits" {
@@ -139,7 +139,7 @@ variable "ulimits" {
     softLimit = number
   }))
   description = "Container ulimit settings. This is a list of maps, where each map should contain \"name\", \"hardLimit\" and \"softLimit\""
-  default     = null
+  default     = []
 }
 
 variable "repository_credentials" {
@@ -154,13 +154,13 @@ variable "volumes_from" {
     readOnly        = bool
   }))
   description = "A list of VolumesFrom maps which contain \"sourceContainer\" (name of the container that has the volumes to mount) and \"readOnly\" (whether the container can write to the volume)"
-  default     = null
+  default     = []
 }
 
 variable "links" {
   type        = list(string)
   description = "List of container names this container can communicate with without port mappings"
-  default     = null
+  default     = []
 }
 
 variable "user" {
@@ -172,7 +172,7 @@ variable "user" {
 variable "container_depends_on" {
   type        = list(string)
   description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
-  default     = null
+  default     = []
 }
 
 variable "docker_labels" {
@@ -196,5 +196,5 @@ variable "privileged" {
 variable "system_controls" {
   type        = list(map(string))
   description = "A list of namespaced kernel parameters to set in the container, mapping to the --sysctl option to docker run. This is a list of maps: { namespace = \"\", value = \"\"}"
-  default     = null
+  default     = []
 }

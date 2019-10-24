@@ -49,7 +49,7 @@ locals {
   encoded_memory_reservation    = var.container_memory_reservation > 0 ? var.container_memory_reservation : "null"
   encoded_stop_timeout          = var.stop_timeout > 0 ? var.stop_timeout : "null"
   encoded_docker_labels         = var.docker_labels != null ? jsonencode(var.docker_labels) : "null"
-  encoded_system_controls       = var.system_controls != null && length(var.system_controls) > 0 ? jsonencode(var.system_controls) : "null"
+  encoded_system_controls       = length(var.system_controls) > 0 ? jsonencode(var.system_controls) : "null"
 
   encoded_container_definition = replace(
     replace(
