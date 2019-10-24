@@ -38,15 +38,16 @@ module "second_container" {
 
 output "first_container_json" {
   description = "Container definition in JSON format"
-  value       = "${module.first_container.json}"
+  value       = module.first_container.json
 }
 
 output "second_container_json" {
   description = "Container definition in JSON format"
-  value       = "${module.second_container.json}"
+  value       = module.second_container.json
 }
 
 resource "aws_ecs_task_definition" "task" {
   family                = "foo"
   container_definitions = "[${module.first_container.json_map},${module.second_container.json_map}]"
 }
+
