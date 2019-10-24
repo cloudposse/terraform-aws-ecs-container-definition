@@ -58,6 +58,8 @@ For complete examples, see
 - [multiple definitions](examples/multiple_definitions)
 - [string env vars](examples/string_env_vars)
 
+For a complete example with automated tests, see [examples/complete](examples/complete) with `bats` and `Terratest` for the example [test](test).
+
 
 
 
