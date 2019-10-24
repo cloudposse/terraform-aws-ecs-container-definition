@@ -1,4 +1,3 @@
-# Environment variables are composed into the container definition at output generation time. See outputs.tf for more information.
 locals {
   container_definition = {
     name                   = var.container_name
@@ -19,11 +18,7 @@ locals {
     privileged             = var.privileged
     portMappings           = var.port_mappings
     healthCheck            = var.healthcheck
-
-    firelensConfiguration = {
-      type    = var.firelens_type
-      options = var.firelens_options
-    }
+    firelensConfiguration  = var.firelens_configuration
 
     logConfiguration = {
       logDriver = var.log_driver
@@ -57,6 +52,8 @@ locals {
   encoded_memory                = var.container_memory > 0 ? var.container_memory : "null"
   encoded_memory_reservation    = var.container_memory_reservation > 0 ? var.container_memory_reservation : "null"
   encoded_stop_timeout          = var.stop_timeout > 0 ? var.stop_timeout : "null"
+  encoded_docker_labels         = jsonencode(var.docker_labels)
+  encoded_system_controls       = length(var.system_controls) > 0 ? jsonencode(var.system_controls) : "null"
 
   encoded_container_definition = replace(
     replace(
@@ -66,14 +63,11 @@ locals {
         "null",
       ),
       "/\"(true|false)\"/",
-      "$1",
+      "$1"
     ),
     "/\"(-?[0-9]+\\.?[0-9]*)\"/",
-    "$1",
+    "$1"
   )
-
-  encoded_docker_labels   = jsonencode(var.docker_labels)
-  encoded_system_controls = length(var.system_controls) > 0 ? jsonencode(var.system_controls) : "null"
 
   json_with_environment = replace(
     local.encoded_container_definition,

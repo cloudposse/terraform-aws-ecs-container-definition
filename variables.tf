@@ -41,7 +41,7 @@ variable "port_mappings" {
 variable "healthcheck" {
   type        = map(string)
   description = "A map containing command (string), interval (duration in seconds), retries (1-10, number of times to retry before marking container unhealthy, and startPeriod (0-300, optional grace period to wait, in seconds, before failed healthchecks count toward retries)"
-  default     = {}
+  default     = null
 }
 
 variable "container_cpu" {
@@ -77,13 +77,13 @@ variable "working_directory" {
 variable "environment" {
   type        = list(map(string))
   description = "The environment variables to pass to the container. This is a list of maps"
-  default     = []
+  default     = null
 }
 
 variable "secrets" {
   type        = list(map(string))
   description = "The secrets to pass to the container. This is a list of maps"
-  default     = []
+  default     = null
 }
 
 variable "readonly_root_filesystem" {
@@ -92,33 +92,28 @@ variable "readonly_root_filesystem" {
   default     = false
 }
 
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html
 variable "log_driver" {
   type        = string
-  description = "The log driver to use for the container. If using Fargate launch type, only supported value is awslogs"
+  description = "The log driver to use for the container. If using Fargate launch type, only supported value is `awslogs`. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
   default     = "awslogs"
 }
 
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html
 variable "log_options" {
   type        = map(string)
   description = "The configuration options to send to the `log_driver`"
-
-  default = {
-    "awslogs-region"        = "us-west-2"
-    "awslogs-group"         = "default"
-    "awslogs-stream-prefix" = "default"
-  }
+  default     = null
 }
 
-variable "firelens_type" {
-  type        = string
-  description = "The firelens type to use for the container."
-  default     = "fluentbit"
-}
-
-variable "firelens_options" {
-  type        = map(string)
-  description = "The configuration options to send to the `firelens_type`"
-  default     = {}
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_FirelensConfiguration.html
+variable "firelens_configuration" {
+  type = object({
+    type    = string
+    options = map(string)
+  })
+  description = "The FireLens configuration for the container. This is used to specify and configure a log router for container logs. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_FirelensConfiguration.html"
+  default     = null
 }
 
 variable "mount_points" {
@@ -128,13 +123,13 @@ variable "mount_points" {
   }))
 
   description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`"
-  default     = []
+  default     = null
 }
 
 variable "dns_servers" {
   type        = list(string)
   description = "Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers"
-  default     = []
+  default     = null
 }
 
 variable "ulimits" {
@@ -144,13 +139,13 @@ variable "ulimits" {
     softLimit = number
   }))
   description = "Container ulimit settings. This is a list of maps, where each map should contain \"name\", \"hardLimit\" and \"softLimit\""
-  default     = []
+  default     = null
 }
 
 variable "repository_credentials" {
   type        = map(string)
   description = "Container repository credentials; required when using a private repo.  This map currently supports a single key; \"credentialsParameter\", which should be the ARN of a Secrets Manager's secret holding the credentials"
-  default     = {}
+  default     = null
 }
 
 variable "volumes_from" {
@@ -159,13 +154,13 @@ variable "volumes_from" {
     readOnly        = bool
   }))
   description = "A list of VolumesFrom maps which contain \"sourceContainer\" (name of the container that has the volumes to mount) and \"readOnly\" (whether the container can write to the volume)"
-  default     = []
+  default     = null
 }
 
 variable "links" {
   type        = list(string)
   description = "List of container names this container can communicate with without port mappings"
-  default     = []
+  default     = null
 }
 
 variable "user" {
@@ -177,13 +172,13 @@ variable "user" {
 variable "container_depends_on" {
   type        = list(string)
   description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
-  default     = []
+  default     = null
 }
 
 variable "docker_labels" {
   type        = map(string)
   description = "The configuration options to send to the `docker_labels`"
-  default     = {}
+  default     = null
 }
 
 variable "stop_timeout" {
@@ -201,5 +196,5 @@ variable "privileged" {
 variable "system_controls" {
   type        = list(map(string))
   description = "A list of namespaced kernel parameters to set in the container, mapping to the --sysctl option to docker run. This is a list of maps: { namespace = \"\", value = \"\"}"
-  default     = []
+  default     = null
 }
