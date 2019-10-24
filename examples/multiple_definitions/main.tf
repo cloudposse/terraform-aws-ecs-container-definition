@@ -13,7 +13,7 @@ module "first_container" {
       containerPort = 8081
       hostPort      = 443
       protocol      = "udp"
-    },
+    }
   ]
 }
 
@@ -32,7 +32,7 @@ module "second_container" {
       containerPort = 8081
       hostPort      = 444
       protocol      = "udp"
-    },
+    }
   ]
 }
 
@@ -50,4 +50,3 @@ resource "aws_ecs_task_definition" "task" {
   family                = "foo"
   container_definitions = "[${module.first_container.json_map},${module.second_container.json_map}]"
 }
-

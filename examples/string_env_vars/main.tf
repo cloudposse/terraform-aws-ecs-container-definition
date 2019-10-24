@@ -15,7 +15,7 @@ module "container" {
     {
       name  = "yet_another_string_var"
       value = "false"
-    },
+    }
   ]
 }
 
@@ -23,4 +23,3 @@ output "json" {
   description = "Container definition in JSON format"
   value       = module.container.json
 }
-

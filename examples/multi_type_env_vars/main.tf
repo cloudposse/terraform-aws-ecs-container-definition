@@ -19,7 +19,7 @@ module "container" {
     {
       name  = "integer_var"
       value = 42
-    },
+    }
   ]
 }
 
@@ -27,4 +27,3 @@ output "json" {
   description = "Container definition in JSON format"
   value       = module.container.json
 }
-
