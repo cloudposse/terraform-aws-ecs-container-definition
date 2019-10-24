@@ -35,9 +35,9 @@ func TestExamplesComplete(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, "app", jsonObject["name"])
 	assert.Equal(t, "cloudposse/geodesic", jsonObject["image"])
-	assert.Equal(t, 256, jsonObject["memory"])
-	assert.Equal(t, 128, jsonObject["memoryReservation"])
-	assert.Equal(t, 256, jsonObject["cpu"])
+	assert.Equal(t, 256, int((jsonObject["memory"]).(float64)))
+	assert.Equal(t, 128, int((jsonObject["memoryReservation"]).(float64)))
+	assert.Equal(t, 256, int((jsonObject["cpu"]).(float64)))
 	assert.Equal(t, true, jsonObject["essential"])
 	assert.Equal(t, false, jsonObject["readonlyRootFilesystem"])
 }
