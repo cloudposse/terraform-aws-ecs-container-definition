@@ -33,11 +33,11 @@ func TestExamplesComplete(t *testing.T) {
 	var jsonObject map[string]interface{}
 	err := json.Unmarshal([]byte(jsonMap), &jsonObject)
 	assert.NoError(t, err)
-	assert.Equal(t, "app", jsonObject["container_name"])
-	assert.Equal(t, "cloudposse/geodesic", jsonObject["container_image"])
-	assert.Equal(t, 256, jsonObject["container_memory"])
-	assert.Equal(t, 128, jsonObject["container_memory_reservation"])
-	assert.Equal(t, 256, jsonObject["container_cpu"])
+	assert.Equal(t, "app", jsonObject["name"])
+	assert.Equal(t, "cloudposse/geodesic", jsonObject["image"])
+	assert.Equal(t, 256, jsonObject["memory"])
+	assert.Equal(t, 128, jsonObject["memoryReservation"])
+	assert.Equal(t, 256, jsonObject["cpu"])
 	assert.Equal(t, true, jsonObject["essential"])
-	assert.Equal(t, false, jsonObject["readonly_root_filesystem"])
+	assert.Equal(t, false, jsonObject["readonlyRootFilesystem"])
 }
