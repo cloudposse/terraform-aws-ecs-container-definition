@@ -11,7 +11,6 @@ module "container" {
   container_cpu                = var.container_cpu
   essential                    = var.essential
   readonly_root_filesystem     = var.readonly_root_filesystem
-  log_driver                   = var.log_driver
   environment                  = var.environment
   port_mappings                = var.port_mappings
 }

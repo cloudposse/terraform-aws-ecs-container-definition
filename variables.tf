@@ -93,16 +93,16 @@ variable "readonly_root_filesystem" {
 }
 
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html
-variable "log_driver" {
-  type        = string
-  description = "The log driver to use for the container. If using Fargate launch type, only supported value is `awslogs`. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
-  default     = "awslogs"
-}
-
-# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html
-variable "log_options" {
-  type        = map(string)
-  description = "The configuration options to send to the `log_driver`"
+variable "log_configuration" {
+  type = object({
+    logDriver = string
+    options   = map(string)
+    secretOptions = list(object({
+      name      = string
+      valueFrom = string
+    }))
+  })
+  description = "Log configuration options to send to a custom log driver for the container. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
   default     = null
 }
 

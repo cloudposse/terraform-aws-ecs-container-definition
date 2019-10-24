@@ -19,11 +19,7 @@ locals {
     portMappings           = var.port_mappings
     healthCheck            = var.healthcheck
     firelensConfiguration  = var.firelens_configuration
-
-    logConfiguration = {
-      logDriver = var.log_driver
-      options   = var.log_options
-    }
+    logConfiguration       = var.log_configuration
 
     memory            = "memory_sentinel_value"
     memoryReservation = "memory_reservation_sentinel_value"
@@ -47,13 +43,13 @@ locals {
 # Environment variables are kept as strings.
 locals {
   encoded_environment_variables = jsonencode(local.environment)
-  encoded_secrets               = length(local.secrets) > 0 ? jsonencode(local.secrets) : "null"
+  encoded_secrets               = local.secrets != null && length(local.secrets) > 0 ? jsonencode(local.secrets) : "null"
   encoded_cpu                   = var.container_cpu > 0 ? var.container_cpu : "null"
   encoded_memory                = var.container_memory > 0 ? var.container_memory : "null"
   encoded_memory_reservation    = var.container_memory_reservation > 0 ? var.container_memory_reservation : "null"
   encoded_stop_timeout          = var.stop_timeout > 0 ? var.stop_timeout : "null"
-  encoded_docker_labels         = jsonencode(var.docker_labels)
-  encoded_system_controls       = length(var.system_controls) > 0 ? jsonencode(var.system_controls) : "null"
+  encoded_docker_labels         = var.docker_labels != null ? jsonencode(var.docker_labels) : "null"
+  encoded_system_controls       = var.system_controls != null && length(var.system_controls) > 0 ? jsonencode(var.system_controls) : "null"
 
   encoded_container_definition = replace(
     replace(

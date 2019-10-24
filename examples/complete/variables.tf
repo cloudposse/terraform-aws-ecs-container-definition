@@ -52,9 +52,3 @@ variable "readonly_root_filesystem" {
   type        = bool
   description = "Determines whether a container is given read-only access to its root filesystem. Due to how Terraform type casts booleans in json it is required to double quote this value"
 }
-
-# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html
-variable "log_driver" {
-  type        = string
-  description = "The log driver to use for the container. If using Fargate launch type, only supported value is `awslogs`. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
-}

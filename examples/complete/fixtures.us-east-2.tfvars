@@ -7,7 +7,6 @@ container_memory_reservation = 128
 container_cpu                = 256
 essential                    = true
 readonly_root_filesystem     = false
-log_driver                   = "awslogs"
 
 environment = [
   {
