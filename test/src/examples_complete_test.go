@@ -3,7 +3,9 @@ package test
 import (
 	"testing"
 
+	"encoding/json"
 	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/stretchr/testify/assert"
 )
 
 // Test the Terraform module in examples/complete using Terratest.
@@ -25,7 +27,17 @@ func TestExamplesComplete(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the value of an output variable
-	//vpcCidr := terraform.Output(t, terraformOptions, "vpc_cidr")
+	jsonMap := terraform.OutputRequired(t, terraformOptions, "json_map")
+
 	// Verify we're getting back the outputs we expect
-	//assert.Equal(t, "172.16.0.0/16", vpcCidr)
+	var jsonObject map[string]interface{}
+	err := json.Unmarshal([]byte(jsonMap), &jsonObject)
+	assert.NoError(t, err)
+	assert.Equal(t, "app", jsonObject["container_name"])
+	assert.Equal(t, "cloudposse/geodesic", jsonObject["container_image"])
+	assert.Equal(t, 256, jsonObject["container_memory"])
+	assert.Equal(t, 128, jsonObject["container_memory_reservation"])
+	assert.Equal(t, 256, jsonObject["container_cpu"])
+	assert.Equal(t, true, jsonObject["essential"])
+	assert.Equal(t, false, jsonObject["readonly_root_filesystem"])
 }
