@@ -44,11 +44,27 @@ variable "essential" {
 }
 
 variable "environment" {
-  type        = list(map(string))
+  type = list(object({
+    name  = string
+    value = string
+  }))
   description = "The environment variables to pass to the container. This is a list of maps"
 }
 
 variable "readonly_root_filesystem" {
   type        = bool
   description = "Determines whether a container is given read-only access to its root filesystem. Due to how Terraform type casts booleans in json it is required to double quote this value"
+}
+
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html
+variable "log_configuration" {
+  type = object({
+    logDriver = string
+    options   = map(string)
+    secretOptions = list(object({
+      name      = string
+      valueFrom = string
+    }))
+  })
+  description = "Log configuration options to send to a custom log driver for the container. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
 }

@@ -13,4 +13,5 @@ module "container" {
   readonly_root_filesystem     = var.readonly_root_filesystem
   environment                  = var.environment
   port_mappings                = var.port_mappings
+  log_configuration            = var.log_configuration
 }

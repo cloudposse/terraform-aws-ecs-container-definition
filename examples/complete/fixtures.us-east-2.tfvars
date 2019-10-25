@@ -39,3 +39,12 @@ port_mappings = [
     protocol      = "udp"
   }
 ]
+
+log_configuration = {
+  logDriver = "json-file"
+  options = {
+    "max-size" = "10m"
+    "max-file" = "3"
+  }
+  secretOptions = null
+}
