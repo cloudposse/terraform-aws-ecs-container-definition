@@ -48,6 +48,7 @@ locals {
     environment            = local.final_environment_vars
     secrets                = var.secrets
     dockerLabels           = var.docker_labels
+    startTimeout           = var.start_timeout
     stopTimeout            = var.stop_timeout
     systemControls         = var.system_controls
   }

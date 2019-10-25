@@ -194,9 +194,15 @@ variable "docker_labels" {
   default     = null
 }
 
+variable "start_timeout" {
+  type        = number
+  description = "Time duration (in seconds) to wait before giving up on resolving dependencies for a container"
+  default     = 30
+}
+
 variable "stop_timeout" {
   type        = number
-  description = "Timeout in seconds between sending SIGTERM and SIGKILL to container"
+  description = "Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own"
   default     = 30
 }
 
