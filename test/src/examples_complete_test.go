@@ -33,6 +33,7 @@ func TestExamplesComplete(t *testing.T) {
 	var jsonObject map[string]interface{}
 	err := json.Unmarshal([]byte(jsonMap), &jsonObject)
 	assert.NoError(t, err)
+
 	assert.Equal(t, "app", jsonObject["name"])
 	assert.Equal(t, "cloudposse/geodesic", jsonObject["image"])
 	assert.Equal(t, 256, int((jsonObject["memory"]).(float64)))

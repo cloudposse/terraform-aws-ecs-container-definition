@@ -38,9 +38,16 @@ variable "port_mappings" {
   ]
 }
 
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html
 variable "healthcheck" {
-  type        = map(string)
-  description = "A map containing command (string), interval (duration in seconds), retries (1-10, number of times to retry before marking container unhealthy, and startPeriod (0-300, optional grace period to wait, in seconds, before failed healthchecks count toward retries)"
+  type = object({
+    command     = list(string)
+    retries     = number
+    timeout     = number
+    interval    = number
+    startPeriod = number
+  })
+  description = "A map containing command (string), timeout, interval (duration in seconds), retries (1-10, number of times to retry before marking container unhealthy), and startPeriod (0-300, optional grace period to wait, in seconds, before failed healthchecks count toward retries)"
   default     = null
 }
 
@@ -59,31 +66,37 @@ variable "essential" {
 variable "entrypoint" {
   type        = list(string)
   description = "The entry point that is passed to the container"
-  default     = [""]
+  default     = null
 }
 
 variable "command" {
   type        = list(string)
   description = "The command that is passed to the container"
-  default     = [""]
+  default     = null
 }
 
 variable "working_directory" {
   type        = string
   description = "The working directory to run commands inside the container"
-  default     = ""
+  default     = null
 }
 
 variable "environment" {
-  type        = list(map(string))
+  type = list(object({
+    name  = string
+    value = string
+  }))
   description = "The environment variables to pass to the container. This is a list of maps"
-  default     = []
+  default     = null
 }
 
 variable "secrets" {
-  type        = list(map(string))
+  type = list(object({
+    name      = string
+    valueFrom = string
+  }))
   description = "The secrets to pass to the container. This is a list of maps"
-  default     = []
+  default     = null
 }
 
 variable "readonly_root_filesystem" {
@@ -123,13 +136,13 @@ variable "mount_points" {
   }))
 
   description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`"
-  default     = []
+  default     = null
 }
 
 variable "dns_servers" {
   type        = list(string)
   description = "Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers"
-  default     = []
+  default     = null
 }
 
 variable "ulimits" {
@@ -139,7 +152,7 @@ variable "ulimits" {
     softLimit = number
   }))
   description = "Container ulimit settings. This is a list of maps, where each map should contain \"name\", \"hardLimit\" and \"softLimit\""
-  default     = []
+  default     = null
 }
 
 variable "repository_credentials" {
@@ -154,25 +167,25 @@ variable "volumes_from" {
     readOnly        = bool
   }))
   description = "A list of VolumesFrom maps which contain \"sourceContainer\" (name of the container that has the volumes to mount) and \"readOnly\" (whether the container can write to the volume)"
-  default     = []
+  default     = null
 }
 
 variable "links" {
   type        = list(string)
   description = "List of container names this container can communicate with without port mappings"
-  default     = []
+  default     = null
 }
 
 variable "user" {
   type        = string
   description = "The user to run as inside the container. Can be any of these formats: user, user:group, uid, uid:gid, user:gid, uid:group"
-  default     = ""
+  default     = null
 }
 
 variable "container_depends_on" {
   type        = list(string)
   description = "The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed"
-  default     = []
+  default     = null
 }
 
 variable "docker_labels" {
@@ -181,20 +194,26 @@ variable "docker_labels" {
   default     = null
 }
 
+variable "start_timeout" {
+  type        = number
+  description = "Time duration (in seconds) to wait before giving up on resolving dependencies for a container"
+  default     = 30
+}
+
 variable "stop_timeout" {
   type        = number
-  description = "Timeout in seconds between sending SIGTERM and SIGKILL to container"
+  description = "Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own"
   default     = 30
 }
 
 variable "privileged" {
   type        = string
   description = "When this variable is `true`, the container is given elevated privileges on the host container instance (similar to the root user). This parameter is not supported for Windows containers or tasks using the Fargate launch type. Due to how Terraform type casts booleans in json it is required to double quote this value"
-  default     = ""
+  default     = null
 }
 
 variable "system_controls" {
   type        = list(map(string))
   description = "A list of namespaced kernel parameters to set in the container, mapping to the --sysctl option to docker run. This is a list of maps: { namespace = \"\", value = \"\"}"
-  default     = []
+  default     = null
 }
