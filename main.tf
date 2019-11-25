@@ -41,6 +41,7 @@ locals {
     portMappings           = var.port_mappings
     healthCheck            = var.healthcheck
     firelensConfiguration  = var.firelens_configuration
+    linuxParameters        = var.linux_parameters
     logConfiguration       = var.log_configuration
     memory                 = var.container_memory
     memoryReservation      = var.container_memory_reservation
