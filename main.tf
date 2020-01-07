@@ -51,6 +51,7 @@ locals {
     startTimeout           = var.start_timeout
     stopTimeout            = var.stop_timeout
     systemControls         = var.system_controls
+    placementConstraints   = var.placement_constraints
   }
 
   json_map = jsonencode(local.container_definition)
