@@ -8,11 +8,11 @@ variable "container_image_base" {
   description = "The image used to start the container. Images in the Docker Hub registry available by default"
   validation {
     condition = !can(split(":", var.container_image_base)[1])
-    error_message = "container_image_base should only contain the root of the image like nginx, not the tag like nginx:latest.  Add the tag in the container_image_tag variable."
+    error_message = "Container_image_base should only contain the root of the image like nginx, not the tag like nginx:latest.  Add the tag in the container_image_tag variable."
   }
   validation {
-    condition = !can(regex("^http.s://", var.container_image_base))
-    error_message = "container_image_base should start with a host name and should not include http:// or https://"
+    condition = !can(regex("^https?://", var.container_image_base))
+    error_message = "Container_image_base should start with a host name and should not include http:// or https://  A second sentance is needed to avoid a . at the end of the https://."
   }
 }
 variable "container_image_tag" {

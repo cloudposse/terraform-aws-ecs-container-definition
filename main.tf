@@ -1,11 +1,12 @@
+terraform {
+  experiments = [variable_validation]## For can
+}
 locals {
   # Sort environment variables so terraform will not try to recreate on each plan/apply
   env_vars             = var.environment != null ? var.environment : []
   env_vars_keys        = [for m in local.env_vars : lookup(m, "name")]
   env_vars_values      = [for m in local.env_vars : lookup(m, "value")]
   env_vars_as_map      = zipmap(local.env_vars_keys, local.env_vars_values)
-  image_root =
-  image_version = try(split(":", var.container_image[1]),"latest")
   sorted_env_vars_keys = sort(local.env_vars_keys)
     sorted_environment_vars = [
     for key in local.sorted_env_vars_keys :
@@ -24,8 +25,8 @@ locals {
 
   container_definition = {
     name                   = var.container_name
-    image                  = "${local.image_root}:${local.image_version}"
-    image                  = "${local.image_root}:${local.image_version}"
+    image                  = "${var.container_image_base}:${var.container_image_tag}"
+    image                  = "${var.container_image_base}:${var.container_image_tag}"
     essential              = var.essential
     entryPoint             = var.entrypoint
     command                = var.command

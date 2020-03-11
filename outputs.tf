@@ -14,11 +14,11 @@ output "container_name" {
 }
 
 output "image_root" {
-  value = local.image_root
+  value = var.container_image_base
   description = "The root of the image url  for example nginx or quay.io/assuemblyline/ubuntu"
 }
 
 output "image_version" {
-  value = local.image_version
+  value = var.container_image_tag
   description = "The image tag/version referenced by this defintion."
 }
