@@ -4,7 +4,7 @@ locals {
   env_vars_keys        = [for m in local.env_vars : lookup(m, "name")]
   env_vars_values      = [for m in local.env_vars : lookup(m, "value")]
   env_vars_as_map      = zipmap(local.env_vars_keys, local.env_vars_values)
-  image_root = split(":", var.container_image)[0]
+  image_root =
   image_version = try(split(":", var.container_image[1]),"latest")
   sorted_env_vars_keys = sort(local.env_vars_keys)
     sorted_environment_vars = [

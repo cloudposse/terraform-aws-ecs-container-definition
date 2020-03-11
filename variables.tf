@@ -3,11 +3,23 @@ variable "container_name" {
   description = "The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed)"
 }
 
-variable "container_image" {
+variable "container_image_base" {
   type        = string
   description = "The image used to start the container. Images in the Docker Hub registry available by default"
+  validation {
+    condition = !can(split(":", var.container_image_base)[1])
+    error_message = "container_image_base should only contain the root of the image like nginx, not the tag like nginx:latest.  Add the tag in the container_image_tag variable."
+  }
+  validation {
+    condition = !can(regex("^http.s://", var.container_image_base))
+    error_message = "container_image_base should start with a host name and should not include http:// or https://"
+  }
 }
-
+variable "container_image_tag" {
+  type = string
+  description = "The image tag to use in this container definition.  If not set, will use latest as default"
+  default = "latest"
+}
 variable "container_memory" {
   type        = number
   description = "The amount of memory (in MiB) to allow the container to use. This is a hard limit, if the container attempts to exceed the container_memory, the container is killed. This field is optional for Fargate launch type and the total amount of container_memory of all containers in a task will need to be lower than the task memory value"
