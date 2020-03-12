@@ -1,7 +1,8 @@
-variable "container_name" {
+/*variable "container_name" {
   type        = string
   description = "The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed)"
 }
+*/ #replaced with contain_image_base and container_image_tag
 
 variable "container_image_base" {
   type        = string
