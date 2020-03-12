@@ -1,8 +1,7 @@
-/*variable "container_name" {
+variable "container_name" {
   type        = string
   description = "The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed)"
 }
-*/ #replaced with contain_image_base and container_image_tag
 
 variable "container_image_base" {
   type        = string
@@ -19,7 +18,7 @@ variable "container_image_base" {
 variable "container_network_mode" {
   type = string
   default = "awsvpc"
-  description = "One of: [none, bridge, awsvpc, host] see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_network"
+  description = "One of: [none, bridge, awsvpc, host] see "
 }
 variable "container_image_tag" {
   type = string
