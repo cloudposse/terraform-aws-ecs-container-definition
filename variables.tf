@@ -16,6 +16,11 @@ variable "container_image_base" {
     error_message = "Container_image_base should start with a host name and should not include http:// or https://  A second sentance is needed to avoid a . at the end of the https://."
   }
 }
+variable "container_network_mode" {
+  type = string
+  default = "awsvpc"
+  description = "One of: [none, bridge, awsvpc, host] see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_network"
+}
 variable "container_image_tag" {
   type = string
   description = "The image tag to use in this container definition.  If not set, will use latest as default"

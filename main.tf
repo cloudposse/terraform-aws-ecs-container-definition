@@ -48,6 +48,7 @@ locals {
     logConfiguration       = var.log_configuration
     memory                 = var.container_memory
     memoryReservation      = var.container_memory_reservation
+    networkMode            = var.container_network_mode
     cpu                    = var.container_cpu
     environment            = local.final_environment_vars
     secrets                = var.secrets
