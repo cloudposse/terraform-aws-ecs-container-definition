@@ -1,30 +1,29 @@
-/*variable "container_name" {
+variable "container_name" {
   type        = string
   description = "The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed)"
 }
-*/ #replaced with contain_image_base and container_image_tag
 
 variable "container_image_base" {
   type        = string
   description = "The image used to start the container. Images in the Docker Hub registry available by default"
   validation {
-    condition = !can(split(":", var.container_image_base)[1])
+    condition     = ! can(split(":", var.container_image_base)[1])
     error_message = "Container_image_base should only contain the root of the image like nginx, not the tag like nginx:latest.  Add the tag in the container_image_tag variable."
   }
   validation {
-    condition = !can(regex("^https?://", var.container_image_base))
+    condition     = ! can(regex("^https?://", var.container_image_base))
     error_message = "Container_image_base should start with a host name and should not include http:// or https://  A second sentance is needed to avoid a . at the end of the https://."
   }
 }
 variable "container_network_mode" {
-  type = string
-  default = "awsvpc"
-  description = "One of: [none, bridge, awsvpc, host] see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_network"
+  type        = string
+  default     = "awsvpc"
+  description = "One of: [none, bridge, awsvpc, host] see "
 }
 variable "container_image_tag" {
-  type = string
+  type        = string
   description = "The image tag to use in this container definition.  If not set, will use latest as default"
-  default = "latest"
+  default     = "latest"
 }
 variable "container_memory" {
   type        = number
@@ -154,11 +153,12 @@ variable "log_configuration" {
   type = object({
     logDriver = string
     options   = map(string)
-    secretOptions = list(object({
+    /*secretOptions = list(object({  ##This is an optional setting and terraform doesn't allow optional typing: https://github.com/hashicorp/terraform/issues/19898
       name      = string
       valueFrom = string
-    }))
+    }))*/
   })
+
   description = "Log configuration options to send to a custom log driver for the container. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
   default     = null
 }
