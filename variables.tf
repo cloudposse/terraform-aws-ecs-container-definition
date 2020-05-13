@@ -90,6 +90,12 @@ variable "environment" {
   default     = null
 }
 
+variable "map_environment" {
+  type        = map(string)
+  description = "The environment variables to pass to the container. This is a map of string: {key: value}, environment override map_environment"
+  default     = null
+}
+
 variable "secrets" {
   type = list(object({
     name      = string
