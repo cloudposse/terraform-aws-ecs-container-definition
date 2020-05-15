@@ -54,6 +54,10 @@ locals {
     stopTimeout            = var.stop_timeout
     systemControls         = var.system_controls
   }
-
-  json_map = jsonencode(local.container_definition)
+  container_definition_without_null = {
+    for k, v in local.container_definition :
+    k => v
+    if v != null
+  }
+  json_map = jsonencode(local.container_definition_without_null)
 }

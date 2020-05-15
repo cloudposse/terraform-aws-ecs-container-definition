@@ -11,13 +11,13 @@ variable "container_image" {
 variable "container_memory" {
   type        = number
   description = "The amount of memory (in MiB) to allow the container to use. This is a hard limit, if the container attempts to exceed the container_memory, the container is killed. This field is optional for Fargate launch type and the total amount of container_memory of all containers in a task will need to be lower than the task memory value"
-  default     = 256
+  default     = null
 }
 
 variable "container_memory_reservation" {
   type        = number
   description = "The amount of memory (in MiB) to reserve for the container. If container needs to exceed this threshold, it can do so up to the set container_memory hard limit"
-  default     = 128
+  default     = null
 }
 
 variable "port_mappings" {
@@ -29,13 +29,7 @@ variable "port_mappings" {
 
   description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"containerPort\", \"hostPort\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort"
 
-  default = [
-    {
-      containerPort = 80
-      hostPort      = 80
-      protocol      = "tcp"
-    }
-  ]
+  default = []
 }
 
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html
@@ -54,7 +48,7 @@ variable "healthcheck" {
 variable "container_cpu" {
   type        = number
   description = "The number of cpu units to reserve for the container. This is optional for tasks using Fargate launch type and the total amount of container_cpu of all containers in a task will need to be lower than the task-level cpu value"
-  default     = 256
+  default     = 0
 }
 
 variable "essential" {
@@ -203,7 +197,7 @@ variable "volumes_from" {
     readOnly        = bool
   }))
   description = "A list of VolumesFrom maps which contain \"sourceContainer\" (name of the container that has the volumes to mount) and \"readOnly\" (whether the container can write to the volume)"
-  default     = null
+  default     = []
 }
 
 variable "links" {
@@ -236,13 +230,13 @@ variable "docker_labels" {
 variable "start_timeout" {
   type        = number
   description = "Time duration (in seconds) to wait before giving up on resolving dependencies for a container"
-  default     = 30
+  default     = null
 }
 
 variable "stop_timeout" {
   type        = number
   description = "Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own"
-  default     = 30
+  default     = null
 }
 
 variable "privileged" {
