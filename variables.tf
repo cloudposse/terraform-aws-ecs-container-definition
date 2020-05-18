@@ -23,7 +23,7 @@ variable "container_memory_reservation" {
 variable "container_network_mode" {
   type = string
   default = "awsvpc"
-  description = "One of: [none, bridge, awsvpc, host] see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_network"
+  description = "One of: [none, bridge, awsvpc, host] see hhttps://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#network_mode"
 }
 
 variable "port_mappings" {
