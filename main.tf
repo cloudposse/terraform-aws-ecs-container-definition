@@ -38,6 +38,7 @@ locals {
     user                   = var.user
     dependsOn              = var.container_depends_on
     privileged             = var.privileged
+    networkMode            = var.container_network_mode
     portMappings           = var.port_mappings
     healthCheck            = var.healthcheck
     firelensConfiguration  = var.firelens_configuration
