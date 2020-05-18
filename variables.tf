@@ -165,6 +165,7 @@ variable "mount_points" {
   type = list(object({
     containerPath = string
     sourceVolume  = string
+    readOnly      = bool
   }))
 
   description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`"
