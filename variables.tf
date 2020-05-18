@@ -20,6 +20,12 @@ variable "container_memory_reservation" {
   default     = 128
 }
 
+variable "container_network_mode" {
+  type = string
+  default = "awsvpc"
+  description = "One of: [none, bridge, awsvpc, host] see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_network"
+}
+
 variable "port_mappings" {
   type = list(object({
     containerPort = number
