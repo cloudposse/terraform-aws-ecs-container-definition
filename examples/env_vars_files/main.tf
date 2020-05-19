@@ -5,12 +5,12 @@ module "container" {
 
   environment_files = [
     {
-      type  = "s3"
       value = "arn:aws:s3:::s3_bucket_name/envfile_01.env"
+      type  = "s3"
     },
     {
-      type  = "s3"
       value = "arn:aws:s3:::s3_bucket_name/another_envfile.env"
+      type  = "s3"
     }
   ]
 }
