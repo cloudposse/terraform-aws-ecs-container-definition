@@ -13,6 +13,7 @@
 | docker_labels | The configuration options to send to the `docker_labels` | map(string) | `null` | no |
 | entrypoint | The entry point that is passed to the container | list(string) | `null` | no |
 | environment | The environment variables to pass to the container. This is a list of maps | object | `null` | no |
+| environment_files | One or more files containing the environment variables to pass to the container. This maps to the --env-file option to docker run. The file must be hosted in Amazon S3. This option is only available to tasks using the EC2 launch type. This is a list of maps | object | `null` | no |
 | essential | Determines whether all other containers in a task are stopped, if this container fails or stops for any reason. Due to how Terraform type casts booleans in json it is required to double quote this value | bool | `true` | no |
 | firelens_configuration | The FireLens configuration for the container. This is used to specify and configure a log router for container logs. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_FirelensConfiguration.html | object | `null` | no |
 | healthcheck | A map containing command (string), timeout, interval (duration in seconds), retries (1-10, number of times to retry before marking container unhealthy), and startPeriod (0-300, optional grace period to wait, in seconds, before failed healthchecks count toward retries) | object | `null` | no |
