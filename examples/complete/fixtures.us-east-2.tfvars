@@ -48,3 +48,5 @@ log_configuration = {
   }
   secretOptions = null
 }
+
+privileged = false
