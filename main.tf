@@ -31,6 +31,7 @@ locals {
     readonlyRootFilesystem = var.readonly_root_filesystem
     mountPoints            = var.mount_points
     dnsServers             = var.dns_servers
+    dnsSearchDomains       = var.dns_search_domains
     ulimits                = var.ulimits
     repositoryCredentials  = var.repository_credentials
     links                  = var.links
