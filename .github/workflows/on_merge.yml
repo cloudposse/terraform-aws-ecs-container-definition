@@ -1,0 +1,36 @@
+name: 'on_merge'
+on:
+  push:
+    branches:
+      - master
+      - "*.x"
+
+jobs:
+  release:
+    name: 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ env.GITHUB_REF }}
+      - name: Get version
+        run: |
+          echo "::set-env name=VERSION::$(grep -v "#" VERSION)"
+      - name: Create Release
+      id: create_release
+      # the official create-release only supports releasing to master
+      # however we sometimes want a release pointing at a different ref
+      # since actions/create-release is not maintained, we have to use
+      # this third party one
+      uses: fleskesvor/create-release@feature/support-target-commitish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.VERSION }}
+        release_name: Release ${{ env.VERSION }}
+        body: ''
+        draft: false
+        prerelease: false
+        # this is needed for committing to branches that are not master
+        commitish: ${{ env.commitish }}

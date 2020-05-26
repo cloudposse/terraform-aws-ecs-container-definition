@@ -150,15 +150,17 @@ variable "linux_parameters" {
 
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html
 variable "log_configuration" {
+  /*## TODO fix type
   type = object({
     logDriver = string
     options   = map(string)
-    /*secretOptions = list(object({  ##This is an optional setting and terraform doesn't allow optional typing: https://github.com/hashicorp/terraform/issues/19898
+    secretOptions = list(object({  ##This is an optional setting and terraform doesn't allow optional typing: https://github.com/hashicorp/terraform/issues/19898
       name      = string
       valueFrom = string
-    }))*/
+    }))
   })
-
+*/
+  type = map(any)
   description = "Log configuration options to send to a custom log driver for the container. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
   default     = null
 }
