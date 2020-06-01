@@ -53,6 +53,7 @@ locals {
     startTimeout           = var.start_timeout
     stopTimeout            = var.stop_timeout
     systemControls         = var.system_controls
+    extraHosts             = var.extra_hosts
   }
 
   json_map = jsonencode(local.container_definition)

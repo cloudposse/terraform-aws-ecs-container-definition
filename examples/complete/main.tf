@@ -15,4 +15,5 @@ module "container" {
   port_mappings                = var.port_mappings
   log_configuration            = var.log_configuration
   privileged                   = var.privileged
+  extra_hosts                  = var.extra_hosts
 }

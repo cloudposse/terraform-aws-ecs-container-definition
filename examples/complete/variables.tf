@@ -73,3 +73,12 @@ variable "privileged" {
   type        = bool
   description = "When this variable is `true`, the container is given elevated privileges on the host container instance (similar to the root user). This parameter is not supported for Windows containers or tasks using the Fargate launch type."
 }
+
+variable "extra_hosts" {
+  type = list(object({
+    ipAddress  = string
+    hostname = string
+  }))
+  description = "A list of hostnames and IP address mappings to append to the /etc/hosts file on the container. This is a list of maps"
+  default     = null
+}

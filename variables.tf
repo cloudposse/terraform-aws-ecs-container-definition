@@ -90,6 +90,15 @@ variable "environment" {
   default     = null
 }
 
+variable "extra_hosts" {
+  type = list(object({
+    ipAddress  = string
+    hostname = string
+  }))
+  description = "A list of hostnames and IP address mappings to append to the /etc/hosts file on the container. This is a list of maps"
+  default     = null
+}
+
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EnvironmentFile.html
 variable "environment_files" {
   type = list(object({
