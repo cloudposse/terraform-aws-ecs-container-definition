@@ -96,6 +96,16 @@ variable "map_environment" {
   default     = null
 }
 
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EnvironmentFile.html
+variable "environment_files" {
+  type = list(object({
+    value = string
+    type  = string
+  }))
+  description = "One or more files containing the environment variables to pass to the container. This maps to the --env-file option to docker run. The file must be hosted in Amazon S3. This option is only available to tasks using the EC2 launch type. This is a list of maps"
+  default     = null
+}
+
 variable "secrets" {
   type = list(object({
     name      = string
@@ -242,8 +252,8 @@ variable "stop_timeout" {
 }
 
 variable "privileged" {
-  type        = string
-  description = "When this variable is `true`, the container is given elevated privileges on the host container instance (similar to the root user). This parameter is not supported for Windows containers or tasks using the Fargate launch type. Due to how Terraform type casts booleans in json it is required to double quote this value"
+  type        = bool
+  description = "When this variable is `true`, the container is given elevated privileges on the host container instance (similar to the root user). This parameter is not supported for Windows containers or tasks using the Fargate launch type."
   default     = null
 }
 
