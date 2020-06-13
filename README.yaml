@@ -1,67 +1,48 @@
----
-#
-# This is the canonical configuration for the `README.md`
-# Run `make readme` to rebuild the `README.md`
-#
-
-# Name of this project
 name: terraform-aws-ecs-container-definition
-
-# Logo for this project
-#logo: docs/logo.png
-
-# License of this project
-license: "APACHE2"
-
-# Canonical GitHub repo
+license: APACHE2
 github_repo: cloudposse/terraform-aws-ecs-container-definition
-
-# Badges to display
 badges:
-  - name: "Codefresh Status"
-    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ecs-container-definition?type=cf-1"
-    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5db1c6ed0c7c5ae1ce1de56b"
-  - name: "Latest Release"
-    image: "https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-container-definition.svg"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-container-definition/releases/latest"
-  - name: "Slack Community"
-    image: "https://slack.cloudposse.com/badge.svg"
-    url: "https://slack.cloudposse.com"
-
+- name: Latest Release
+  image: https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-container-definition.svg
+  url: https://github.com/cloudposse/terraform-aws-ecs-container-definition/releases/latest
+- name: Slack Community
+  image: https://slack.cloudposse.com/badge.svg
+  url: https://slack.cloudposse.com
 related:
-  - name: "terraform-aws-ecs-codepipeline"
-    description: "Terraform module for CI/CD with AWS Code Pipeline and Code Build for ECS"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-codepipeline"
-  - name: "terraform-aws-ecs-events"
-    description: "Provides a standard set of ECS events that notify an SNS topic"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-events"
-  - name: "terraform-aws-ecs-cloudwatch-autoscaling"
-    description: "Terraform module to autoscale ECS Service based on CloudWatch metrics"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-autoscaling"
-  - name: "terraform-aws-ecs-container-definition"
-    description: "Terraform module to generate well-formed JSON documents (container definitions) that are passed to the aws_ecs_task_definition Terraform resource"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-container-definition"
-  - name: "terraform-aws-ecs-launch-template"
-    description: "Terraform module for generating an AWS Launch Template for ECS that handles draining on Spot Termination Requests"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-launch-template"
-  - name: "terraform-aws-ecs-web-app"
-    description: "Terraform module that implements a web app on ECS and supporting AWS resources"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-web-app"
-  - name: "terraform-aws-ecs-spot-fleet"
-    description: "Terraform module to create a diversified spot fleet for ECS clusters"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-spot-fleet"
-  - name: "terraform-aws-ecs-cloudwatch-sns-alarms"
-    description: "Terraform module to create CloudWatch Alarms on ECS Service level metrics"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms"
-  - name: "terraform-aws-ecs-alb-service-task"
-    description: "Terraform module which implements an ECS service which exposes a web service via ALB"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-alb-service-task"
-
-# Short description of this project
-description: |-
-  Terraform module to generate well-formed JSON documents that are passed to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
-
-# How to use this project
+- name: terraform-aws-ecs-codepipeline
+  description: Terraform module for CI/CD with AWS Code Pipeline and Code Build for
+    ECS
+  url: https://github.com/cloudposse/terraform-aws-ecs-codepipeline
+- name: terraform-aws-ecs-events
+  description: Provides a standard set of ECS events that notify an SNS topic
+  url: https://github.com/cloudposse/terraform-aws-ecs-events
+- name: terraform-aws-ecs-cloudwatch-autoscaling
+  description: Terraform module to autoscale ECS Service based on CloudWatch metrics
+  url: https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-autoscaling
+- name: terraform-aws-ecs-container-definition
+  description: Terraform module to generate well-formed JSON documents (container
+    definitions) that are passed to the aws_ecs_task_definition Terraform resource
+  url: https://github.com/cloudposse/terraform-aws-ecs-container-definition
+- name: terraform-aws-ecs-launch-template
+  description: Terraform module for generating an AWS Launch Template for ECS that
+    handles draining on Spot Termination Requests
+  url: https://github.com/cloudposse/terraform-aws-ecs-launch-template
+- name: terraform-aws-ecs-web-app
+  description: Terraform module that implements a web app on ECS and supporting AWS
+    resources
+  url: https://github.com/cloudposse/terraform-aws-ecs-web-app
+- name: terraform-aws-ecs-spot-fleet
+  description: Terraform module to create a diversified spot fleet for ECS clusters
+  url: https://github.com/cloudposse/terraform-aws-ecs-spot-fleet
+- name: terraform-aws-ecs-cloudwatch-sns-alarms
+  description: Terraform module to create CloudWatch Alarms on ECS Service level metrics
+  url: https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms
+- name: terraform-aws-ecs-alb-service-task
+  description: Terraform module which implements an ECS service which exposes a web
+    service via ALB
+  url: https://github.com/cloudposse/terraform-aws-ecs-alb-service-task
+description: Terraform module to generate well-formed JSON documents that are passed
+  to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
 usage: |-
   This module is meant to be used as output only, meaning it will be used to create outputs which are consumed as a parameter by Terraform resources or other modules.
 
@@ -73,18 +54,15 @@ usage: |-
   - [string env vars](examples/string_env_vars)
 
   For a complete example with automated tests, see [examples/complete](examples/complete) with `bats` and `Terratest` for the example [test](test).
-
 include:
-  - "docs/targets.md"
-  - "docs/terraform.md"
-
-# Contributors to this project
+- docs/targets.md
+- docs/terraform.md
 contributors:
-  - name: "Erik Osterman"
-    github: "osterman"
-  - name: "Sarkis Varozian"
-    github: "sarkis"
-  - name: "Andriy Knysh"
-    github: "aknysh"
-  - name: "Igor Rodionov"
-    github: "goruha"
+- name: Erik Osterman
+  github: osterman
+- name: Sarkis Varozian
+  github: sarkis
+- name: Andriy Knysh
+  github: aknysh
+- name: Igor Rodionov
+  github: goruha
