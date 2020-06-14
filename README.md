@@ -44,7 +44,7 @@
 
 # terraform-aws-ecs-container-definition
 
- [![Codefresh Status](https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ecs-container-definition?type=cf-1)](https://g.codefresh.io/public/accounts/cloudposse/pipelines/5db1c6ed0c7c5ae1ce1de56b) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-container-definition.svg)](https://github.com/cloudposse/terraform-aws-ecs-container-definition/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+ [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-container-definition.svg)](https://github.com/cloudposse/terraform-aws-ecs-container-definition/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 
 
 Terraform module to generate well-formed JSON documents that are passed to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
