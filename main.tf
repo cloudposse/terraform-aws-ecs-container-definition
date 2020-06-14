@@ -13,6 +13,14 @@ locals {
       value = lookup(local.env_vars_as_map, key)
     }
   ]
+    
+  mount_points = [
+    for mount_point in var.mount_points: {
+      containerPath = lookup(mount_point, "containerPath")
+      sourceVolume = lookup(mount_point, "sourceVolume")
+      readOnly = lookup(mount_point, "readOnly", false)
+    }
+  ]
 
   # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
   # so this does not work: final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
@@ -29,7 +37,7 @@ locals {
     command                = var.command
     workingDirectory       = var.working_directory
     readonlyRootFilesystem = var.readonly_root_filesystem
-    mountPoints            = var.mount_points
+    mountPoints            = local.mount_points
     dnsServers             = var.dns_servers
     ulimits                = var.ulimits
     repositoryCredentials  = var.repository_credentials
