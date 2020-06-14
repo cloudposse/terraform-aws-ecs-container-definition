@@ -153,6 +153,8 @@ variable "log_configuration" {
   })
   description = "Log configuration options to send to a custom log driver for the container. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
   default     = {
+    logDriver = null
+    options = {}
     secretOptions = []
   }
 }
