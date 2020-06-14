@@ -16,9 +16,9 @@ locals {
 
   mount_points = [
     for mount_point in var.mount_points : {
-      containerPath = lookup(mount_point, "containerPath")
-      sourceVolume  = lookup(mount_point, "sourceVolume")
-      readOnly      = lookup(mount_point, "readOnly", false)
+      containerPath = tostring(lookup(mount_point, "containerPath"))
+      sourceVolume  = tostring(lookup(mount_point, "sourceVolume"))
+      readOnly      = tobool(lookup(mount_point, "readOnly", false))
     }
   ]
 
