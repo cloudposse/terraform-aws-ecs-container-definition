@@ -13,12 +13,12 @@ locals {
       value = lookup(local.env_vars_as_map, key)
     }
   ]
-    
+
   mount_points = [
-    for mount_point in var.mount_points: {
+    for mount_point in var.mount_points : {
       containerPath = lookup(mount_point, "containerPath")
-      sourceVolume = lookup(mount_point, "sourceVolume")
-      readOnly = lookup(mount_point, "readOnly", false)
+      sourceVolume  = lookup(mount_point, "sourceVolume")
+      readOnly      = lookup(mount_point, "readOnly", false)
     }
   ]
 
