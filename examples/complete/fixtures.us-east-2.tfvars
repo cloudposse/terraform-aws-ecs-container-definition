@@ -50,3 +50,9 @@ log_configuration = {
 }
 
 privileged = false
+
+extra_hosts = [{
+  ipAddress = "127.0.0.1"
+  hostname  = "app.local"
+  },
+]
