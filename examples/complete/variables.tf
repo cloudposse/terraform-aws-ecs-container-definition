@@ -76,8 +76,8 @@ variable "privileged" {
 
 variable "extra_hosts" {
   type = list(object({
-    ipAddress  = string
-    hostname = string
+    ipAddress = string
+    hostname  = string
   }))
   description = "A list of hostnames and IP address mappings to append to the /etc/hosts file on the container. This is a list of maps"
   default     = null
