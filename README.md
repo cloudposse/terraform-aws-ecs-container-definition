@@ -44,7 +44,7 @@
 
 # terraform-aws-ecs-container-definition
 
- [![Codefresh Status](https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ecs-container-definition?type=cf-1)](https://g.codefresh.io/public/accounts/cloudposse/pipelines/5db1c6ed0c7c5ae1ce1de56b) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-container-definition.svg)](https://github.com/cloudposse/terraform-aws-ecs-container-definition/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+ [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-container-definition.svg)](https://github.com/cloudposse/terraform-aws-ecs-container-definition/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 
 
 Terraform module to generate well-formed JSON documents that are passed to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
@@ -137,7 +137,7 @@ Available targets:
 | links | List of container names this container can communicate with without port mappings | list(string) | `null` | no |
 | linux_parameters | Linux-specific modifications that are applied to the container, such as Linux kernel capabilities. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LinuxParameters.html | object | `null` | no |
 | log_configuration | Log configuration options to send to a custom log driver for the container. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html | object | `null` | no |
-| mount_points | Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume` | object | `null` | no |
+| mount_points | Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`. The `readOnly` key is optional. | list | `<list>` | no |
 | port_mappings | The port mappings to configure for the container. This is a list of maps. Each map should contain "containerPort", "hostPort", and "protocol", where "protocol" is one of "tcp" or "udp". If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort | object | `<list>` | no |
 | privileged | When this variable is `true`, the container is given elevated privileges on the host container instance (similar to the root user). This parameter is not supported for Windows containers or tasks using the Fargate launch type. | bool | `null` | no |
 | readonly_root_filesystem | Determines whether a container is given read-only access to its root filesystem. Due to how Terraform type casts booleans in json it is required to double quote this value | bool | `false` | no |

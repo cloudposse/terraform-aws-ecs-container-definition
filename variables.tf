@@ -29,13 +29,7 @@ variable "port_mappings" {
 
   description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"containerPort\", \"hostPort\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort"
 
-  default = [
-    {
-      containerPort = 80
-      hostPort      = 80
-      protocol      = "tcp"
-    }
-  ]
+  default = []
 }
 
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html
@@ -175,13 +169,10 @@ variable "firelens_configuration" {
 }
 
 variable "mount_points" {
-  type = list(object({
-    containerPath = string
-    sourceVolume  = string
-  }))
+  type = list
 
-  description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`"
-  default     = null
+  description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`. The `readOnly` key is optional."
+  default     = []
 }
 
 variable "dns_servers" {
