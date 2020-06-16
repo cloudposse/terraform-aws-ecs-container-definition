@@ -69,5 +69,5 @@ locals {
     k => v
     if v != null
   }
-  json_map = jsonencode(merge(local.container_definition, var.container_definition))
+  json_map = jsonencode(merge(local.container_definition_without_null, var.container_definition))
 }
