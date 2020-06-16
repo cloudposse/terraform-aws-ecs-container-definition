@@ -63,6 +63,10 @@ locals {
     systemControls         = var.system_controls
     extraHosts             = var.extra_hosts
   }
-
-  json_map = jsonencode(local.container_definition)
+  container_definition_without_null = {
+    for k, v in local.container_definition :
+    k => v
+    if v != null
+  }
+  json_map = jsonencode(local.container_definition_without_null)
 }
