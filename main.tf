@@ -64,5 +64,10 @@ locals {
     extraHosts             = var.extra_hosts
   }
 
+  container_definition_without_null = {
+    for k, v in local.container_definition :
+    k => v
+    if v != null
+  }
   json_map = jsonencode(merge(local.container_definition, var.container_definition))
 }
