@@ -87,7 +87,7 @@ variable "environment" {
     value = string
   }))
   description = "The environment variables to pass to the container. This is a list of maps"
-  default     = null
+  default     = []
 }
 
 variable "extra_hosts" {
@@ -225,7 +225,7 @@ variable "links" {
 variable "user" {
   type        = string
   description = "The user to run as inside the container. Can be any of these formats: user, user:group, uid, uid:gid, user:gid, uid:group"
-  default     = null
+  default     = "0"
 }
 
 variable "container_depends_on" {
