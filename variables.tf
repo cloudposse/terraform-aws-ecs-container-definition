@@ -20,6 +20,12 @@ variable "container_memory_reservation" {
   default     = null
 }
 
+variable "container_definition" {
+  type        = map
+  description = "Container definition overrides which allows for extra keys or overriding existing keys."
+  default     = {}
+}
+
 variable "port_mappings" {
   type = list(object({
     containerPort = number
