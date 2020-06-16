@@ -24,14 +24,14 @@ locals {
 
   log_configuration_secret_options = var.log_configuration != null ? lookup(var.log_configuration, "secretOptions", null) : null
   log_configuration = var.log_configuration != null ? {
-      logDriver     = tostring(lookup(var.log_configuration, "logDriver"))
-      options       = tomap(lookup(var.log_configuration, "options"))
-      secretOptions = local.log_configuration_secret_options != null ? [
-        for secret_option in tolist(local.log_configuration_secret_options) : {
-          name      = tostring(lookup(secret_option, "name"))
-          valueFrom = tostring(lookup(secret_option, "valueFrom"))
-        }
-      ] : null
+    logDriver = tostring(lookup(var.log_configuration, "logDriver"))
+    options   = tomap(lookup(var.log_configuration, "options"))
+    secretOptions = local.log_configuration_secret_options != null ? [
+      for secret_option in tolist(local.log_configuration_secret_options) : {
+        name      = tostring(lookup(secret_option, "name"))
+        valueFrom = tostring(lookup(secret_option, "valueFrom"))
+      }
+    ] : null
   } : var.log_configuration
 
   # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
@@ -62,22 +62,22 @@ locals {
     healthCheck            = var.healthcheck
     firelensConfiguration  = var.firelens_configuration
     linuxParameters        = var.linux_parameters
-    logConfiguration       = local.log_configuration != null ? {
+    logConfiguration = local.log_configuration != null ? {
       for k, v in local.log_configuration :
       k => v
       if v != null
     } : local.log_configuration
-    memory                 = var.container_memory
-    memoryReservation      = var.container_memory_reservation
-    cpu                    = var.container_cpu
-    environment            = local.final_environment_vars
-    environmentFiles       = var.environment_files
-    secrets                = var.secrets
-    dockerLabels           = var.docker_labels
-    startTimeout           = var.start_timeout
-    stopTimeout            = var.stop_timeout
-    systemControls         = var.system_controls
-    extraHosts             = var.extra_hosts
+    memory            = var.container_memory
+    memoryReservation = var.container_memory_reservation
+    cpu               = var.container_cpu
+    environment       = local.final_environment_vars
+    environmentFiles  = var.environment_files
+    secrets           = var.secrets
+    dockerLabels      = var.docker_labels
+    startTimeout      = var.start_timeout
+    stopTimeout       = var.stop_timeout
+    systemControls    = var.system_controls
+    extraHosts        = var.extra_hosts
   }
 
   container_definition_without_null = {
