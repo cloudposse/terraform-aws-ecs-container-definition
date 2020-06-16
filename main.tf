@@ -64,5 +64,5 @@ locals {
     extraHosts             = var.extra_hosts
   }
 
-  json_map = jsonencode(local.container_definition)
+  json_map = jsonencode(merge(local.container_definition, var.container_definition))
 }
