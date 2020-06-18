@@ -10,6 +10,7 @@
 | container_memory_reservation | The amount of memory (in MiB) to reserve for the container. If container needs to exceed this threshold, it can do so up to the set container_memory hard limit | number | `128` | no |
 | container_name | The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed) | string | - | yes |
 | dns_servers | Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers | list(string) | `null` | no |
+| dns_search_domains | Container DNS search domains. A list of DNS search domains that are presented to the container | list(string) | `null` | no |
 | docker_labels | The configuration options to send to the `docker_labels` | map(string) | `null` | no |
 | entrypoint | The entry point that is passed to the container | list(string) | `null` | no |
 | environment | The environment variables to pass to the container. This is a list of maps | object | `null` | no |
