@@ -32,6 +32,14 @@ locals {
   # https://www.terraform.io/docs/configuration/expressions.html#null
   final_environment_vars = length(local.list_map_environment_vars) > 0 ? local.list_map_environment_vars : local.null_value
 
+  mount_points = length(var.mount_points) > 0 ? [
+    for mount_point in var.mount_points : {
+      containerPath = lookup(mount_point, "containerPath")
+      sourceVolume  = lookup(mount_point, "sourceVolume")
+      readOnly      = tobool(lookup(mount_point, "readOnly", false))
+    }
+  ] : var.mount_points
+
   container_definition = {
     name                   = var.container_name
     image                  = var.container_image
@@ -40,7 +48,7 @@ locals {
     command                = var.command
     workingDirectory       = var.working_directory
     readonlyRootFilesystem = var.readonly_root_filesystem
-    mountPoints            = var.mount_points
+    mountPoints            = local.mount_points
     dnsServers             = var.dns_servers
     ulimits                = var.ulimits
     repositoryCredentials  = var.repository_credentials
@@ -64,7 +72,13 @@ locals {
     startTimeout           = var.start_timeout
     stopTimeout            = var.stop_timeout
     systemControls         = var.system_controls
+    extraHosts             = var.extra_hosts
   }
 
-  json_map = jsonencode(local.container_definition)
+  container_definition_without_null = {
+    for k, v in local.container_definition :
+    k => v
+    if v != null
+  }
+  json_map = jsonencode(merge(local.container_definition_without_null, var.container_definition))
 }
