@@ -34,7 +34,7 @@ locals {
     ]
   }
   log_configuration_without_null = local.log_configuration_with_null == null ? null : {
-    for k, v in local.log_configuration :
+    for k, v in local.log_configuration_with_null :
     k => v
     if v != null
   }
