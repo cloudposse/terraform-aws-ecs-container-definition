@@ -1,8 +1,8 @@
 locals {
   # Sort environment variables so terraform will not try to recreate on each plan/apply
   env_vars             = var.environment != null ? var.environment : []
-  env_vars_keys        = [for m in local.env_vars : lookup(m, "name")]
-  env_vars_values      = [for m in local.env_vars : lookup(m, "value")]
+  env_vars_keys        = var.map_environment != null ? keys(var.map_environment) : [for m in local.env_vars : lookup(m, "name")]
+  env_vars_values      = var.map_environment != null ? values(var.map_environment) : [for m in local.env_vars : lookup(m, "value")]
   env_vars_as_map      = zipmap(local.env_vars_keys, local.env_vars_values)
   sorted_env_vars_keys = sort(local.env_vars_keys)
 
@@ -14,23 +14,12 @@ locals {
     }
   ]
 
-  env_map_vars = var.map_environment != null ? var.map_environment : {}
-  environment_vars = [
-    for key, value in local.env_map_vars :
-    {
-      name  = key
-      value = value
-    }
-  ]
-
-  list_map_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : local.environment_vars
-
   # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
   # so this does not work: final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
   null_value = var.environment == null ? var.environment : null
 
   # https://www.terraform.io/docs/configuration/expressions.html#null
-  final_environment_vars = length(local.list_map_environment_vars) > 0 ? local.list_map_environment_vars : local.null_value
+  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : local.null_value
 
   mount_points = length(var.mount_points) > 0 ? [
     for mount_point in var.mount_points : {
