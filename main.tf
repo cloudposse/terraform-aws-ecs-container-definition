@@ -14,13 +14,6 @@ locals {
     }
   ]
 
-  # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
-  # so this does not work: final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
-  null_value = var.environment == null ? var.environment : null
-
-  # https://www.terraform.io/docs/configuration/expressions.html#null
-  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : local.null_value
-
   mount_points = length(var.mount_points) > 0 ? [
     for mount_point in var.mount_points : {
       containerPath = lookup(mount_point, "containerPath")
@@ -28,6 +21,13 @@ locals {
       readOnly      = tobool(lookup(mount_point, "readOnly", false))
     }
   ] : var.mount_points
+
+  # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
+  # so this does not work: final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
+  null_value = var.environment == null ? var.environment : null
+
+  # https://www.terraform.io/docs/configuration/expressions.html#null
+  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : local.null_value
 
   log_configuration_secret_options = var.log_configuration != null ? lookup(var.log_configuration, "secretOptions", null) : null
   log_configuration_with_null = var.log_configuration == null ? null : {
@@ -45,13 +45,6 @@ locals {
     k => v
     if v != null
   }
-
-  # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
-  # so this does not work: final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
-  null_value = var.environment == null ? var.environment : null
-
-  # https://www.terraform.io/docs/configuration/expressions.html#null
-  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : local.null_value
 
   container_definition = {
     name                   = var.container_name
