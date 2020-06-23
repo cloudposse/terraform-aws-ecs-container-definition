@@ -21,6 +21,7 @@ No provider.
 | container\_memory | The amount of memory (in MiB) to allow the container to use. This is a hard limit, if the container attempts to exceed the container\_memory, the container is killed. This field is optional for Fargate launch type and the total amount of container\_memory of all containers in a task will need to be lower than the task memory value | `number` | `null` | no |
 | container\_memory\_reservation | The amount of memory (in MiB) to reserve for the container. If container needs to exceed this threshold, it can do so up to the set container\_memory hard limit | `number` | `null` | no |
 | container\_name | The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, \_ allowed) | `string` | n/a | yes |
+| dns\_search\_domains | Container DNS search domains. A list of DNS search domains that are presented to the container | `list(string)` | `null` | no |
 | dns\_servers | Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers | `list(string)` | `null` | no |
 | docker\_labels | The configuration options to send to the `docker_labels` | `map(string)` | `null` | no |
 | entrypoint | The entry point that is passed to the container | `list(string)` | `null` | no |

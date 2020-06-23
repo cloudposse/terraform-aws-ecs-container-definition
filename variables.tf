@@ -191,6 +191,12 @@ variable "dns_servers" {
   default     = null
 }
 
+variable "dns_search_domains" {
+  type        = list(string)
+  description = "Container DNS search domains. A list of DNS search domains that are presented to the container"
+  default     = null
+}
+
 variable "ulimits" {
   type = list(object({
     name      = string
