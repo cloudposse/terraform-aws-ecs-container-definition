@@ -22,6 +22,23 @@ locals {
     }
   ] : var.mount_points
 
+  log_configuration_secret_options = var.log_configuration != null ? lookup(var.log_configuration, "secretOptions", null) : null
+  log_configuration_with_null = var.log_configuration == null ? null : {
+    logDriver = tostring(lookup(var.log_configuration, "logDriver"))
+    options   = tomap(lookup(var.log_configuration, "options"))
+    secretOptions = local.log_configuration_secret_options == null ? null : [
+      for secret_option in tolist(local.log_configuration_secret_options) : {
+        name      = tostring(lookup(secret_option, "name"))
+        valueFrom = tostring(lookup(secret_option, "valueFrom"))
+      }
+    ]
+  }
+  log_configuration_without_null = local.log_configuration_with_null == null ? null : {
+    for k, v in local.log_configuration_with_null :
+    k => v
+    if v != null
+  }
+
   # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
   # so this does not work: final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
   null_value = var.environment == null ? var.environment : null
@@ -51,7 +68,7 @@ locals {
     healthCheck            = var.healthcheck
     firelensConfiguration  = var.firelens_configuration
     linuxParameters        = var.linux_parameters
-    logConfiguration       = var.log_configuration
+    logConfiguration       = local.log_configuration_without_null
     memory                 = var.container_memory
     memoryReservation      = var.container_memory_reservation
     cpu                    = var.container_cpu
