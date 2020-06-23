@@ -1,8 +1,8 @@
 locals {
   # Sort environment variables so terraform will not try to recreate on each plan/apply
   env_vars             = var.environment != null ? var.environment : []
-  env_vars_keys        = [for m in local.env_vars : lookup(m, "name")]
-  env_vars_values      = [for m in local.env_vars : lookup(m, "value")]
+  env_vars_keys        = var.map_environment != null ? keys(var.map_environment) : [for m in local.env_vars : lookup(m, "name")]
+  env_vars_values      = var.map_environment != null ? values(var.map_environment) : [for m in local.env_vars : lookup(m, "value")]
   env_vars_as_map      = zipmap(local.env_vars_keys, local.env_vars_values)
   sorted_env_vars_keys = sort(local.env_vars_keys)
 
@@ -22,6 +22,13 @@ locals {
     }
   ] : var.mount_points
 
+  # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
+  # so this does not work: final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
+  null_value = var.environment == null ? var.environment : null
+
+  # https://www.terraform.io/docs/configuration/expressions.html#null
+  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : local.null_value
+
   log_configuration_secret_options = var.log_configuration != null ? lookup(var.log_configuration, "secretOptions", null) : null
   log_configuration_with_null = var.log_configuration == null ? null : {
     logDriver = tostring(lookup(var.log_configuration, "logDriver"))
@@ -38,13 +45,6 @@ locals {
     k => v
     if v != null
   }
-
-  # This strange-looking variable is needed because terraform (currently) does not support explicit `null` in ternary operator,
-  # so this does not work: final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
-  null_value = var.environment == null ? var.environment : null
-
-  # https://www.terraform.io/docs/configuration/expressions.html#null
-  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : local.null_value
 
   container_definition = {
     name                   = var.container_name

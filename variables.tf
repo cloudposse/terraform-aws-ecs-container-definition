@@ -99,6 +99,12 @@ variable "extra_hosts" {
   default     = null
 }
 
+variable "map_environment" {
+  type        = map(string)
+  description = "The environment variables to pass to the container. This is a map of string: {key: value}, environment override map_environment"
+  default     = null
+}
+
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EnvironmentFile.html
 variable "environment_files" {
   type = list(object({
