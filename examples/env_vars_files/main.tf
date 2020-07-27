@@ -15,7 +15,7 @@ module "container" {
   ]
 }
 
-output "json" {
+output "json_map_encoded" {
   description = "Container definition in JSON format"
-  value       = module.container.json_map
+  value       = module.container.json_map_encoded
 }
