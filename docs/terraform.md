@@ -53,6 +53,7 @@ No provider.
 
 | Name | Description |
 |------|-------------|
-| json | JSON encoded list of container definitions for use with other terraform resources such as aws\_ecs\_task\_definition |
-| json\_map | JSON encoded container definitions for use with other terraform resources such as aws\_ecs\_task\_definition |
+| json\_map\_encoded | JSON string encoded container definitions for use with other terraform resources such as aws\_ecs\_task\_definition |
+| json\_map\_encoded\_list | JSON string encoded list of container definitions for use with other terraform resources such as aws\_ecs\_task\_definition |
+| json\_map\_object | JSON map encoded container definition |
 
