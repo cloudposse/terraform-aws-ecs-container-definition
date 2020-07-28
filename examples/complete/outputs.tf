@@ -8,7 +8,7 @@ output "json_map_encoded" {
   value       = module.container.json_map_encoded
 }
 
-output "json_map_object" { 
-  description = "JSON map encoded container definition" 
+output "json_map_object" {
+  description = "JSON map encoded container definition"
   value       = jsondecode(local.json_map)
 }
