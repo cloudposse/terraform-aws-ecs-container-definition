@@ -86,7 +86,7 @@ variable "environment" {
     name  = string
     value = string
   }))
-  description = "The environment variables to pass to the container. This is a list of maps"
+  description = "The environment variables to pass to the container. This is a list of maps. map_environment overrides environment"
   default     = []
 }
 
@@ -101,7 +101,7 @@ variable "extra_hosts" {
 
 variable "map_environment" {
   type        = map(string)
-  description = "The environment variables to pass to the container. This is a map of string: {key: value}, environment override map_environment"
+  description = "The environment variables to pass to the container. This is a map of string: {key: value}. map_environment overrides environment"
   default     = null
 }
 
