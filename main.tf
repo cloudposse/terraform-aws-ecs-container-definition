@@ -76,6 +76,11 @@ locals {
     stopTimeout            = var.stop_timeout
     systemControls         = var.system_controls
     extraHosts             = var.extra_hosts
+    hostname               = var.hostname
+    disableNetworking      = var.disable_networking
+    interactive            = var.interactive
+    preudoTerminal         = var.pseudo_terminal
+    dockerSecurityOptions  = var.docker_security_options
   }
 
   container_definition_without_null = {

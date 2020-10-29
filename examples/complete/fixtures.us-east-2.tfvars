@@ -56,3 +56,7 @@ extra_hosts = [{
   hostname  = "app.local"
   },
 ]
+
+hostname        = "hostname"
+pseudo_terminal = true
+interactive     = true

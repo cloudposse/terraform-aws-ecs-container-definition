@@ -16,4 +16,7 @@ module "container" {
   log_configuration            = var.log_configuration
   privileged                   = var.privileged
   extra_hosts                  = var.extra_hosts
+  hostname                     = var.hostname
+  pseudo_terminal              = var.pseudo_terminal
+  interactive                  = var.interactive
 }

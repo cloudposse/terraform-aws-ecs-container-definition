@@ -267,3 +267,33 @@ variable "system_controls" {
   description = "A list of namespaced kernel parameters to set in the container, mapping to the --sysctl option to docker run. This is a list of maps: { namespace = \"\", value = \"\"}"
   default     = null
 }
+
+variable "hostname" {
+  type        = string
+  description = "The hostname to use for your container."
+  default     = null
+}
+
+variable "disable_networking" {
+  type        = bool
+  description = "When this parameter is true, networking is disabled within the container."
+  default     = null
+}
+
+variable "interactive" {
+  type        = bool
+  description = "When this parameter is true, this allows you to deploy containerized applications that require stdin or a tty to be allocated."
+  default     = null
+}
+
+variable "pseudo_terminal" {
+  type        = bool
+  description = "When this parameter is true, a TTY is allocated. "
+  default     = null
+}
+
+variable "docker_security_options" {
+  type        = list(string)
+  description = "A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems."
+  default     = null
+}
