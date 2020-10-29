@@ -41,6 +41,7 @@ locals {
     k => v
     if v != null
   }
+  user = var.firelens_configuration != null ? "0" : var.user
 
   container_definition = {
     name                   = var.container_name
@@ -57,7 +58,7 @@ locals {
     repositoryCredentials  = var.repository_credentials
     links                  = var.links
     volumesFrom            = var.volumes_from
-    user                   = var.user
+    user                   = local.user
     dependsOn              = var.container_depends_on
     privileged             = var.privileged
     portMappings           = var.port_mappings
