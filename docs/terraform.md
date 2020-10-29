@@ -3,8 +3,8 @@
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13.3 |
-| local | >= 1.3 |
+| terraform | >= 0.12 |
+| local | >= 1.2 |
 
 ## Providers
 
