@@ -41,6 +41,7 @@ locals {
     k => v
     if v != null
   }
+  user = var.firelens_configuration != null ? "0" : var.user
 
   container_definition = {
     name                   = var.container_name
@@ -57,7 +58,7 @@ locals {
     repositoryCredentials  = var.repository_credentials
     links                  = var.links
     volumesFrom            = var.volumes_from
-    user                   = var.user
+    user                   = local.user
     dependsOn              = var.container_depends_on
     privileged             = var.privileged
     portMappings           = var.port_mappings
@@ -76,6 +77,11 @@ locals {
     stopTimeout            = var.stop_timeout
     systemControls         = var.system_controls
     extraHosts             = var.extra_hosts
+    hostname               = var.hostname
+    disableNetworking      = var.disable_networking
+    interactive            = var.interactive
+    preudoTerminal         = var.pseudo_terminal
+    dockerSecurityOptions  = var.docker_security_options
   }
 
   container_definition_without_null = {

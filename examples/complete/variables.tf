@@ -1,3 +1,7 @@
+variable "region" {
+  type = string
+}
+
 variable "container_name" {
   type        = string
   description = "The name of the container. Up to 255 characters ([a-z], [A-Z], [0-9], -, _ allowed)"
@@ -86,7 +90,7 @@ variable "environment" {
     name  = string
     value = string
   }))
-  description = "The environment variables to pass to the container. This is a list of maps"
+  description = "The environment variables to pass to the container. This is a list of maps. map_environment overrides environment"
   default     = []
 }
 
@@ -96,6 +100,12 @@ variable "extra_hosts" {
     hostname  = string
   }))
   description = "A list of hostnames and IP address mappings to append to the /etc/hosts file on the container. This is a list of maps"
+  default     = null
+}
+
+variable "map_environment" {
+  type        = map(string)
+  description = "The environment variables to pass to the container. This is a map of string: {key: value}. map_environment overrides environment"
   default     = null
 }
 
@@ -152,7 +162,7 @@ variable "linux_parameters" {
 
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html
 variable "log_configuration" {
-  # type        = map
+  type        = any
   description = "Log configuration options to send to a custom log driver for the container. For more details, see https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html"
   default     = null
 }
@@ -177,6 +187,12 @@ variable "mount_points" {
 variable "dns_servers" {
   type        = list(string)
   description = "Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers"
+  default     = null
+}
+
+variable "dns_search_domains" {
+  type        = list(string)
+  description = "Container DNS search domains. A list of DNS search domains that are presented to the container"
   default     = null
 }
 
@@ -213,8 +229,8 @@ variable "links" {
 
 variable "user" {
   type        = string
-  description = "The user to run as inside the container. Can be any of these formats: user, user:group, uid, uid:gid, user:gid, uid:group"
-  default     = "0"
+  description = "The user to run as inside the container. Can be any of these formats: user, user:group, uid, uid:gid, user:gid, uid:group. The default (null) will use the container's configured `USER` directive or root if not set."
+  default     = null
 }
 
 variable "container_depends_on" {
@@ -253,5 +269,35 @@ variable "privileged" {
 variable "system_controls" {
   type        = list(map(string))
   description = "A list of namespaced kernel parameters to set in the container, mapping to the --sysctl option to docker run. This is a list of maps: { namespace = \"\", value = \"\"}"
+  default     = null
+}
+
+variable "hostname" {
+  type        = string
+  description = "The hostname to use for your container."
+  default     = null
+}
+
+variable "disable_networking" {
+  type        = bool
+  description = "When this parameter is true, networking is disabled within the container."
+  default     = null
+}
+
+variable "interactive" {
+  type        = bool
+  description = "When this parameter is true, this allows you to deploy containerized applications that require stdin or a tty to be allocated."
+  default     = null
+}
+
+variable "pseudo_terminal" {
+  type        = bool
+  description = "When this parameter is true, a TTY is allocated. "
+  default     = null
+}
+
+variable "docker_security_options" {
+  type        = list(string)
+  description = "A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems."
   default     = null
 }
