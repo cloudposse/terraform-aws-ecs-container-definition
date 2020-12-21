@@ -82,6 +82,7 @@ locals {
     interactive            = var.interactive
     preudoTerminal         = var.pseudo_terminal
     dockerSecurityOptions  = var.docker_security_options
+    resourceRequirements   = var.resource_requirements
   }
 
   container_definition_without_null = {
