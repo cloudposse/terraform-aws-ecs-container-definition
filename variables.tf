@@ -297,3 +297,13 @@ variable "docker_security_options" {
   description = "A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems."
   default     = null
 }
+
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ResourceRequirement.html
+variable "resource_requirements" {
+  type = list(object({
+    type  = string
+    value = string
+  }))
+  description = "The type and amount of a resource to assign to a container. The only supported resource is a GPU."
+  default     = null
+}
