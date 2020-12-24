@@ -21,5 +21,5 @@ module "container" {
 
 output "json" {
   description = "Container definition in JSON format"
-  value       = module.container.json
+  value       = module.container.json_map_encoded_list
 }
