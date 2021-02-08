@@ -129,7 +129,7 @@ Available targets:
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.26 |
+| terraform | >= 0.13.0 |
 | local | >= 1.2 |
 
 ## Providers
