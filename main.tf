@@ -1,6 +1,6 @@
 locals {
   # Sort environment variables so terraform will not try to recreate on each plan/apply
-  env_vars             = var.environment
+  env_vars             = var.container_environment
   env_vars_keys        = var.map_environment != null ? keys(var.map_environment) : [for m in local.env_vars : lookup(m, "name")]
   env_vars_values      = var.map_environment != null ? values(var.map_environment) : [for m in local.env_vars : lookup(m, "value")]
   env_vars_as_map      = zipmap(local.env_vars_keys, local.env_vars_values)
