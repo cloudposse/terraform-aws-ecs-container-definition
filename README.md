@@ -98,6 +98,10 @@ The table below correctly indicates which inputs are required.
 
 This module is meant to be used as output only, meaning it will be used to create outputs which are consumed as a parameter by Terraform resources or other modules.
 
+Caution: This module, unlike nearly all other Cloud Posse Terraform modules, does not use [terraform-null-label](https://github.com/cloudposse/terraform-null-label/).
+Furthermore, it has an input named `environment` which has a completely different meaning than the one in `terraform-null-label`.
+Do not call this module with the conventional `context = module.this.context`. See the documentation below for the usage of `environment`.
+
 For complete examples, see
 
 - [multi-port mappings](examples/multi_port_mappings)
@@ -129,7 +133,7 @@ Available targets:
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13.0 |
+| terraform | >= 0.12.26 |
 | local | >= 1.2 |
 
 ## Providers
