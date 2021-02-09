@@ -81,12 +81,12 @@ variable "working_directory" {
   default     = null
 }
 
-variable "container_environment" {
+variable "environment" {
   type = list(object({
     name  = string
     value = string
   }))
-  description = "The environment variables to pass to the container. This is a list of maps. map_environment overrides container_environment"
+  description = "The environment variables to pass to the container. This is a list of maps. map_environment overrides environment"
   default     = []
 }
 
@@ -101,7 +101,7 @@ variable "extra_hosts" {
 
 variable "map_environment" {
   type        = map(string)
-  description = "The environment variables to pass to the container. This is a map of string: {key: value}. map_environment overrides container_environment"
+  description = "The environment variables to pass to the container. This is a map of string: {key: value}. map_environment overrides environment"
   default     = null
 }
 
