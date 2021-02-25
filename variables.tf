@@ -127,7 +127,7 @@ variable "secrets" {
     valueFrom = string
   }))
   description = "The secrets to pass to the container. This is a list of maps"
-  default     = null
+  default     = []
 }
 
 variable "readonly_root_filesystem" {
