@@ -105,6 +105,12 @@ variable "map_environment" {
   default     = null
 }
 
+variable "map_secrets" {
+  type        = map(string)
+  description = "The secrets variables to pass to the container. This is a map of string: {key: value}. map_secrets overrides secrets"
+  default     = null
+}
+
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EnvironmentFile.html
 variable "environment_files" {
   type = list(object({
@@ -121,7 +127,7 @@ variable "secrets" {
     valueFrom = string
   }))
   description = "The secrets to pass to the container. This is a list of maps"
-  default     = null
+  default     = []
 }
 
 variable "readonly_root_filesystem" {
