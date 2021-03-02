@@ -14,6 +14,21 @@ locals {
     }
   ]
 
+  # Sort secrets so terraform will not try to recreate on each plan/apply
+  secrets_vars        = var.secrets
+  secrets_keys        = var.map_secrets != null ? keys(var.map_secrets) : [for m in local.secrets_vars : lookup(m, "name")]
+  secrets_values      = var.map_secrets != null ? values(var.map_secrets) : [for m in local.secrets_vars : lookup(m, "value")]
+  secrets_as_map      = zipmap(local.secrets_keys, local.secrets_values)
+  sorted_secrets_keys = sort(local.secrets_keys)
+
+  sorted_secrets_vars = [
+    for key in local.sorted_secrets_keys :
+    {
+      name      = key
+      valueFrom = lookup(local.secrets_as_map, key)
+    }
+  ]
+
   mount_points = length(var.mount_points) > 0 ? [
     for mount_point in var.mount_points : {
       containerPath = lookup(mount_point, "containerPath")
@@ -24,6 +39,7 @@ locals {
 
   # https://www.terraform.io/docs/configuration/expressions.html#null
   final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
+  final_secrets_vars     = length(local.sorted_secrets_vars) > 0 ? local.sorted_secrets_vars : null
 
   log_configuration_secret_options = var.log_configuration != null ? lookup(var.log_configuration, "secretOptions", null) : null
   log_configuration_with_null = var.log_configuration == null ? null : {
@@ -71,7 +87,7 @@ locals {
     cpu                    = var.container_cpu
     environment            = local.final_environment_vars
     environmentFiles       = var.environment_files
-    secrets                = var.secrets
+    secrets                = local.final_secrets_vars
     dockerLabels           = var.docker_labels
     startTimeout           = var.start_timeout
     stopTimeout            = var.stop_timeout
@@ -80,7 +96,7 @@ locals {
     hostname               = var.hostname
     disableNetworking      = var.disable_networking
     interactive            = var.interactive
-    preudoTerminal         = var.pseudo_terminal
+    pseudoTerminal         = var.pseudo_terminal
     dockerSecurityOptions  = var.docker_security_options
     resourceRequirements   = var.resource_requirements
   }
