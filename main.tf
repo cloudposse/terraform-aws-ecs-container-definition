@@ -1,8 +1,7 @@
 locals {
   # Sort environment variables so terraform will not try to recreate on each plan/apply
-  env_vars             = var.environment
-  env_vars_keys        = var.map_environment != null ? keys(var.map_environment) : [for m in local.env_vars : lookup(m, "name")]
-  env_vars_values      = var.map_environment != null ? values(var.map_environment) : [for m in local.env_vars : lookup(m, "value")]
+  env_vars_keys        = var.map_environment != null && var.environment != null ? keys(var.map_environment) : [for m in var.environment : lookup(m, "name")]
+  env_vars_values      = var.map_environment != null && var.environment != null ? values(var.map_environment) : [for m in var.environment : lookup(m, "value")]
   env_vars_as_map      = zipmap(local.env_vars_keys, local.env_vars_values)
   sorted_env_vars_keys = sort(local.env_vars_keys)
 
@@ -15,9 +14,8 @@ locals {
   ]
 
   # Sort secrets so terraform will not try to recreate on each plan/apply
-  secrets_vars        = var.secrets
-  secrets_keys        = var.map_secrets != null ? keys(var.map_secrets) : [for m in local.secrets_vars : lookup(m, "name")]
-  secrets_values      = var.map_secrets != null ? values(var.map_secrets) : [for m in local.secrets_vars : lookup(m, "valueFrom")]
+  secrets_keys        = var.map_secrets != null && var.secrets != null ? keys(var.map_secrets) : [for m in var.secrets : lookup(m, "name")]
+  secrets_values      = var.map_secrets != null && var.secrets != null ? values(var.map_secrets) : [for m in var.secrets : lookup(m, "valueFrom")]
   secrets_as_map      = zipmap(local.secrets_keys, local.secrets_values)
   sorted_secrets_keys = sort(local.secrets_keys)
 
