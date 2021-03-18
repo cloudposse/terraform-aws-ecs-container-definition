@@ -14,7 +14,6 @@ locals {
   ]
 
   # Sort secrets so terraform will not try to recreate on each plan/apply
-  secrets_vars        = var.secrets
   secrets_keys        = var.map_secrets != null && var.secrets != null ? keys(var.map_secrets) : [for m in var.secrets : lookup(m, "name")]
   secrets_values      = var.map_secrets != null && var.secrets != null ? values(var.map_secrets) : [for m in var.secrets : lookup(m, "valueFrom")]
   secrets_as_map      = zipmap(local.secrets_keys, local.secrets_values)
