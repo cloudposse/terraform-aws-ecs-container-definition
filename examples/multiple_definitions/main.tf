@@ -47,7 +47,7 @@ output "second_container_json" {
 }
 
 resource "aws_ecs_task_definition" "task" {
-  family                = "foo"
+  family = "foo"
   container_definitions = jsonencode([
     module.first_container.json_map,
     module.second_container.json_map
