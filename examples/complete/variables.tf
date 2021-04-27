@@ -25,7 +25,7 @@ variable "container_memory_reservation" {
 }
 
 variable "container_definition" {
-  type        = map
+  type        = map(any)
   description = "Container definition overrides which allows for extra keys or overriding existing keys."
   default     = {}
 }
@@ -178,7 +178,7 @@ variable "firelens_configuration" {
 }
 
 variable "mount_points" {
-  type = list
+  type = list(any)
 
   description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`. The `readOnly` key is optional."
   default     = []
