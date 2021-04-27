@@ -1,3 +1,4 @@
+
 <!-- markdownlint-disable -->
 # terraform-aws-ecs-container-definition
 
@@ -31,7 +32,6 @@
 
 Terraform module to generate well-formed JSON documents that are passed to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
 
-
 ---
 
 This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
@@ -56,7 +56,6 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
-
 
 
 
@@ -133,7 +132,7 @@ Available targets:
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.26 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.26, < 0.15.0 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | >= 1.2 |
 
 ## Providers
