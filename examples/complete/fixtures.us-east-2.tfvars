@@ -1,5 +1,11 @@
 region = "us-east-2"
 
+namespace = "eg"
+
+stage = "test"
+
+name = "container-definition"
+
 container_name               = "app"
 container_image              = "cloudposse/geodesic"
 container_memory             = 256
@@ -8,7 +14,7 @@ container_cpu                = 256
 essential                    = true
 readonly_root_filesystem     = false
 
-environment = [
+container_environment = [
   {
     name  = "string_var"
     value = "I am a string"

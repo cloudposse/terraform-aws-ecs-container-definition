@@ -11,7 +11,7 @@ module "container" {
   container_cpu                = var.container_cpu
   essential                    = var.essential
   readonly_root_filesystem     = var.readonly_root_filesystem
-  environment                  = var.environment
+  environment                  = var.container_environment
   port_mappings                = var.port_mappings
   log_configuration            = var.log_configuration
   privileged                   = var.privileged
@@ -19,4 +19,11 @@ module "container" {
   hostname                     = var.hostname
   pseudo_terminal              = var.pseudo_terminal
   interactive                  = var.interactive
+}
+
+resource "aws_ecs_task_definition" "task" {
+  family                = module.this.id
+  container_definitions = module.container.json_map_encoded_list
+
+  tags = module.this.tags
 }
