@@ -22,7 +22,7 @@ module "container" {
 }
 
 resource "aws_ecs_task_definition" "task" {
-  family = "foo"
+  family                = module.this.id
   container_definitions = module.container.json_map_encoded_list
 
   tags = module.this.tags
