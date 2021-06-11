@@ -20,3 +20,8 @@ module "container" {
   pseudo_terminal              = var.pseudo_terminal
   interactive                  = var.interactive
 }
+
+resource "aws_ecs_task_definition" "task" {
+  family = "foo"
+  container_definitions = module.container.json_map_encoded_list
+}
