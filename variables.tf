@@ -180,9 +180,13 @@ variable "firelens_configuration" {
 }
 
 variable "mount_points" {
-  type = list(any)
+  type = list(object({
+    containerPath = string
+    sourceVolume  = string
+    readOnly      = bool
+  }))
 
-  description = "Container mount points. This is a list of maps, where each map should contain a `containerPath` and `sourceVolume`. The `readOnly` key is optional."
+  description = "Container mount points. This is a list of maps, where each map should contain `containerPath`, `sourceVolume` and `readOnly`"
   default     = []
 }
 
