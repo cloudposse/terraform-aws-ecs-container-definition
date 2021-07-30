@@ -58,6 +58,18 @@ usage: |-
   - [string env vars](examples/string_env_vars)
 
   For a complete example with automated tests, see [examples/complete](examples/complete) with `bats` and `Terratest` for the example [test](test).
+  
+  ```hcl
+  module "container_definition" {
+    source = "cloudposse/ecs-container-definition/aws"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version = "x.x.x"
+
+    container_name  = "geodesic"
+    container_image = "cloudposse/geodesic"
+  }
+  ```
+
 include:
 - docs/targets.md
 - docs/terraform.md
