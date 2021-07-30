@@ -41,4 +41,9 @@ func TestExamplesComplete(t *testing.T) {
 	assert.Equal(t, 256, int((jsonObject["cpu"]).(float64)))
 	assert.Equal(t, true, jsonObject["essential"])
 	assert.Equal(t, false, jsonObject["readonlyRootFilesystem"])
+
+    // Run `terraform output` to compare the expected container definition with the actual aws_ecs_task_definition container definition
+	containerDefinitionExpected := terraform.OutputRequired(t, terraformOptions, "json_map_object")
+	containerDefinition := terraform.OutputRequired(t, terraformOptions, "task_definition_container_definition")
+	assert.Equal(t, containerDefinitionExpected, containerDefinition)
 }

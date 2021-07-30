@@ -12,3 +12,8 @@ output "json_map_object" {
   description = "JSON map encoded container definition"
   value       = module.container.json_map_object
 }
+
+output "task_definition_container_definition" {
+  description = "The aws_ecs_task_definition container definition"
+  value       = jsondecode(aws_ecs_task_definition.task.container_definitions)[0]
+}
