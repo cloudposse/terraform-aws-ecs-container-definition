@@ -190,23 +190,6 @@ variable "mount_points" {
   default     = []
 }
 
-variable "volumes" {
-  description = "Task volume definitions as list of configuration objects"
-  type = list(object({
-    host_path = string
-    name      = string
-    docker_volume_configuration = list(object({
-      autoprovision = bool
-      driver        = string
-      driver_opts   = map(string)
-      labels        = map(string)
-      scope         = string
-    }))
-  }))
-  default = []
-}
-
-
 variable "dns_servers" {
   type        = list(string)
   description = "Container DNS servers. This is a list of strings specifying the IP addresses of the DNS servers"
