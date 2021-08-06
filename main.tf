@@ -35,6 +35,25 @@ locals {
     }
   ] : var.mount_points
 
+  dynamic "volume" {
+    for_each = var.volumes
+    content {
+      name      = volume.value.name
+      host_path = lookup(volume.value, "host_path", null)
+
+      dynamic "docker_volume_configuration" {
+        for_each = lookup(volume.value, "docker_volume_configuration", [])
+        content {
+          autoprovision = lookup(docker_volume_configuration.value, "autoprovision", null)
+          driver        = lookup(docker_volume_configuration.value, "driver", null)
+          driver_opts   = lookup(docker_volume_configuration.value, "driver_opts", null)
+          labels        = lookup(docker_volume_configuration.value, "labels", null)
+          scope         = lookup(docker_volume_configuration.value, "scope", null)
+        }
+      }
+    }
+  }
+
   # https://www.terraform.io/docs/configuration/expressions.html#null
   final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
   final_secrets_vars     = length(local.sorted_secrets_vars) > 0 ? local.sorted_secrets_vars : null
@@ -72,6 +91,7 @@ locals {
     repositoryCredentials  = var.repository_credentials
     links                  = var.links
     volumesFrom            = var.volumes_from
+    volume                 = local.volumes
     user                   = local.user
     dependsOn              = var.container_depends_on
     privileged             = var.privileged
