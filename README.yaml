@@ -69,6 +69,20 @@ usage: |-
     container_image = "cloudposse/geodesic"
   }
   ```
+  
+  The output of this module can then be used with one of our other modules.
+  
+  ```
+  module "ecs_alb_service_task" {
+    source = "cloudposse/ecs-alb-service-task/aws"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version = "x.x.x"
+
+    # ...
+    container_definition_json = module.container_definition.json_map_encoded_list
+    # ...
+  }
+  ```
 
 include:
 - docs/targets.md
@@ -84,3 +98,5 @@ contributors:
   github: goruha
 - name: Yonatan Koren
   github: korenyoni
+- name: RB
+  github: nitrocode
