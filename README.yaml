@@ -72,7 +72,7 @@ usage: |-
   
   The output of this module can then be used with one of our other modules.
   
-  ```
+  ```hcl
   module "ecs_alb_service_task" {
     source = "cloudposse/ecs-alb-service-task/aws"
     # Cloud Posse recommends pinning every module to a specific version
