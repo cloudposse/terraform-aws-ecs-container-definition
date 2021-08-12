@@ -58,6 +58,32 @@ usage: |-
   - [string env vars](examples/string_env_vars)
 
   For a complete example with automated tests, see [examples/complete](examples/complete) with `bats` and `Terratest` for the example [test](test).
+  
+  ```hcl
+  module "container_definition" {
+    source = "cloudposse/ecs-container-definition/aws"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version = "x.x.x"
+
+    container_name  = "geodesic"
+    container_image = "cloudposse/geodesic"
+  }
+  ```
+  
+  The output of this module can then be used with one of our other modules.
+  
+  ```hcl
+  module "ecs_alb_service_task" {
+    source = "cloudposse/ecs-alb-service-task/aws"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version = "x.x.x"
+
+    # ...
+    container_definition_json = module.container_definition.json_map_encoded_list
+    # ...
+  }
+  ```
+
 include:
 - docs/targets.md
 - docs/terraform.md
@@ -72,3 +98,5 @@ contributors:
   github: goruha
 - name: Yonatan Koren
   github: korenyoni
+- name: RB
+  github: nitrocode
