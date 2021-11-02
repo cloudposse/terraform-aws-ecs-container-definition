@@ -246,8 +246,14 @@ variable "stop_timeout" {
 }
 
 variable "privileged" {
+  type        = bool
+  description = "When this variable is `true`, the container is given elevated privileges on the host container instance (similar to the root user). This parameter is not supported for tasks using the Fargate launch type. Due to how Terraform type casts booleans in json it is required to double quote this value."
+  default     = false
+}
+
+variable "pid_mode" {
   type        = string
-  description = "When this variable is `true`, the container is given elevated privileges on the host container instance (similar to the root user). This parameter is not supported for Windows containers or tasks using the Fargate launch type. Due to how Terraform type casts booleans in json it is required to double quote this value"
+  description = "The process namespace to use for the containers in the task. The valid values are host or task."
   default     = null
 }
 
