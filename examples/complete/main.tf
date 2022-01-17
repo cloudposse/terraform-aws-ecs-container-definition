@@ -19,6 +19,7 @@ module "container" {
   hostname                     = var.hostname
   pseudo_terminal              = var.pseudo_terminal
   interactive                  = var.interactive
+  skip_destroy                 = var.skip_destroy
 }
 
 resource "aws_ecs_task_definition" "task" {

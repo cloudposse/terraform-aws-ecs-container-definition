@@ -42,6 +42,12 @@ variable "port_mappings" {
   default = []
 }
 
+variable "skip_destroy" {
+  type        = bool
+  default     = false
+  description = "Avoid deleting the task definition when there is a change."
+}
+
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html
 variable "healthcheck" {
   type = object({

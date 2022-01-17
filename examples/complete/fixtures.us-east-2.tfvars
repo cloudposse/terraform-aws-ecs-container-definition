@@ -6,6 +6,8 @@ stage = "test"
 
 name = "container-definition"
 
+skip_destroy = true
+
 container_name               = "app"
 container_image              = "cloudposse/geodesic"
 container_memory             = 256
