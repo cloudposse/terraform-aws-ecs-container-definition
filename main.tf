@@ -76,6 +76,7 @@ locals {
     dependsOn              = var.container_depends_on
     privileged             = var.privileged
     portMappings           = var.port_mappings
+    skip_destroy           = var.skip_destroy
     healthCheck            = var.healthcheck
     firelensConfiguration  = var.firelens_configuration
     linuxParameters        = var.linux_parameters
