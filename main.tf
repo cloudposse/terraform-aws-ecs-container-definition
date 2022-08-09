@@ -1,7 +1,7 @@
 locals {
   # Sort environment variables & secrets so terraform will not try to recreate on each plan/apply
-  env_as_map     = var.map_environment != null ? var.map_environment : var.environment != null ? {for m in var.environment : m.name => m.value} : null
-  secrets_as_map = var.map_secrets != null ? var.map_secrets : var.secrets != null ? {for m in var.secrets : m.name => m.valueFrom} : null
+  env_as_map     = var.map_environment != null ? var.map_environment : var.environment != null ? { for m in var.environment : m.name => m.value } : null
+  secrets_as_map = var.map_secrets != null ? var.map_secrets : var.secrets != null ? { for m in var.secrets : m.name => m.valueFrom } : null
 
   # https://www.terraform.io/docs/configuration/expressions.html#null
   final_environment_vars = local.env_as_map != null ? [
