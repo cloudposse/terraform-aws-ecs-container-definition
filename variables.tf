@@ -20,6 +20,7 @@ variable "container_memory_reservation" {
   default     = null
 }
 
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html
 variable "container_definition" {
   type = object({
     command = optional(list(string))
@@ -63,10 +64,10 @@ variable "container_definition" {
     interactive = optional(bool)
     links       = optional(list(string))
     linuxParameters = optional(object({
-      capabilities = object({
+      capabilities = optional(object({
         add  = optional(list(string))
         drop = optional(list(string))
-      })
+      }))
       devices = optional(list(object({
         containerPath = string
         hostPath      = string
@@ -253,10 +254,10 @@ variable "readonly_root_filesystem" {
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LinuxParameters.html
 variable "linux_parameters" {
   type = object({
-    capabilities = object({
+    capabilities = optional(object({
       add  = optional(list(string))
       drop = optional(list(string))
-    })
+    }))
     devices = optional(list(object({
       containerPath = string
       hostPath      = string
