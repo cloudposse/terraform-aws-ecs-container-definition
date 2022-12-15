@@ -4,7 +4,6 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | >= 1.2 |
 
 ## Providers
 
