@@ -36,7 +36,7 @@ locals {
   ] : var.mount_points
 
   # https://www.terraform.io/docs/configuration/expressions.html#null
-  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : null
+  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : []
   final_secrets_vars     = length(local.sorted_secrets_vars) > 0 ? local.sorted_secrets_vars : null
 
   log_configuration_secret_options = var.log_configuration != null ? lookup(var.log_configuration, "secretOptions", null) : null
