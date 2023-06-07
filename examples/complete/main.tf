@@ -21,10 +21,6 @@ module "container" {
   interactive                  = var.interactive
 }
 
-output "test" {
-  value = module.container.json_map_encoded_list
-}
-
 resource "aws_ecs_task_definition" "task" {
   family                = module.this.id
   container_definitions = module.container.json_map_encoded_list
