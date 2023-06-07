@@ -10,7 +10,7 @@ output "json_map_encoded" {
 
 output "json_map_object" {
   description = "JSON map encoded container definition"
-  value       = jsondecode(local.json_map)
+  value       = local.final_container_definition
 }
 
 output "sensitive_json_map_encoded_list" {
@@ -27,6 +27,6 @@ output "sensitive_json_map_encoded" {
 
 output "sensitive_json_map_object" {
   description = "JSON map encoded container definition (sensitive)"
-  value       = jsondecode(local.json_map)
+  value       = local.final_container_definition
   sensitive   = true
 }

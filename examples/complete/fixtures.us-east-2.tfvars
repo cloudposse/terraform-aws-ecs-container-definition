@@ -49,17 +49,18 @@ port_mappings = [
 log_configuration = {
   logDriver = "json-file"
   options = {
-    "max-size" = "10m"
-    "max-file" = "3"
+    max-size = "10m"
+    max-file = "3"
   }
   secretOptions = null
 }
 
 privileged = false
 
-extra_hosts = [{
-  ipAddress = "127.0.0.1"
-  hostname  = "app.local"
+extra_hosts = [
+  {
+    ipAddress = "127.0.0.1"
+    hostname  = "app.local"
   },
 ]
 
