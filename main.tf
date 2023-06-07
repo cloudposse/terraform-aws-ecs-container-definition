@@ -81,5 +81,5 @@ locals {
   }
 
   final_container_definition = merge(local.container_definition_without_null, local.container_definition_override_without_null)
-  json_map                   = replace(jsonencode(local.final_container_definition), "\\", "")
+  json_map                   = jsonencode(local.final_container_definition)
 }
