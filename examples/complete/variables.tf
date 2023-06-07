@@ -388,11 +388,11 @@ variable "log_configuration" {
 #  default     = null
 #}
 
-variable "stop_timeout" {
-  type        = number
-  description = "Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own"
-  default     = null
-}
+#variable "stop_timeout" {
+#  type        = number
+#  description = "Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own"
+#  default     = null
+#}
 
 variable "privileged" {
   type        = bool
