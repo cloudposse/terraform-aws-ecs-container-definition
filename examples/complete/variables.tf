@@ -382,11 +382,11 @@ variable "log_configuration" {
 #  default     = null
 #}
 
-variable "start_timeout" {
-  type        = number
-  description = "Time duration (in seconds) to wait before giving up on resolving dependencies for a container"
-  default     = null
-}
+#variable "start_timeout" {
+#  type        = number
+#  description = "Time duration (in seconds) to wait before giving up on resolving dependencies for a container"
+#  default     = null
+#}
 
 variable "stop_timeout" {
   type        = number
