@@ -98,7 +98,7 @@ variable "container_definition" {
       readOnly      = optional(bool)
       sourceVolume  = optional(string)
     })))
-    name = optional(string)
+    // name = optional(string)
     portMappings = optional(list(object({
       containerPort = number
       hostPort      = optional(number)
