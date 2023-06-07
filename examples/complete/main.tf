@@ -4,7 +4,6 @@ provider "aws" {
 
 module "container" {
   source                       = "../.."
-  enabled                      = true
   container_name               = var.container_name
   container_image              = var.container_image
   container_memory             = var.container_memory
@@ -20,6 +19,10 @@ module "container" {
   hostname                     = var.hostname
   pseudo_terminal              = var.pseudo_terminal
   interactive                  = var.interactive
+}
+
+output "test" {
+  value = module.container.json_map_encoded_list
 }
 
 resource "aws_ecs_task_definition" "task" {
