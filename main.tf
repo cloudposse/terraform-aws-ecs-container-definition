@@ -18,11 +18,7 @@ locals {
       valueFrom = v
     }
   ] : null
-
-  # https://www.terraform.io/docs/configuration/expressions.html#null
-  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : []
-  final_secrets_vars     = length(local.sorted_secrets_vars) > 0 ? local.sorted_secrets_vars : null
-
+  
   log_configuration_without_null = var.log_configuration == null ? null : {
     for k, v in var.log_configuration :
     k => v
