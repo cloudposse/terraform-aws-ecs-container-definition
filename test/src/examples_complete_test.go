@@ -30,7 +30,7 @@ func TestExamplesComplete(t *testing.T) {
 	jsonMap := terraform.OutputRequired(t, terraformOptions, "json_map_encoded")
 
 	// Verify we're getting back the outputs we expect
-	var jsonObject map[any]interface{}
+	var jsonObject map[string]interface{}
 	err := json.Unmarshal([]byte(jsonMap), &jsonObject)
 	assert.NoError(t, err)
 
