@@ -4,6 +4,7 @@ provider "aws" {
 
 module "container" {
   source                       = "../.."
+  enabled                      = true
   container_name               = var.container_name
   container_image              = var.container_image
   container_memory             = var.container_memory
