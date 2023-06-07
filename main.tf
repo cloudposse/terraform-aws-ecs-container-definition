@@ -70,8 +70,8 @@ locals {
 
   container_definition_without_null = {
     for k, v in local.container_definition :
-      k => v
-      if v != null
+    k => v
+    if v != null
   }
 
   container_definition_override_without_null = {

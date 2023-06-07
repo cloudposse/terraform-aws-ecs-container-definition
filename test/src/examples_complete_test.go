@@ -27,7 +27,7 @@ func TestExamplesComplete(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the value of an output variable
-	jsonMap := terraform.OutputRequired(t, terraformOptions, "json_map_encoded")
+	jsonMap := terraform.OutputRequired(t, terraformOptions, "json_map_object")
 
 	// Verify we're getting back the outputs we expect
 	var jsonObject map[string]interface{}
