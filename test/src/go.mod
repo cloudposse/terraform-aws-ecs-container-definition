@@ -1,6 +1,6 @@
 module github.com/cloudposse/terraform-aws-ecs-container-definition
 
-go 1.17
+go 1.15
 
 require (
 	github.com/gruntwork-io/terratest v0.43.0
