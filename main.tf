@@ -18,7 +18,7 @@ locals {
       valueFrom = v
     }
   ] : null
-  
+
   log_configuration_without_null = var.log_configuration == null ? null : {
     for k, v in var.log_configuration :
     k => v
