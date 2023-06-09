@@ -1,57 +1,26 @@
 locals {
-  # Sort environment variables so terraform will not try to recreate on each plan/apply
-  env_vars_keys        = var.map_environment != null ? keys(var.map_environment) : var.environment != null ? [for m in var.environment : lookup(m, "name")] : []
-  env_vars_values      = var.map_environment != null ? values(var.map_environment) : var.environment != null ? [for m in var.environment : lookup(m, "value")] : []
-  env_vars_as_map      = zipmap(local.env_vars_keys, local.env_vars_values)
-  sorted_env_vars_keys = sort(local.env_vars_keys)
-
-  sorted_environment_vars = [
-    for key in local.sorted_env_vars_keys :
-    {
-      name  = key
-      value = lookup(local.env_vars_as_map, key)
-    }
-  ]
-
-  # Sort secrets so terraform will not try to recreate on each plan/apply
-  secrets_keys        = var.map_secrets != null ? keys(var.map_secrets) : var.secrets != null ? [for m in var.secrets : lookup(m, "name")] : []
-  secrets_values      = var.map_secrets != null ? values(var.map_secrets) : var.secrets != null ? [for m in var.secrets : lookup(m, "valueFrom")] : []
-  secrets_as_map      = zipmap(local.secrets_keys, local.secrets_values)
-  sorted_secrets_keys = sort(local.secrets_keys)
-
-  sorted_secrets_vars = [
-    for key in local.sorted_secrets_keys :
-    {
-      name      = key
-      valueFrom = lookup(local.secrets_as_map, key)
-    }
-  ]
-
-  mount_points = length(var.mount_points) > 0 ? [
-    for mount_point in var.mount_points : {
-      containerPath = lookup(mount_point, "containerPath")
-      sourceVolume  = lookup(mount_point, "sourceVolume")
-      readOnly      = tobool(lookup(mount_point, "readOnly", false))
-    }
-  ] : var.mount_points
+  # Sort environment variables & secrets so terraform will not try to recreate on each plan/apply
+  env_as_map     = var.map_environment != null ? var.map_environment : var.environment != null ? { for m in var.environment : m.name => m.value } : null
+  secrets_as_map = var.map_secrets != null ? var.map_secrets : var.secrets != null ? { for m in var.secrets : m.name => m.valueFrom } : null
 
   # https://www.terraform.io/docs/configuration/expressions.html#null
-  final_environment_vars = length(local.sorted_environment_vars) > 0 ? local.sorted_environment_vars : []
-  final_secrets_vars     = length(local.sorted_secrets_vars) > 0 ? local.sorted_secrets_vars : null
+  final_environment_vars = local.env_as_map != null ? [
+    for k, v in local.env_as_map :
+    {
+      name  = k
+      value = v
+    }
+  ] : null
+  final_secrets_vars = local.secrets_as_map != null ? [
+    for k, v in local.secrets_as_map :
+    {
+      name      = k
+      valueFrom = v
+    }
+  ] : null
 
-  log_configuration_secret_options = var.log_configuration != null ? lookup(var.log_configuration, "secretOptions", null) : null
-  log_configuration_with_null = var.log_configuration == null ? null : {
-    logDriver = tostring(lookup(var.log_configuration, "logDriver"))
-    options   = tomap(lookup(var.log_configuration, "options"))
-    secretOptions = local.log_configuration_secret_options == null ? null : [
-      for secret_option in tolist(local.log_configuration_secret_options) : {
-        name      = tostring(lookup(secret_option, "name"))
-        valueFrom = tostring(lookup(secret_option, "valueFrom"))
-      }
-    ]
-  }
-  log_configuration_without_null = local.log_configuration_with_null == null ? null : {
-    for k, v in local.log_configuration_with_null :
+  log_configuration_without_null = var.log_configuration == null ? null : {
+    for k, v in var.log_configuration :
     k => v
     if v != null
   }
@@ -65,7 +34,7 @@ locals {
     command                = var.command
     workingDirectory       = var.working_directory
     readonlyRootFilesystem = var.readonly_root_filesystem
-    mountPoints            = local.mount_points
+    mountPoints            = var.mount_points
     dnsServers             = var.dns_servers
     dnsSearchDomains       = var.dns_search_domains
     ulimits                = var.ulimits
@@ -104,5 +73,13 @@ locals {
     k => v
     if v != null
   }
-  json_map = jsonencode(merge(local.container_definition_without_null, var.container_definition))
+
+  container_definition_override_without_null = {
+    for k, v in var.container_definition :
+    k => v
+    if v != null
+  }
+
+  final_container_definition = merge(local.container_definition_without_null, local.container_definition_override_without_null)
+  json_map                   = jsonencode(local.final_container_definition)
 }
