@@ -27,11 +27,14 @@ variable "container_memory_reservation" {
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html
 variable "port_mappings" {
   type = list(object({
-    containerPort = number
-    hostPort      = optional(number)
-    protocol      = optional(string)
+    containerPort      = optional(number)
+    hostPort           = optional(number)
+    protocol           = optional(string) # tcp (default), udp
+    name               = optional(string)
+    appProtocol        = optional(string) # http, http2, grpc (defaults to tcp)
+    containerPortRange = optional(string)
   }))
-  description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"containerPort\", \"hostPort\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort"
+  description = "The [port mappings](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html) to configure for the container. This is a list of maps. Each map should contain `containerPort`, `hostPort`, and `protocol`, where `protocol` is one of `tcp` or `udp`. If using containers in a task with the `awsvpc` or `host` network mode, the `hostPort` can either be left blank or set to the same value as the `containerPort`"
   default     = null
 }
 
