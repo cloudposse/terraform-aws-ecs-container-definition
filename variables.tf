@@ -104,6 +104,8 @@ variable "container_definition" {
       containerPort = number
       hostPort      = optional(number)
       protocol      = optional(string)
+      name          = optional(string)
+      appProtocol   = optional(string)
     })))
     privileged             = optional(bool)
     pseudoTerminal         = optional(bool)
@@ -147,6 +149,8 @@ variable "port_mappings" {
     containerPort = number
     hostPort      = optional(number)
     protocol      = optional(string)
+    name          = optional(string)
+    appProtocol   = optional(string)
   }))
   description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"containerPort\", \"hostPort\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort"
   default     = null
