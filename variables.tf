@@ -104,7 +104,6 @@ variable "container_definition" {
       containerPort = number
       hostPort      = optional(number)
       protocol      = optional(string)
-      name          = optional(string)
       appProtocol   = optional(string)
     })))
     privileged             = optional(bool)
