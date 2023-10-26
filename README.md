@@ -35,12 +35,6 @@ Terraform module to generate well-formed JSON documents that are passed to the `
 ---
 
 This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
-[<img align="right" title="Share via Email" src="https://docs.cloudposse.com/images/ionicons/ios-email-outline-2.0.1-16x16-999999.svg"/>][share_email]
-[<img align="right" title="Share on Google+" src="https://docs.cloudposse.com/images/ionicons/social-googleplus-outline-2.0.1-16x16-999999.svg" />][share_googleplus]
-[<img align="right" title="Share on Facebook" src="https://docs.cloudposse.com/images/ionicons/social-facebook-outline-2.0.1-16x16-999999.svg" />][share_facebook]
-[<img align="right" title="Share on Reddit" src="https://docs.cloudposse.com/images/ionicons/social-reddit-outline-2.0.1-16x16-999999.svg" />][share_reddit]
-[<img align="right" title="Share on LinkedIn" src="https://docs.cloudposse.com/images/ionicons/social-linkedin-outline-2.0.1-16x16-999999.svg" />][share_linkedin]
-[<img align="right" title="Share on Twitter" src="https://docs.cloudposse.com/images/ionicons/social-twitter-outline-2.0.1-16x16-999999.svg" />][share_twitter]
 
 
 [![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
@@ -174,7 +168,7 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_command"></a> [command](#input\_command) | The command that is passed to the container | `list(string)` | `null` | no |
 | <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | The number of cpu units to reserve for the container. This is optional for tasks using Fargate launch type and the total amount of container\_cpu of all containers in a task will need to be lower than the task-level cpu value | `number` | `0` | no |
-| <a name="input_container_definition"></a> [container\_definition](#input\_container\_definition) | Container definition overrides which allows for extra keys or overriding existing keys. | <pre>object({<br>    command = optional(list(string))<br>    cpu     = optional(number)<br>    dependsOn = optional(list(object({<br>      condition     = string<br>      containerName = string<br>    })))<br>    disableNetworking     = optional(bool)<br>    dnsSearchDomains      = optional(list(string))<br>    dnsServers            = optional(list(string))<br>    dockerLabels          = optional(map(string))<br>    dockerSecurityOptions = optional(list(string))<br>    entryPoint            = optional(list(string))<br>    environment = optional(list(object({<br>      name  = string<br>      value = string<br>    })))<br>    environmentFiles = optional(list(object({<br>      type  = string<br>      value = string<br>    })))<br>    essential = optional(bool)<br>    extraHosts = optional(list(object({<br>      hostname  = string<br>      ipAddress = string<br>    })))<br>    firelensConfiguration = optional(object({<br>      options = optional(map(string))<br>      type    = string<br>    }))<br>    healthCheck = optional(object({<br>      command     = list(string)<br>      interval    = optional(number)<br>      retries     = optional(number)<br>      startPeriod = optional(number)<br>      timeout     = optional(number)<br>    }))<br>    hostname    = optional(string)<br>    image       = optional(string)<br>    interactive = optional(bool)<br>    links       = optional(list(string))<br>    linuxParameters = optional(object({<br>      capabilities = optional(object({<br>        add  = optional(list(string))<br>        drop = optional(list(string))<br>      }))<br>      devices = optional(list(object({<br>        containerPath = string<br>        hostPath      = string<br>        permissions   = optional(list(string))<br>      })))<br>      initProcessEnabled = optional(bool)<br>      maxSwap            = optional(number)<br>      sharedMemorySize   = optional(number)<br>      swappiness         = optional(number)<br>      tmpfs = optional(list(object({<br>        containerPath = string<br>        mountOptions  = optional(list(string))<br>        size          = number<br>      })))<br>    }))<br>    logConfiguration = optional(object({<br>      logDriver = string<br>      options   = optional(map(string))<br>      secretOptions = optional(list(object({<br>        name      = string<br>        valueFrom = string<br>      })))<br>    }))<br>    memory            = optional(number)<br>    memoryReservation = optional(number)<br>    mountPoints = optional(list(object({<br>      containerPath = optional(string)<br>      readOnly      = optional(bool)<br>      sourceVolume  = optional(string)<br>    })))<br>    name = optional(string)<br>    portMappings = optional(list(object({<br>      name          = optional(string)<br>      containerPort = number<br>      hostPort      = optional(number)<br>      protocol      = optional(string)<br>      name          = optional(string)<br>      appProtocol   = optional(string)<br>    })))<br>    privileged             = optional(bool)<br>    pseudoTerminal         = optional(bool)<br>    readonlyRootFilesystem = optional(bool)<br>    repositoryCredentials = optional(object({<br>      credentialsParameter = string<br>    }))<br>    resourceRequirements = optional(list(object({<br>      type  = string<br>      value = string<br>    })))<br>    secrets = optional(list(object({<br>      name      = string<br>      valueFrom = string<br>    })))<br>    startTimeout = optional(number)<br>    stopTimeout  = optional(number)<br>    systemControls = optional(list(object({<br>      namespace = string<br>      value     = string<br>    })))<br>    ulimits = optional(list(object({<br>      hardLimit = number<br>      name      = string<br>      softLimit = number<br>    })))<br>    user = optional(string)<br>    volumesFrom = optional(list(object({<br>      readOnly        = optional(bool)<br>      sourceContainer = string<br>    })))<br>    workingDirectory = optional(string)<br>  })</pre> | `{}` | no |
+| <a name="input_container_definition"></a> [container\_definition](#input\_container\_definition) | Container definition overrides which allows for extra keys or overriding existing keys. | <pre>object({<br>    command = optional(list(string))<br>    cpu     = optional(number)<br>    dependsOn = optional(list(object({<br>      condition     = string<br>      containerName = string<br>    })))<br>    disableNetworking     = optional(bool)<br>    dnsSearchDomains      = optional(list(string))<br>    dnsServers            = optional(list(string))<br>    dockerLabels          = optional(map(string))<br>    dockerSecurityOptions = optional(list(string))<br>    entryPoint            = optional(list(string))<br>    environment = optional(list(object({<br>      name  = string<br>      value = string<br>    })))<br>    environmentFiles = optional(list(object({<br>      type  = string<br>      value = string<br>    })))<br>    essential = optional(bool)<br>    extraHosts = optional(list(object({<br>      hostname  = string<br>      ipAddress = string<br>    })))<br>    firelensConfiguration = optional(object({<br>      options = optional(map(string))<br>      type    = string<br>    }))<br>    healthCheck = optional(object({<br>      command     = list(string)<br>      interval    = optional(number)<br>      retries     = optional(number)<br>      startPeriod = optional(number)<br>      timeout     = optional(number)<br>    }))<br>    hostname    = optional(string)<br>    image       = optional(string)<br>    interactive = optional(bool)<br>    links       = optional(list(string))<br>    linuxParameters = optional(object({<br>      capabilities = optional(object({<br>        add  = optional(list(string))<br>        drop = optional(list(string))<br>      }))<br>      devices = optional(list(object({<br>        containerPath = string<br>        hostPath      = string<br>        permissions   = optional(list(string))<br>      })))<br>      initProcessEnabled = optional(bool)<br>      maxSwap            = optional(number)<br>      sharedMemorySize   = optional(number)<br>      swappiness         = optional(number)<br>      tmpfs = optional(list(object({<br>        containerPath = string<br>        mountOptions  = optional(list(string))<br>        size          = number<br>      })))<br>    }))<br>    logConfiguration = optional(object({<br>      logDriver = string<br>      options   = optional(map(string))<br>      secretOptions = optional(list(object({<br>        name      = string<br>        valueFrom = string<br>      })))<br>    }))<br>    memory            = optional(number)<br>    memoryReservation = optional(number)<br>    mountPoints = optional(list(object({<br>      containerPath = optional(string)<br>      readOnly      = optional(bool)<br>      sourceVolume  = optional(string)<br>    })))<br>    name = optional(string)<br>    portMappings = optional(list(object({<br>      containerPort = number<br>      hostPort      = optional(number)<br>      protocol      = optional(string)<br>      name          = optional(string)<br>      appProtocol   = optional(string)<br>    })))<br>    privileged             = optional(bool)<br>    pseudoTerminal         = optional(bool)<br>    readonlyRootFilesystem = optional(bool)<br>    repositoryCredentials = optional(object({<br>      credentialsParameter = string<br>    }))<br>    resourceRequirements = optional(list(object({<br>      type  = string<br>      value = string<br>    })))<br>    secrets = optional(list(object({<br>      name      = string<br>      valueFrom = string<br>    })))<br>    startTimeout = optional(number)<br>    stopTimeout  = optional(number)<br>    systemControls = optional(list(object({<br>      namespace = string<br>      value     = string<br>    })))<br>    ulimits = optional(list(object({<br>      hardLimit = number<br>      name      = string<br>      softLimit = number<br>    })))<br>    user = optional(string)<br>    volumesFrom = optional(list(object({<br>      readOnly        = optional(bool)<br>      sourceContainer = string<br>    })))<br>    workingDirectory = optional(string)<br>  })</pre> | `{}` | no |
 | <a name="input_container_depends_on"></a> [container\_depends\_on](#input\_container\_depends\_on) | The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed. The condition can be one of START, COMPLETE, SUCCESS or HEALTHY | <pre>list(object({<br>    condition     = string<br>    containerName = string<br>  }))</pre> | `null` | no |
 | <a name="input_container_image"></a> [container\_image](#input\_container\_image) | The image used to start the container. Images in the Docker Hub registry available by default | `string` | n/a | yes |
 | <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | The amount of memory (in MiB) to allow the container to use. This is a hard limit, if the container attempts to exceed the container\_memory, the container is killed. This field is optional for Fargate launch type and the total amount of container\_memory of all containers in a task will need to be lower than the task memory value | `number` | `null` | no |
@@ -233,8 +227,6 @@ No resources.
 
 Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/terraform-aws-ecs-container-definition)! (it helps us **a lot**)
 
-Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
-
 
 
 ## Related Projects
@@ -285,10 +277,6 @@ We deliver 10x the value for a fraction of the cost of a full-time engineer. Our
 
 Join our [Open Source Community][slack] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
 
-## Discourse Forums
-
-Participate in our [Discourse Forums][discourse]. Here you'll find answers to commonly asked questions. Most questions will be related to the enormous number of projects we support on our GitHub. Come here to collaborate on answers, find solutions, and get ideas about the products and services we value. It only takes a minute to get started! Just sign in with SSO using your GitHub account.
-
 ## Newsletter
 
 Sign up for [our newsletter][newsletter] that covers everything on our technology radar.  Receive updates on what we're up to on GitHub as well as awesome new projects we discover.
@@ -299,7 +287,18 @@ Sign up for [our newsletter][newsletter] that covers everything on our technolog
 
 [![zoom](https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png")][office_hours]
 
-## Contributing
+## ✨ Contributing
+
+
+
+This project is under active development, and we encourage contributions from our community. 
+Many thanks to our outstanding contributors:
+
+<a href="https://github.com/cloudposse/terraform-aws-ecs-container-definition/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=cloudposse/terraform-aws-ecs-container-definition&max=24" />
+</a>
+
+
 
 ### Bug Reports & Feature Requests
 
@@ -373,31 +372,7 @@ We're a [DevOps Professional Services][hire] company based in Los Angeles, CA. W
 
 We offer [paid support][commercial_support] on all of our projects.
 
-Check out [our other projects][github], [follow us on twitter][twitter], [apply for a job][jobs], or [hire us][hire] to help with your cloud strategy and implementation.
-
-
-
-### Contributors
-
-<!-- markdownlint-disable -->
-|  [![Erik Osterman][osterman_avatar]][osterman_homepage]<br/>[Erik Osterman][osterman_homepage] | [![Sarkis Varozian][sarkis_avatar]][sarkis_homepage]<br/>[Sarkis Varozian][sarkis_homepage] | [![Andriy Knysh][aknysh_avatar]][aknysh_homepage]<br/>[Andriy Knysh][aknysh_homepage] | [![Igor Rodionov][goruha_avatar]][goruha_homepage]<br/>[Igor Rodionov][goruha_homepage] | [![Yonatan Koren][korenyoni_avatar]][korenyoni_homepage]<br/>[Yonatan Koren][korenyoni_homepage] | [![RB][nitrocode_avatar]][nitrocode_homepage]<br/>[RB][nitrocode_homepage] |
-|---|---|---|---|---|---|
-<!-- markdownlint-restore -->
-
-  [osterman_homepage]: https://github.com/osterman
-  [osterman_avatar]: https://img.cloudposse.com/150x150/https://github.com/osterman.png
-  [sarkis_homepage]: https://github.com/sarkis
-  [sarkis_avatar]: https://img.cloudposse.com/150x150/https://github.com/sarkis.png
-  [aknysh_homepage]: https://github.com/aknysh
-  [aknysh_avatar]: https://img.cloudposse.com/150x150/https://github.com/aknysh.png
-  [goruha_homepage]: https://github.com/goruha
-  [goruha_avatar]: https://img.cloudposse.com/150x150/https://github.com/goruha.png
-  [korenyoni_homepage]: https://github.com/korenyoni
-  [korenyoni_avatar]: https://img.cloudposse.com/150x150/https://github.com/korenyoni.png
-  [nitrocode_homepage]: https://github.com/nitrocode
-  [nitrocode_avatar]: https://img.cloudposse.com/150x150/https://github.com/nitrocode.png
-
-[![README Footer][readme_footer_img]][readme_footer_link]
+Check out [our other projects][github], [follow us on twitter][twitter], [apply for a job][jobs], or [hire us][hire] to help with your cloud strategy and implementation.[![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
 <!-- markdownlint-disable -->
   [logo]: https://cloudposse.com/logo-300x69.svg
@@ -407,12 +382,10 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
   [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=jobs
   [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=hire
   [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=slack
-  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=linkedin
   [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=twitter
   [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=testimonial
   [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=office_hours
   [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=newsletter
-  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=discourse
   [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=email
   [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=commercial_support
   [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=we_love_open_source
@@ -423,11 +396,5 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
   [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=readme_footer_link
   [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
   [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=readme_commercial_support_link
-  [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-ecs-container-definition&url=https://github.com/cloudposse/terraform-aws-ecs-container-definition
-  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-ecs-container-definition&url=https://github.com/cloudposse/terraform-aws-ecs-container-definition
-  [share_reddit]: https://reddit.com/submit/?url=https://github.com/cloudposse/terraform-aws-ecs-container-definition
-  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/cloudposse/terraform-aws-ecs-container-definition
-  [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/terraform-aws-ecs-container-definition
-  [share_email]: mailto:?subject=terraform-aws-ecs-container-definition&body=https://github.com/cloudposse/terraform-aws-ecs-container-definition
   [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/terraform-aws-ecs-container-definition?pixel&cs=github&cm=readme&an=terraform-aws-ecs-container-definition
 <!-- markdownlint-restore -->

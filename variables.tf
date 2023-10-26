@@ -100,7 +100,6 @@ variable "container_definition" {
     })))
     name = optional(string)
     portMappings = optional(list(object({
-      name          = optional(string)
       containerPort = number
       hostPort      = optional(number)
       protocol      = optional(string)
