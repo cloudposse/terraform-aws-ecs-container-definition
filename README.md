@@ -1,13 +1,10 @@
 
 <!-- markdownlint-disable -->
-# terraform-aws-ecs-container-definition
+# terraform-aws-ecs-container-definition<a href="https://cpco.io/homepage"><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a>
 
  [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-container-definition.svg)](https://github.com/cloudposse/terraform-aws-ecs-container-definition/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 <!-- markdownlint-restore -->
 
-[![README Header][readme_header_img]][readme_header_link]
-
-[![Cloud Posse][logo]](https://cpco.io/homepage)
 
 <!--
 
@@ -32,57 +29,32 @@
 
 Terraform module to generate well-formed JSON documents that are passed to the `aws_ecs_task_definition` Terraform resource as [container definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions).
 
+
 ---
+> [!NOTE]
+> This project is part of Cloud Posse's comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
+> <a href="https://cpco.io/terraform-modules"><img src="https://docs.cloudposse.com/images/terraform-open-source-modules.svg" align="right" /></a>
+>
+> It's 100% Open Source and licensed under the [APACHE2](LICENSE).
+>
+> We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
 
-This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
+[![README Header][readme_header_img]][readme_header_link]
 
-
-[![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
-
-
-
-It's 100% Open Source and licensed under the [APACHE2](LICENSE).
-
-
-
-
-
-
-
-We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
-
-
-
-
-
-
-## Security & Compliance [<img src="https://cloudposse.com/wp-content/uploads/2020/11/bridgecrew.svg" width="250" align="right" />](https://bridgecrew.io/)
-
-Security scanning is graciously provided by Bridgecrew. Bridgecrew is the leading fully hosted, cloud-native solution providing continuous Terraform security and compliance.
-
-| Benchmark | Description |
-|--------|---------------|
-| [![Infrastructure Security](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=INFRASTRUCTURE+SECURITY) | Infrastructure Security Compliance |
-| [![CIS KUBERNETES](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/cis_kubernetes)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=CIS+KUBERNETES+V1.5) | Center for Internet Security, KUBERNETES Compliance |
-| [![CIS AWS](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=CIS+AWS+V1.2) | Center for Internet Security, AWS Compliance |
-| [![CIS AZURE](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/cis_azure)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=CIS+AZURE+V1.1) | Center for Internet Security, AZURE Compliance |
-| [![PCI-DSS](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=PCI-DSS+V3.2) | Payment Card Industry Data Security Standards Compliance |
-| [![NIST-800-53](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=NIST-800-53) | National Institute of Standards and Technology Compliance |
-| [![ISO27001](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/iso)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=ISO27001) | Information Security Management System, ISO/IEC 27001 Compliance |
-| [![SOC2](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/soc2)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=SOC2)| Service Organization Control 2 Compliance |
-| [![CIS GCP](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/cis_gcp)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=CIS+GCP+V1.1) | Center for Internet Security, GCP Compliance |
-| [![HIPAA](https://www.bridgecrew.cloud/badges/github/cloudposse/terraform-aws-ecs-container-definition/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=cloudposse%2Fterraform-aws-ecs-container-definition&benchmark=HIPAA) | Health Insurance Portability and Accountability Compliance |
 
 
 
 ## Usage
 
 
-**IMPORTANT:** We do not pin modules to versions in our examples because of the
-difficulty of keeping the versions in the documentation in sync with the latest released versions.
-We highly recommend that in your code you pin the version to the exact version you are
-using so that your infrastructure remains stable, and update versions in a
-systematic way so that they do not catch you by surprise.
+
+> **Important**
+> We do not pin modules to versions in Cloud Posse's examples because of the
+> difficulty of keeping the versions in the documentation in sync with the latest released versions.
+> We highly recommend that in your code you pin the version to the exact version you are
+> using so that your infrastructure remains stable, and update versions in a
+> systematic way so that they do not catch you by surprise.
+
 
 
 This module is meant to be used as output only, meaning it will be used to create outputs which are consumed as a parameter by Terraform resources or other modules.
@@ -168,7 +140,7 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_command"></a> [command](#input\_command) | The command that is passed to the container | `list(string)` | `null` | no |
 | <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | The number of cpu units to reserve for the container. This is optional for tasks using Fargate launch type and the total amount of container\_cpu of all containers in a task will need to be lower than the task-level cpu value | `number` | `0` | no |
-| <a name="input_container_definition"></a> [container\_definition](#input\_container\_definition) | Container definition overrides which allows for extra keys or overriding existing keys. | <pre>object({<br>    command = optional(list(string))<br>    cpu     = optional(number)<br>    dependsOn = optional(list(object({<br>      condition     = string<br>      containerName = string<br>    })))<br>    disableNetworking     = optional(bool)<br>    dnsSearchDomains      = optional(list(string))<br>    dnsServers            = optional(list(string))<br>    dockerLabels          = optional(map(string))<br>    dockerSecurityOptions = optional(list(string))<br>    entryPoint            = optional(list(string))<br>    environment = optional(list(object({<br>      name  = string<br>      value = string<br>    })))<br>    environmentFiles = optional(list(object({<br>      type  = string<br>      value = string<br>    })))<br>    essential = optional(bool)<br>    extraHosts = optional(list(object({<br>      hostname  = string<br>      ipAddress = string<br>    })))<br>    firelensConfiguration = optional(object({<br>      options = optional(map(string))<br>      type    = string<br>    }))<br>    healthCheck = optional(object({<br>      command     = list(string)<br>      interval    = optional(number)<br>      retries     = optional(number)<br>      startPeriod = optional(number)<br>      timeout     = optional(number)<br>    }))<br>    hostname    = optional(string)<br>    image       = optional(string)<br>    interactive = optional(bool)<br>    links       = optional(list(string))<br>    linuxParameters = optional(object({<br>      capabilities = optional(object({<br>        add  = optional(list(string))<br>        drop = optional(list(string))<br>      }))<br>      devices = optional(list(object({<br>        containerPath = string<br>        hostPath      = string<br>        permissions   = optional(list(string))<br>      })))<br>      initProcessEnabled = optional(bool)<br>      maxSwap            = optional(number)<br>      sharedMemorySize   = optional(number)<br>      swappiness         = optional(number)<br>      tmpfs = optional(list(object({<br>        containerPath = string<br>        mountOptions  = optional(list(string))<br>        size          = number<br>      })))<br>    }))<br>    logConfiguration = optional(object({<br>      logDriver = string<br>      options   = optional(map(string))<br>      secretOptions = optional(list(object({<br>        name      = string<br>        valueFrom = string<br>      })))<br>    }))<br>    memory            = optional(number)<br>    memoryReservation = optional(number)<br>    mountPoints = optional(list(object({<br>      containerPath = optional(string)<br>      readOnly      = optional(bool)<br>      sourceVolume  = optional(string)<br>    })))<br>    name = optional(string)<br>    portMappings = optional(list(object({<br>      containerPort = number<br>      hostPort      = optional(number)<br>      protocol      = optional(string)<br>      name          = optional(string)<br>      appProtocol   = optional(string)<br>    })))<br>    privileged             = optional(bool)<br>    pseudoTerminal         = optional(bool)<br>    readonlyRootFilesystem = optional(bool)<br>    repositoryCredentials = optional(object({<br>      credentialsParameter = string<br>    }))<br>    resourceRequirements = optional(list(object({<br>      type  = string<br>      value = string<br>    })))<br>    secrets = optional(list(object({<br>      name      = string<br>      valueFrom = string<br>    })))<br>    startTimeout = optional(number)<br>    stopTimeout  = optional(number)<br>    systemControls = optional(list(object({<br>      namespace = string<br>      value     = string<br>    })))<br>    ulimits = optional(list(object({<br>      hardLimit = number<br>      name      = string<br>      softLimit = number<br>    })))<br>    user = optional(string)<br>    volumesFrom = optional(list(object({<br>      readOnly        = optional(bool)<br>      sourceContainer = string<br>    })))<br>    workingDirectory = optional(string)<br>  })</pre> | `{}` | no |
+| <a name="input_container_definition"></a> [container\_definition](#input\_container\_definition) | Container definition overrides which allows for extra keys or overriding existing keys. | <pre>object({<br>    command = optional(list(string))<br>    cpu     = optional(number)<br>    dependsOn = optional(list(object({<br>      condition     = string<br>      containerName = string<br>    })))<br>    disableNetworking     = optional(bool)<br>    dnsSearchDomains      = optional(list(string))<br>    dnsServers            = optional(list(string))<br>    dockerLabels          = optional(map(string))<br>    dockerSecurityOptions = optional(list(string))<br>    entryPoint            = optional(list(string))<br>    environment = optional(list(object({<br>      name  = string<br>      value = string<br>    })))<br>    environmentFiles = optional(list(object({<br>      type  = string<br>      value = string<br>    })))<br>    essential = optional(bool)<br>    extraHosts = optional(list(object({<br>      hostname  = string<br>      ipAddress = string<br>    })))<br>    firelensConfiguration = optional(object({<br>      options = optional(map(string))<br>      type    = string<br>    }))<br>    healthCheck = optional(object({<br>      command     = list(string)<br>      interval    = optional(number)<br>      retries     = optional(number)<br>      startPeriod = optional(number)<br>      timeout     = optional(number)<br>    }))<br>    hostname    = optional(string)<br>    image       = optional(string)<br>    interactive = optional(bool)<br>    links       = optional(list(string))<br>    linuxParameters = optional(object({<br>      capabilities = optional(object({<br>        add  = optional(list(string))<br>        drop = optional(list(string))<br>      }))<br>      devices = optional(list(object({<br>        containerPath = string<br>        hostPath      = string<br>        permissions   = optional(list(string))<br>      })))<br>      initProcessEnabled = optional(bool)<br>      maxSwap            = optional(number)<br>      sharedMemorySize   = optional(number)<br>      swappiness         = optional(number)<br>      tmpfs = optional(list(object({<br>        containerPath = string<br>        mountOptions  = optional(list(string))<br>        size          = number<br>      })))<br>    }))<br>    logConfiguration = optional(object({<br>      logDriver = string<br>      options   = optional(map(string))<br>      secretOptions = optional(list(object({<br>        name      = string<br>        valueFrom = string<br>      })))<br>    }))<br>    memory            = optional(number)<br>    memoryReservation = optional(number)<br>    mountPoints = optional(list(object({<br>      containerPath = optional(string)<br>      readOnly      = optional(bool)<br>      sourceVolume  = optional(string)<br>    })))<br>    name = optional(string)<br>    portMappings = optional(list(object({<br>      containerPort      = optional(number)<br>      hostPort           = optional(number)<br>      protocol           = optional(string)<br>      name               = optional(string)<br>      appProtocol        = optional(string)<br>      containerPortRange = optional(string)<br>    })))<br>    privileged             = optional(bool)<br>    pseudoTerminal         = optional(bool)<br>    readonlyRootFilesystem = optional(bool)<br>    repositoryCredentials = optional(object({<br>      credentialsParameter = string<br>    }))<br>    resourceRequirements = optional(list(object({<br>      type  = string<br>      value = string<br>    })))<br>    secrets = optional(list(object({<br>      name      = string<br>      valueFrom = string<br>    })))<br>    startTimeout = optional(number)<br>    stopTimeout  = optional(number)<br>    systemControls = optional(list(object({<br>      namespace = string<br>      value     = string<br>    })))<br>    ulimits = optional(list(object({<br>      hardLimit = number<br>      name      = string<br>      softLimit = number<br>    })))<br>    user = optional(string)<br>    volumesFrom = optional(list(object({<br>      readOnly        = optional(bool)<br>      sourceContainer = string<br>    })))<br>    workingDirectory = optional(string)<br>  })</pre> | `{}` | no |
 | <a name="input_container_depends_on"></a> [container\_depends\_on](#input\_container\_depends\_on) | The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed. The condition can be one of START, COMPLETE, SUCCESS or HEALTHY | <pre>list(object({<br>    condition     = string<br>    containerName = string<br>  }))</pre> | `null` | no |
 | <a name="input_container_image"></a> [container\_image](#input\_container\_image) | The image used to start the container. Images in the Docker Hub registry available by default | `string` | n/a | yes |
 | <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | The amount of memory (in MiB) to allow the container to use. This is a hard limit, if the container attempts to exceed the container\_memory, the container is killed. This field is optional for Fargate launch type and the total amount of container\_memory of all containers in a task will need to be lower than the task memory value | `number` | `null` | no |
@@ -222,13 +194,6 @@ No resources.
 <!-- markdownlint-restore -->
 
 
-
-## Share the Love
-
-Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/terraform-aws-ecs-container-definition)! (it helps us **a lot**)
-
-
-
 ## Related Projects
 
 Check out these related projects.
@@ -243,16 +208,49 @@ Check out these related projects.
 - [terraform-aws-ecs-cloudwatch-sns-alarms](https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms) - Terraform module to create CloudWatch Alarms on ECS Service level metrics
 - [terraform-aws-ecs-alb-service-task](https://github.com/cloudposse/terraform-aws-ecs-alb-service-task) - Terraform module which implements an ECS service which exposes a web service via ALB
 
-## Help
+## ✨ Contributing
 
-**Got a question?** We got answers.
+This project is under active development, and we encourage contributions from our community. 
+Many thanks to our outstanding contributors:
 
-File a GitHub [issue](https://github.com/cloudposse/terraform-aws-ecs-container-definition/issues), send us an [email][email] or join our [Slack Community][slack].
+<a href="https://github.com/cloudposse/terraform-aws-ecs-container-definition/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=cloudposse/terraform-aws-ecs-container-definition&max=24" />
+</a>
 
-[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
+### 🐛 Bug Reports & Feature Requests
 
-## DevOps Accelerator for Startups
+Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-ecs-container-definition/issues) to report any bugs or file feature requests.
 
+### 💻 Developing
+
+If you are interested in being a contributor and want to get involved in developing this project or [help out](https://cpco.io/help-out) with Cloud Posse's other projects, we would love to hear from you! Shoot us an [email][email].
+
+In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
+
+ 1. **Fork** the repo on GitHub
+ 2. **Clone** the project to your own machine
+ 3. **Commit** changes to your own branch
+ 4. **Push** your work back up to your fork
+ 5. Submit a **Pull Request** so that we can review your changes
+
+**NOTE:** Be sure to merge the latest changes from "upstream" before making a pull request!
+
+### 🌎 Slack Community
+
+Join our [Open Source Community][slack] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
+
+### 📰 Newsletter
+
+Sign up for [our newsletter][newsletter] that covers everything on our technology radar.  Receive updates on what we're up to on GitHub as well as awesome new projects we discover.
+
+### 📆 Office Hours <img src="https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png" align="right" />
+
+[Join us every Wednesday via Zoom][office_hours] for our weekly "Lunch & Learn" sessions. It's **FREE** for everyone!
+
+## About 
+
+This project is maintained and funded by [Cloud Posse, LLC][website]. 
+<a href="https://cpco.io/homepage"><img src="https://cloudposse.com/logo-300x69.svg" align="right" /></a>
 
 We are a [**DevOps Accelerator**][commercial_support]. We'll help you build your cloud infrastructure from the ground up so you can own it. Then we'll show you how to operate it and stick around for as long as you need us.
 
@@ -273,58 +271,7 @@ We deliver 10x the value for a fraction of the cost of a full-time engineer. Our
 - **Code Reviews.** You'll receive constructive feedback on Pull Requests.
 - **Bug Fixes.** We'll rapidly work with you to fix any bugs in our projects.
 
-## Slack Community
-
-Join our [Open Source Community][slack] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
-
-## Newsletter
-
-Sign up for [our newsletter][newsletter] that covers everything on our technology radar.  Receive updates on what we're up to on GitHub as well as awesome new projects we discover.
-
-## Office Hours
-
-[Join us every Wednesday via Zoom][office_hours] for our weekly "Lunch & Learn" sessions. It's **FREE** for everyone!
-
-[![zoom](https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png")][office_hours]
-
-## ✨ Contributing
-
-
-
-This project is under active development, and we encourage contributions from our community. 
-Many thanks to our outstanding contributors:
-
-<a href="https://github.com/cloudposse/terraform-aws-ecs-container-definition/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=cloudposse/terraform-aws-ecs-container-definition&max=24" />
-</a>
-
-
-
-### Bug Reports & Feature Requests
-
-Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-ecs-container-definition/issues) to report any bugs or file feature requests.
-
-### Developing
-
-If you are interested in being a contributor and want to get involved in developing this project or [help out](https://cpco.io/help-out) with our other projects, we would love to hear from you! Shoot us an [email][email].
-
-In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
-
- 1. **Fork** the repo on GitHub
- 2. **Clone** the project to your own machine
- 3. **Commit** changes to your own branch
- 4. **Push** your work back up to your fork
- 5. Submit a **Pull Request** so that we can review your changes
-
-**NOTE:** Be sure to merge the latest changes from "upstream" before making a pull request!
-
-
-## Copyright
-
-Copyright © 2017-2023 [Cloud Posse, LLC](https://cpco.io/copyright)
-
-
-
+[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
 ## License
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -350,29 +297,12 @@ specific language governing permissions and limitations
 under the License.
 ```
 
-
-
-
-
-
-
-
-
 ## Trademarks
 
 All other trademarks referenced herein are the property of their respective owners.
-
-## About
-
-This project is maintained and funded by [Cloud Posse, LLC][website]. Like it? Please let us know by [leaving a testimonial][testimonial]!
-
-[![Cloud Posse][logo]][website]
-
-We're a [DevOps Professional Services][hire] company based in Los Angeles, CA. We ❤️  [Open Source Software][we_love_open_source].
-
-We offer [paid support][commercial_support] on all of our projects.
-
-Check out [our other projects][github], [follow us on twitter][twitter], [apply for a job][jobs], or [hire us][hire] to help with your cloud strategy and implementation.[![README Footer][readme_footer_img]][readme_footer_link]
+---
+Copyright © 2017-2024 [Cloud Posse, LLC](https://cpco.io/copyright)
+[![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
 <!-- markdownlint-disable -->
   [logo]: https://cloudposse.com/logo-300x69.svg
@@ -383,7 +313,6 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
   [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=hire
   [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=slack
   [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=twitter
-  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=testimonial
   [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=office_hours
   [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=newsletter
   [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/terraform-aws-ecs-container-definition&utm_content=email

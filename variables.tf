@@ -100,11 +100,12 @@ variable "container_definition" {
     })))
     name = optional(string)
     portMappings = optional(list(object({
-      containerPort = number
-      hostPort      = optional(number)
-      protocol      = optional(string)
-      name          = optional(string)
-      appProtocol   = optional(string)
+      containerPort      = optional(number)
+      hostPort           = optional(number)
+      protocol           = optional(string)
+      name               = optional(string)
+      appProtocol        = optional(string)
+      containerPortRange = optional(string)
     })))
     privileged             = optional(bool)
     pseudoTerminal         = optional(bool)
