@@ -146,7 +146,7 @@ variable "container_definition" {
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html
 variable "port_mappings" {
   type = list(object({
-    containerPort      = number
+    containerPort      = optional(number)
     hostPort           = optional(number)
     protocol           = optional(string)
     name               = optional(string)
