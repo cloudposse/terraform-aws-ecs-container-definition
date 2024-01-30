@@ -153,7 +153,7 @@ variable "port_mappings" {
     appProtocol        = optional(string)
     containerPortRange = optional(string)
   }))
-  description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"containerPort\", \"hostPort\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort"
+  description = "The port mappings to configure for the container. This is a list of maps. Each map should contain \"containerPort\" (or \"containerPortRange\"), \"hostPort\", and \"protocol\", where \"protocol\" is one of \"tcp\" or \"udp\". If using containers in a task with the awsvpc or host network mode, the hostPort can either be left blank or set to the same value as the containerPort"
   default     = null
 }
 
