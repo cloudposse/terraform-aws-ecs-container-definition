@@ -35,18 +35,20 @@ container_environment = [
 
 port_mappings = [
   {
-    containerPort = 8080
-    hostPort      = 80
-    protocol      = "tcp"
-    name          = "http"
-    appProtocol   = "http"
+    containerPort      = 8080
+    containerPortRange = null
+    hostPort           = 80
+    protocol           = "tcp"
+    name               = "http"
+    appProtocol        = "http"
   },
   {
-    containerPort = 8081
-    hostPort      = 443
-    protocol      = "udp"
-    name          = "https"
-    appProtocol   = "http"
+    containerPort      = 8081
+    containerPortRange = null
+    hostPort           = 443
+    protocol           = "udp"
+    name               = "https"
+    appProtocol        = "http"
   }
 ]
 
