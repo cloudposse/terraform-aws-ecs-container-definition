@@ -1,0 +1,7 @@
+# Upstream changes from _extends are only recognized when modifications are made to this file in the default branch.
+_extends: .github
+repository:
+  name: terraform-aws-ecs-container-definition
+  description: Terraform module to generate well-formed JSON documents (container definitions) that are passed to the  aws_ecs_task_definition Terraform resource
+  homepage: https://cloudposse.com/accelerate
+  topics: terraform, terraform-module, ecs, fargate, container-definition, task, docker, aws, hcl2
