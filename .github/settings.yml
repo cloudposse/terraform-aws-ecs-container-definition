@@ -5,3 +5,4 @@ repository:
   description: Terraform module to generate well-formed JSON documents (container definitions) that are passed to the  aws_ecs_task_definition Terraform resource
   homepage: https://cloudposse.com/accelerate
   topics: terraform, terraform-module, ecs, fargate, container-definition, task, docker, aws, hcl2
+
