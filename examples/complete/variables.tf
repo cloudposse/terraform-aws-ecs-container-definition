@@ -147,3 +147,13 @@ variable "docker_security_options" {
   description = "A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems."
   default     = null
 }
+
+variable "restart_policy" {
+  type = object({
+    enabled              = optional(bool)
+    ignoredExitCodes     = optional(list(number))
+    restartAttemptPeriod = optional(number)
+  })
+  description = "Container restart policy. Used to restart (rather than reprovision) a container when it exits unexpectedly"
+  default     = null
+}
