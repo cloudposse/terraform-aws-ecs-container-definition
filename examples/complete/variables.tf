@@ -1,5 +1,6 @@
 variable "region" {
   type = string
+  description = "The AWS Region used by the Terraform Provider"
 }
 
 variable "container_name" {
