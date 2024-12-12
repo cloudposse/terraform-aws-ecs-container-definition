@@ -66,6 +66,7 @@ locals {
     pseudoTerminal         = var.pseudo_terminal
     dockerSecurityOptions  = var.docker_security_options
     resourceRequirements   = var.resource_requirements
+    restartPolicy          = var.restart_policy
   }
 
   container_definition_without_null = {
