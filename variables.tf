@@ -137,6 +137,11 @@ variable "container_definition" {
       sourceContainer = string
     })))
     workingDirectory = optional(string)
+    restartPolicy = optional(object({
+      enabled              = optional(bool)
+      ignoredExitCodes     = optional(list(number))
+      restartAttemptPeriod = optional(number)
+    }))
   })
   description = "Container definition overrides which allows for extra keys or overriding existing keys."
   default     = {}
@@ -451,5 +456,15 @@ variable "resource_requirements" {
     value = string
   }))
   description = "The type and amount of a resource to assign to a container. The only supported resource is a GPU."
+  default     = null
+}
+
+variable "restart_policy" {
+  type = object({
+    enabled              = optional(bool)
+    ignoredExitCodes     = optional(list(number))
+    restartAttemptPeriod = optional(number)
+  })
+  description = "Container restart policy. Used to restart (rather than reprovision) a container when it exits unexpectedly"
   default     = null
 }
