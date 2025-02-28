@@ -71,3 +71,10 @@ extra_hosts = [
 hostname        = "hostname"
 pseudo_terminal = true
 interactive     = true
+
+restart_policy = {
+  enabled          = true
+  ignoredExitCodes = [0]
+}
+
+version_consistency = "enabled"

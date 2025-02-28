@@ -19,6 +19,8 @@ module "container" {
   hostname                     = var.hostname
   pseudo_terminal              = var.pseudo_terminal
   interactive                  = var.interactive
+  restart_policy               = var.restart_policy
+  version_consistency          = var.version_consistency
 }
 
 resource "aws_ecs_task_definition" "task" {
