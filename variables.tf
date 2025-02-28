@@ -116,6 +116,11 @@ variable "container_definition" {
       type  = string
       value = string
     })))
+    restartPolicy = optional(object({
+      enabled              = bool
+      ignoredExitCodes     = optional(list(number))
+      restartAttemptPeriod = optional(number)
+    }))
     secrets = optional(list(object({
       name      = string
       valueFrom = string
@@ -131,7 +136,8 @@ variable "container_definition" {
       name      = string
       softLimit = number
     })))
-    user = optional(string)
+    user               = optional(string)
+    versionConsistency = optional(string)
     volumesFrom = optional(list(object({
       readOnly        = optional(bool)
       sourceContainer = string
@@ -451,5 +457,22 @@ variable "resource_requirements" {
     value = string
   }))
   description = "The type and amount of a resource to assign to a container. The only supported resource is a GPU."
+  default     = null
+}
+
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerRestartPolicy.html
+variable "restart_policy" {
+  type = object({
+    enabled              = bool
+    ignoredExitCodes     = optional(list(number))
+    restartAttemptPeriod = optional(number)
+  })
+  description = "The restart policy for a container. When you set up a restart policy, Amazon ECS can restart the container without needing to replace the task."
+  default     = null
+}
+
+variable "version_consistency" {
+  type        = string
+  description = "Specifies whether Amazon ECS will resolve the container image tag provided in the container definition to an image digest."
   default     = null
 }

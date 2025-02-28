@@ -26,6 +26,12 @@ locals {
   }
   user = var.firelens_configuration != null ? "0" : var.user
 
+  restart_policy_without_null = var.restart_policy == null ? null : {
+    for k, v in var.restart_policy :
+    k => v
+    if v != null
+  }
+
   container_definition = {
     name                   = var.container_name
     image                  = var.container_image
@@ -66,6 +72,8 @@ locals {
     pseudoTerminal         = var.pseudo_terminal
     dockerSecurityOptions  = var.docker_security_options
     resourceRequirements   = var.resource_requirements
+    restartPolicy          = local.restart_policy_without_null
+    versionConsistency     = var.version_consistency
   }
 
   container_definition_without_null = {

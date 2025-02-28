@@ -1,5 +1,6 @@
 variable "region" {
-  type = string
+  type        = string
+  description = "AWS Region"
 }
 
 variable "container_name" {
@@ -145,5 +146,22 @@ variable "pseudo_terminal" {
 variable "docker_security_options" {
   type        = list(string)
   description = "A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems."
+  default     = null
+}
+
+# https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerRestartPolicy.html
+variable "restart_policy" {
+  type = object({
+    enabled              = bool
+    ignoredExitCodes     = optional(list(number))
+    restartAttemptPeriod = optional(number)
+  })
+  description = "The restart policy for a container. When you set up a restart policy, Amazon ECS can restart the container without needing to replace the task."
+  default     = null
+}
+
+variable "version_consistency" {
+  type        = string
+  description = "Specifies whether Amazon ECS will resolve the container image tag provided in the container definition to an image digest."
   default     = null
 }
