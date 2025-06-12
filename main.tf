@@ -74,6 +74,7 @@ locals {
     resourceRequirements   = var.resource_requirements
     restartPolicy          = local.restart_policy_without_null
     versionConsistency     = var.version_consistency
+    credentialSpecs        = var.credential_specs
   }
 
   container_definition_without_null = {
