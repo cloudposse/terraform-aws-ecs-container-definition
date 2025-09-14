@@ -23,8 +23,9 @@ variable "container_memory_reservation" {
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html
 variable "container_definition" {
   type = object({
-    command = optional(list(string))
-    cpu     = optional(number)
+    command         = optional(list(string))
+    cpu             = optional(number)
+    credentialSpecs = optional(list(string))
     dependsOn = optional(list(object({
       condition     = string
       containerName = string
@@ -367,6 +368,12 @@ variable "volumes_from" {
 variable "links" {
   type        = list(string)
   description = "List of container names this container can communicate with without port mappings"
+  default     = null
+}
+
+variable "credential_specs" {
+  type        = list(string)
+  description = "A list of ARNs in SSM or Amazon S3 to a credential spec (CredSpec) file that configures the container for Active Directory authentication. We recommend that you use this parameter instead of the dockerSecurityOptions. The maximum number of ARNs is 1."
   default     = null
 }
 
